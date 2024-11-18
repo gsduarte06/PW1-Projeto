@@ -14,9 +14,13 @@
           <p class=" ml-1 d-inline-flex" style="color: #ff00ee">here</p>
         </div>
         <div class="d-flex flex-row justify-space-between" style="margin-top: 25px">
-          <v-btn class="text-white text-body1" style="background-color: #ff00ee; width: 40%; height: 64px">Login</v-btn>
+          <v-btn class="text-white text-body1" style="background-color: #ff00ee; width: 40%; height: 64px">
+            Login
+          </v-btn>
           <v-btn class="text-white text-body1"
-            style="background-color: #ff00ee; width: 40%; height: 64px">Register</v-btn>
+            style="background-color: #ff00ee; width: 40%; height: 64px" @click="navigateToRegister">
+            Register
+          </v-btn>
         </div>
       </v-form>
     </div>
@@ -31,14 +35,17 @@ export default {
       password: null,
       rules: [
         value => {
-          if (value) return true
+          if (value) return true;
 
-          return 'Field is required'
+          return 'Field is required';
         },
-      ]
+      ],
     };
+  },
+  methods: {
+    navigateToRegister() {
+      this.$router.push('/register'); // Replace '/register' with your actual registration route
+    },
   },
 };
 </script>
-
-<style scoped></style>
