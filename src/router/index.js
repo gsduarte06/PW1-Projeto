@@ -58,11 +58,11 @@ const router = createRouter({
     },
   ],
 })
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
   if (from.path != '/' || from.path != '/leaderboard') {
     //Insert login validation
   } else {
     next()
   }
-})
+}) */
 export default router

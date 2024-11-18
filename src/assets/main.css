@@ -1,35 +1,32 @@
-@import './base.css';
+@font-face {
+  font-family: Axiforma;
+  src: url('./assets/fonts/Axiforma-Regular.ttf');
+}
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  font-weight: normal;
+  font-family: Axiforma;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+.text-h1 {
+  font-family: Axiforma;
+  font-size: 48px !important;
+  font-weight: 700 !important;
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+.text-h2 {
+  font-family: Axiforma;
+  font-size: 38px !important;
+  font-weight: 700 !important;
 }
 
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
+.text-h3 {
+  font-family: Axiforma;
+  font-size: 25px !important;
+  font-weight: 700 !important;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.text-body1 {
+  font-family: Axiforma;
+  font-size: 23px !important;
+  font-weight: 400 !important;
 }
