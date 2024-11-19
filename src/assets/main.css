@@ -4,29 +4,35 @@
 }
 
 #app {
-  font-family: Axiforma;
+  font-family: Axiforma !important;
 }
 
 .text-h1 {
-  font-family: Axiforma;
+  font-family: Axiforma !important;
   font-size: 48px !important;
   font-weight: 700 !important;
 }
 
 .text-h2 {
-  font-family: Axiforma;
+  font-family: Axiforma !important;
   font-size: 38px !important;
   font-weight: 700 !important;
 }
 
 .text-h3 {
-  font-family: Axiforma;
+  font-family: Axiforma !important;
   font-size: 25px !important;
   font-weight: 700 !important;
 }
 
 .text-body1 {
-  font-family: Axiforma;
+  font-family: Axiforma !important;
   font-size: 23px !important;
+  font-weight: 400 !important;
+}
+
+.text-body2 {
+  font-family: Axiforma !important;
+  font-size: 18px !important;
   font-weight: 400 !important;
 }

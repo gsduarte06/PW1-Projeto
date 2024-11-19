@@ -8,17 +8,13 @@
             class="text-white" style="margin-top: 62px"></v-text-field>
           <v-text-field v-model="password" :rules="rules" label="Password" width="500" variant="outlined"
             type="password" style="margin-top: 15px" class="mx-auto text-white"></v-text-field>
-          <p class="text-white d-inline-flex" style="margin-top: 15px">
-            If you forgot your password, click
-          </p>
-          <p class=" ml-1 d-inline-flex" style="color: #ff00ee">here</p>
         </div>
         <div class="d-flex flex-row justify-space-between" style="margin-top: 25px">
           <v-btn class="text-white text-body1" style="background-color: #ff00ee; width: 40%; height: 64px">
             Login
           </v-btn>
-          <v-btn class="text-white text-body1"
-            style="background-color: #ff00ee; width: 40%; height: 64px" @click="navigateToRegister">
+          <v-btn class="text-white text-body1" style="background-color: #ff00ee; width: 40%; height: 64px"
+            @click="navigateToRegister">
             Register
           </v-btn>
         </div>
@@ -44,7 +40,7 @@ export default {
   },
   methods: {
     navigateToRegister() {
-      this.$router.push('/register'); // Replace '/register' with your actual registration route
+      this.$router.push('/register');
     },
   },
 };
