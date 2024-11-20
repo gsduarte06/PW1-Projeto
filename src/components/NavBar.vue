@@ -6,7 +6,7 @@
       <v-spacer></v-spacer>
 
       <v-btn class="mr-md-4 font-weight-bold"> Events </v-btn>
-      <v-btn class="mr-md-4 font-weight-bold"> LeaderBoard </v-btn>
+      <v-btn @click="LeaderboardPage" class="mr-md-4 font-weight-bold"> LeaderBoard </v-btn>
       <v-btn class="mr-md-4 font-weight-bold"> Merchandising </v-btn>
 
       <v-btn
@@ -21,10 +21,14 @@
 </template>
 
 <script>
+
+
 export default {
   methods: {
     LoginRegister() {
       this.$router.push('/login')
+    },LeaderboardPage() {
+      this.$router.push('/leaderboard')
     },
   },
 }
