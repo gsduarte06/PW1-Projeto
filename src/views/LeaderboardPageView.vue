@@ -5,7 +5,7 @@
       <div 
         style="
           color: #FFFFFF; 
-          text-shadow: -4px 4px #FF00EE; 
+          text-shadow: -4px 4px 6px #FF00EE; 
           margin-bottom: 24px" 
         class="text-h2"
       >
@@ -35,16 +35,30 @@
               <div
                 v-for="item in items"
                 :key="item.rank"
-                :class="item.rank <= 3 ? 'text-h2' : 'text-body1'"
                 class="d-flex py-2 px-4"
                 style="align-items: center;"
               >
                 <!-- Rank -->
-                <div style="width: 5%; text-align: center; color: #FF00EE;">{{ item.rank }}</div>
+                <div 
+                  :class="item.rank <= 3 ? 'text-h2 top-rank' : 'text-body1'"
+                  style="width: 5%; text-align: center;"
+                >
+                  {{ item.rank }}
+                </div>
                 <!-- Username -->
-                <div style="width: 75%; text-align: left; color: #FFFFFF;">{{ item.username }}</div>
+                <div 
+                  :class="item.rank <= 3 ? 'text-h2' : 'text-body1'"
+                  style="width: 75%; text-align: left; color: #FFFFFF;"
+                >
+                  {{ item.username }}
+                </div>
                 <!-- Points -->
-                <div style="width: 20%; text-align: right; color: #00FF88;">{{ item.points }}</div>
+                <div 
+                  :class="item.rank <= 3 ? 'text-h2' : 'text-body1'"
+                  style="width: 20%; text-align: right; color: #00FF88;"
+                >
+                  {{ item.points }}
+                </div>
               </div>
             </template>
           </v-data-table>
@@ -70,3 +84,6 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+</style>
