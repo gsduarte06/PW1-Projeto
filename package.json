@@ -12,6 +12,8 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@cloudinary/url-gen": "^1.21.0",
+    "@cloudinary/vue": "^1.13.0",
     "@mdi/font": "^7.4.47",
     "pinia": "^2.2.6",
     "vue": "^3.5.12",
