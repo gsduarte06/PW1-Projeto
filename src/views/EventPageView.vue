@@ -2,10 +2,10 @@
   <div class="d-flex flex-column" style="background-color: #00041f">
     <div class="d-flex flex-row justify-space-evenly mt-16">
       <div>
-        <p class="text-h4 mb-5" style="color: #ff00ee">UPCOMING EVENTS</p>
-        <p class="text-body1 mb-15" style="color: #ffffff">
+
+        <v-chip variant="outlined" class="text-body1 mt-14 mb-15 text-white" style="border-color: #ff00ee">
           {{ event.BeginDate }} - {{ event.EndDate }}
-        </p>
+        </v-chip>
         <v-spacer></v-spacer>
         <p class="text-h2" style="color: #ffffff">{{ event.Title }}</p>
 
@@ -59,14 +59,17 @@
         </div>
       </div>
     </div>
+    <!-- Event details -->
     <div class="d-flex flex-column align-center w-75 align-self-center">
       <p class="text-h3 mt-16 mb-3" style="color: #ff00ee">Event Details</p>
       <div>
         <p class="text-body1 text-white">{{ event.details }}</p>
       </div>
     </div>
+    <!-- Speakers -->
     <div>
-      <div class="d-flex flex-column w-75 align-self-center mx-auto">
+
+      <div class="d-flex flex-column w-75 align-self-center mx-auto mb-16">
         <p class="text-h3 mt-16 mb-10" style="color: #ff00ee">Speakers</p>
         <v-container>
           <v-carousel class="h-auto" show-arrows="hover" hide-delimiters>
@@ -95,6 +98,44 @@
       </div>
     </div>
 
+    <!-- schedule -->
+    <div class="w-75 align-self-center align-center mt-16">
+      <div class="d-flex flex-column align-center mb-10">
+        <p class=" text-h3 mb-5" style="color: #ff00ee">Schedule</p>
+      </div>
+      <v-card class="elevation-5 rounded-lg" style="background-color: #00041f;">
+        <v-tabs v-model="tab" class="text-white" style="background-color: #000B52;">
+          <v-tab v-for="day in event.schedule" :key="day.id" :value="day.id">Day {{ day.id }}</v-tab>
+        </v-tabs>
+
+        <v-card-text style="background-color: #00041f">
+          <v-tabs-window v-model="tab">
+            <v-tabs-window-item v-for="day in event.schedule" :key="day.id" :value="day.id" class="d-flex flex-column">
+              <div v-if="day.content != []" v-for="content in day.content" :key="content.begin"
+                class="d-flex flex-column justify-space-between text-white mt-3 mx-4" style="min-height: 200px;">
+                <div>
+                  <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
+                    {{ content.location }}
+                  </v-chip>
+                </div>
+                <p class="text-body1 font-weight-bold">{{ content.title }}</p>
+                <div>
+                  <p class="text-body2 ">From: {{ content.begin }}</p>
+                  <p class="text-body2 ">Until: {{ content.end }}</p>
+                </div>
+                <p class="text-body2"> Speakers: {{ content.speakers }}</p>
+                <v-divider v-if="content.id != parseInt(day.content.length)" color="#fffff" class="my-4"></v-divider>
+
+
+              </div>
+
+            </v-tabs-window-item>
+          </v-tabs-window>
+        </v-card-text>
+      </v-card>
+    </div>
+
+    <!-- Tickets  -->
     <div>
       <v-container class="d-flex flex-column align-center" style="color: white">
         <!-- Title Section -->
@@ -197,6 +238,38 @@
         </v-row>
       </v-container>
     </div>
+
+
+
+
+    <!-- Comment Section -->
+    <div class="mt-16 w-75 align-self-center">
+      <p class="text-h3  my-16" style="color: #ff00ee">Comment Section</p>
+      <div v-for="comment in comments" :key="comment.id_comment" class="d-flex flex-column ">
+        <v-divider v-if="comment.id_comment != 1" color="#fff" class="my-4"></v-divider>
+        <div class="d-flex flex-row justify-space-between">
+          <p class="mr-4 text-white text-body1">
+            <strong>{{ comment.user }}:</strong>
+            {{ comment.content }}
+          </p>
+          <span class="like-icon" @click="">
+            🗑️
+          </span>
+        </div>
+
+      </div>
+
+      <div class="text-white mt-14 mb-3 color-white w-100">
+        <v-textarea class="w-100 text-white text-body1" v-model="createCommentContent" no-resize auto-grow rows="1"
+          placeholder="Write a comment"></v-textarea>
+      </div>
+      <div class="text-center text-white" v-if="createCommentContent">
+        <v-btn class="rounded-xl text-white text-body1" elevation="6" style="
+            background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee);
+            text-transform: none;
+          ">Submit Comment</v-btn>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -204,6 +277,7 @@
 export default {
   data() {
     return {
+      tab: null,
       cardsPerPage: 6,
       event: {
         BeginDate: "21/05/2025",
@@ -247,8 +321,14 @@ export default {
           role: "Executive Producer",
           image: "https://res.cloudinary.com/dvyic4oaf/image/upload/v1732401045/ezjwcc18pjwcrkygovpd.jpg", // Replace with actual image link
         })),
+        schedule: [
+          { id: 1, content: [{ id: 0, begin: "10:00", end: "11:00", location: "Palco 1", speakers: "John Doe ,Jane Doe", title: "Welcome" }, { id: 1, begin: "11:00", end: "13:45", location: "Palco 2", speakers: "John Doe ,Jane Doe", title: "Welcome" }] },
+          { id: 2, content: [] },
+          { id: 3, content: [] }]
 
       },
+      comments: [{ id_comment: 1, user: "gsd", content: "loving the event" }, { id_comment: 2, user: "diogo", content: "loving the event" }],
+      createCommentContent: null
 
 
     };
@@ -268,4 +348,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.like-icon {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+
+.like-icon:hover {
+  opacity: 1;
+}
+</style>

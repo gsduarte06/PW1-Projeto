@@ -4,9 +4,9 @@
     <div class="d-flex flex-row justify-space-evenly mt-16">
       <div>
         <p class="text-h4 mb-5" style="color: #ff00ee">NEXT EVENT</p>
-        <p class="text-body1 mb-15" style="color: #ffffff">
+        <v-chip variant="outlined" class="text-body1 mb-15 text-white" style="border-color: #ff00ee">
           {{ event.BeginDate }} - {{ event.EndDate }}
-        </p>
+        </v-chip>
         <v-spacer></v-spacer>
         <p class="text-h2" style="color: #ffffff">{{ event.Title }}</p>
 
@@ -118,12 +118,12 @@
     </div>
 
     <div class="d-flex flex-column w-75 align-self-center mt-16">
-      <p class="text-h3 align-self-center" style="color:#ff00ee">Upcoming Events</p>
+      <p class="text-h3 " style="color:#ff00ee">Upcoming Events</p>
       <div class="d-flex flex-column">
         <!-- Cards -->
-        <div v-for="event in events" :key="event.id" class="d-flex flex-row mt-7">
+        <div v-for="event in events" :key="event.id" class="d-flex flex-row mt-16">
           <div class=" d-flex flex-column align-center justify-center text-white text-body1 font-weight-medium"
-            style="background-color: #000B52; min-height: 150px; width:10%">
+            style="background-color: #000B52; min-height: 180px; width:10%">
             <p> {{ event.BeginDateSmall.split(" ")[0] }}</p>
             <p>{{ event.BeginDateSmall.split(" ")[1] }}</p>
           </div>
