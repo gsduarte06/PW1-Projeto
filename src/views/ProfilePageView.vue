@@ -4,7 +4,8 @@
       <v-container fluid style="padding: 20px">
         <v-row justify="center">
           <v-col cols="12" md="8">
-            <v-card class="mx-auto" style="border-radius: 12px; background-color: #00041f; margin-top: 15px;">
+            <v-card class="mx-auto elevation-0"
+              style="border-radius: 12px; background-color: #00041f; margin-top: 15px;">
               <v-card-text>
                 <v-row align="start">
                   <!-- Avatar and Divider -->
@@ -54,7 +55,8 @@
                         <label class="text-white custom-label">Bio:</label>
                       </v-col>
                       <v-col cols="8">
-                        <span class="text-white font-weight-regular" style="font-size: 18px; text-align: left; display: block;">
+                        <span class="text-white font-weight-regular"
+                          style="font-size: 18px; text-align: left; display: block;">
                           {{ user.bio }}
                         </span>
                       </v-col>
@@ -95,12 +97,8 @@
                         <label class="text-white text-body1 font-weight-medium">Name:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-text-field
-                          class="text-white"
-                          v-model="editedUser.name" 
-                          variant="underlined" 
-                          density="comfortable"
-                        ></v-text-field>
+                        <v-text-field class="text-white" v-model="editedUser.name" variant="underlined"
+                          density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>
                     <v-row align="center" style="margin-bottom: 8px;">
@@ -108,12 +106,8 @@
                         <label class="text-white text-body1 font-weight-medium">Email:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-text-field
-                          class="text-white" 
-                          v-model="editedUser.email" 
-                          variant="underlined" 
-                          density="comfortable"
-                        ></v-text-field>
+                        <v-text-field class="text-white" v-model="editedUser.email" variant="underlined"
+                          density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>
                     <v-row align="center" style="margin-bottom: 8px;">
@@ -121,13 +115,8 @@
                         <label class="text-white text-body1 font-weight-medium">Password:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-text-field
-                          class="text-white"
-                          v-model="editedUser.password" 
-                          type="password" 
-                          variant="underlined" 
-                          density="comfortable"
-                        ></v-text-field>
+                        <v-text-field class="text-white" v-model="editedUser.password" type="password"
+                          variant="underlined" density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>
                     <v-row align="start" style="margin-bottom: 8px;">
@@ -135,14 +124,8 @@
                         <label class="text-white text-body1 font-weight-medium">Bio:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-textarea
-                          class="text-white"
-                          v-model="editedUser.bio"
-                          variant="underlined"
-                          density="comfortable"
-                          no-resize
-                          rows="3"
-                        ></v-textarea>
+                        <v-textarea class="text-white h-auto" v-model="editedUser.bio" variant="underlined"
+                          density="comfortable" no-resize rows="3"></v-textarea>
                       </v-col>
                     </v-row>
                   </v-form>
@@ -158,25 +141,25 @@
               </v-card>
             </v-dialog>
 
-            <v-card class="mt-6 event-card" style="border-radius: 12px; background-color: #00041f; padding-top: 70px;">
-              <p class="text-h4 mt-16 mb-10" style="color: #ff00ee">YOUR EVENTS</p>
-              <v-card-text>
-                <v-row v-for="event in events" :key="event.id" class="event-row" align="center" style="margin-bottom: 16px;">
-                  <v-col cols="12" sm="3" class="date-rectangle d-flex justify-center align-center" style="background-color: #000B52; border-radius: 8px;">
-                    <span class="text-white" style="font-size: 18px; font-weight: bold;">
-                      {{ event.date }}
-                    </span>
-                  </v-col>
-                  <v-col cols="12" sm="9">
-                    <div class="event-details">
-                      <h3 class="text-white" style="font-size: 18px; font-weight: 600;">{{ event.title }}</h3>
-                      <p class="text-white">{{ event.location }}</p>
-                      <p class="text-white">{{ event.description }}</p>
-                    </div>
-                  </v-col>
-                </v-row>
-              </v-card-text>
-            </v-card>
+            <div class="d-flex flex-column  align-self-center mt-16">
+              <p class="text-h3 " style="color:#ff00ee">Your Events</p>
+              <div class="d-flex flex-column">
+                <!-- Cards -->
+                <div v-for="event in events" :key="event.id" class="d-flex flex-row mt-16">
+                  <div class=" d-flex flex-column align-center justify-center text-white text-body1 font-weight-medium"
+                    style="background-color: #000B52; min-height: 180px; width:10%">
+                    <p> {{ event.BeginDateSmall.split(" ")[0] }}</p>
+                    <p>{{ event.BeginDateSmall.split(" ")[1] }}</p>
+                  </div>
+                  <div class="d-flex flex-column justify-space-between ma-2 ml-5 " style="width:90%">
+                    <p class="text-white text-h4">{{ event.Title }}</p>
+                    <p class="text-white text-body1">{{ event.location }}</p>
+                    <p class="text-white text-body1">{{ event.description }}</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </v-col>
         </v-row>
       </v-container>
@@ -200,22 +183,22 @@ export default {
       events: [
         {
           id: 1,
-          date: "24 Mar",
-          title: "Vue.js Meetup",
+          BeginDateSmall: "24 Mar",
+          Title: "Vue.js Meetup",
           location: "San Francisco, CA",
           description: "Join us for a meetup to discuss the latest trends and best practices in Vue.js development.",
         },
         {
           id: 2,
-          date: "4 April",
-          title: "JavaScript Conference",
+          BeginDateSmall: "4 April",
+          Title: "JavaScript Conference",
           location: "New York, NY",
           description: "A major conference for JavaScript developers. Workshops, keynotes, and networking opportunities.",
         },
         {
           id: 3,
-          date: "15 April",
-          title: "Web Development Bootcamp",
+          BeginDateSmall: "15 April",
+          Title: "Web Development Bootcamp",
           location: "Los Angeles, CA",
           description: "A week-long bootcamp for aspiring web developers. Intensive training in HTML, CSS, and JavaScript.",
         },
@@ -246,8 +229,8 @@ export default {
 }
 
 .divider {
-  border-left: 3px solid #ff00ee; 
-  height: 450px;  
+  border-left: 3px solid #ff00ee;
+  height: 450px;
 }
 
 .v-btn {
@@ -311,9 +294,7 @@ export default {
   background-color: #ff33cc;
 }
 
-.event-row {
-  margin-bottom: 30px;
-}
+
 
 .date-rectangle {
   padding: 24px;
@@ -339,23 +320,24 @@ export default {
 }
 
 .custom-label {
-  font-weight: 600; 
-  font-size: 20px; 
+  font-weight: 600;
+  font-size: 20px;
 }
 
 @media (max-width: 600px) {
   .profile-avatar img {
-    width: 150px; /* Adjust size for smaller screens */
+    width: 150px;
+    /* Adjust size for smaller screens */
     height: 150px;
   }
 
   .edit-btn {
-    width: 180px; /* Adjust button width for smaller screens */
+    width: 180px;
+    /* Adjust button width for smaller screens */
   }
 
   .event-row {
     flex-direction: column;
   }
 }
-
 </style>

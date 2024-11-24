@@ -6,20 +6,6 @@
 #app {
   font-family: 'Axiforma', sans-serif !important;
 }
-.v-btn,
-.v-card,
-.v-data-table,
-.v-toolbar,
-.v-text-field,
-.v-select,
-.v-checkbox,
-.v-chip {
-  font-family: 'Axiforma', sans-serif !important;
-}
-
-* {
-  font-family: 'Axiforma', sans-serif !important;
-}
 
 .text-h1 {
   font-family: 'Axiforma', sans-serif !important;
@@ -55,24 +41,4 @@
   font-family: 'Axiforma', sans-serif !important;
   font-size: 15px !important;
   font-weight: 400 !important;
-}
-
-.top-rank {
-  color: #ffffff !important;
-  text-shadow: -4px 4px 6px #ff00ee !important;
-}
-
-.v-row {
-  margin: 0; /* Removes the space between columns */
-}
-.v-card {
-  border: 1px solid white;
-}
-.pricing-card {
-  padding: 16px;
-  transition: transform 0.2s ease-in-out;
-}
-.pricing-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
