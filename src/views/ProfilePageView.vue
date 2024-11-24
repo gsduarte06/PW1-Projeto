@@ -119,18 +119,18 @@
                           variant="underlined" density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>
-                    <v-row align="start" style="margin-bottom: 8px;">
+                    <v-row align="start" style="margin-bottom: 8px; " class="">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Bio:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-textarea class="text-white h-auto" v-model="editedUser.bio" variant="underlined"
-                          density="comfortable" no-resize rows="3"></v-textarea>
+                        <v-textarea class="text-white" v-model="editedUser.bio" variant="underlined"
+                          density="comfortable" no-resize auto-grow rows="2"></v-textarea>
                       </v-col>
                     </v-row>
                   </v-form>
                 </v-card-text>
-                <v-card-actions style="padding-top: 8px;">
+                <v-card-actions style="padding-top: 8px;" class="mr-4">
                   <v-btn text @click="editDialog = false" class="btn-cancel">
                     Cancel
                   </v-btn>
