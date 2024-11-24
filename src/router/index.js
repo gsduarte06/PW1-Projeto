@@ -50,7 +50,7 @@ const router = createRouter({
       },
       children: [
         {
-          path: '/event/:eventId',
+          path: '/admin/:eventId',
           name: 'AdminEvent',
           component: AdminEventPage,
         },
