@@ -67,16 +67,15 @@
     </div>
     <div>
       <div class="d-flex flex-column w-75 align-self-center mx-auto">
-        <p class="text-h3 mt-16 mb-3" style="color: #ff00ee">Speakers</p>
+        <p class="text-h3 mt-16 mb-10" style="color: #ff00ee">Speakers</p>
         <v-container>
           <v-carousel class="h-auto" show-arrows="hover" hide-delimiters>
             <v-carousel-item v-for="(page, pageIndex) in paginatedSpeakers" :key="pageIndex">
               <v-row>
                 <v-col v-for="(speaker, index) in page" :key="index" sm="6" md="4"
-                  class="d-flex justify-center align-center h-75">
-                  <v-card style="background:#00041f; border: 1px solid white; width:50%" width="" height=""
-                    class="d-flex flex-column">
-                    <div class="d-flex flex-column align-center h-auto justify-space-evenly ">
+                  class="d-flex justify-center align-center ">
+                  <v-card style="background:#00041f; border: 1px solid white; width:60%" class="d-flex flex-column">
+                    <div class="d-flex flex-column align-center  justify-space-evenly ">
 
                       <v-img class="mt-4 rounded-circle " :src="speaker.image" :alt="speaker.name" width="100"
                         aspect-ratio="1/1"></v-img>
@@ -99,7 +98,7 @@
     </div>
 
     <div>
-      <v-container class="d-flex flex-column align-center mt-16" style="color: white">
+      <v-container class="d-flex flex-column align-center" style="color: white">
         <!-- Title Section -->
         <v-row justify="center" class="text-center mb-10 mt-16">
           <v-col cols="12">
