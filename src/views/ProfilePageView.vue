@@ -6,17 +6,22 @@
           <v-col cols="12" md="8">
             <v-card class="mx-auto" style="border-radius: 12px; background-color: #00041f; margin-top: 15px;">
               <v-card-text>
-                <v-row align="center">
-                  <v-col cols="4" class="d-flex justify-center align-center">
+                <v-row align="start">
+                  <!-- Avatar and Divider -->
+                  <v-col cols="12" md="4" class="d-flex justify-center align-center" style="margin-top: 90px;">
                     <v-avatar size="200" class="profile-avatar">
                       <img src="../assets/images/profile_image.jpg" alt="User's Profile Picture" />
                     </v-avatar>
                   </v-col>
-                  <v-col cols="1" class="divider"></v-col>
-                  <v-col cols="7" style="margin-top: 50px;">
-                    <v-row align="center" style="margin-bottom: 16px">
+
+                  <!-- Adjusted Divider -->
+                  <v-col cols="1" class="divider d-flex justify-center align-stretch"></v-col>
+
+                  <v-col cols="12" md="7" style="margin-top: 20px; padding-left: 10px; padding-right: 10px;">
+                    <!-- User Info (Name, Email, etc.) -->
+                    <v-row align="center" style="margin-bottom: 8px;">
                       <v-col cols="4">
-                        <label class="text-white text-body1 font-weight-medium">Name:</label>
+                        <label class="text-white custom-label">Name:</label>
                       </v-col>
                       <v-col cols="8">
                         <span class="text-white font-weight-regular" style="text-align: left; display: block;">
@@ -24,9 +29,9 @@
                         </span>
                       </v-col>
                     </v-row>
-                    <v-row align="center" style="margin-bottom: 16px">
+                    <v-row align="center" style="margin-bottom: 8px;">
                       <v-col cols="4">
-                        <label class="text-white text-body1 font-weight-medium">Email:</label>
+                        <label class="text-white custom-label">Email:</label>
                       </v-col>
                       <v-col cols="8">
                         <span class="text-white font-weight-regular" style="text-align: left; display: block;">
@@ -34,9 +39,9 @@
                         </span>
                       </v-col>
                     </v-row>
-                    <v-row align="center" style="margin-bottom: 16px">
+                    <v-row align="center" style="margin-bottom: 8px;">
                       <v-col cols="4">
-                        <label class="text-white text-body1 font-weight-medium">Password:</label>
+                        <label class="text-white custom-label">Password:</label>
                       </v-col>
                       <v-col cols="8">
                         <span class="text-white font-weight-regular" style="text-align: left; display: block;">
@@ -44,13 +49,25 @@
                         </span>
                       </v-col>
                     </v-row>
-                    <v-row align="start" style="margin-bottom: 16px">
+                    <v-row align="start" style="margin-bottom: 8px;">
                       <v-col cols="4">
-                        <label class="text-white text-body1 font-weight-medium">Bio:</label>
+                        <label class="text-white custom-label">Bio:</label>
                       </v-col>
                       <v-col cols="8">
                         <span class="text-white font-weight-regular" style="font-size: 18px; text-align: left; display: block;">
                           {{ user.bio }}
+                        </span>
+                      </v-col>
+                    </v-row>
+
+                    <!-- Points info placed below Bio -->
+                    <v-row align="center" style="margin-bottom: 8px;">
+                      <v-col cols="4">
+                        <label class="text-white custom-label">Points:</label>
+                      </v-col>
+                      <v-col cols="8">
+                        <span class="text-white font-weight-regular" style="text-align: left; display: block;">
+                          {{ user.points }}
                         </span>
                       </v-col>
                     </v-row>
@@ -59,6 +76,7 @@
               </v-card-text>
             </v-card>
 
+            <!-- Edit Button -->
             <v-row justify="center" class="mt-4">
               <v-btn class="edit-btn" @click="editDialog = true">
                 Edit Data
@@ -66,47 +84,70 @@
             </v-row>
 
             <v-dialog v-model="editDialog" max-width="600px">
-              <v-card class="edit-dialog-card">
+              <v-card class="edit-dialog-card" style="padding-top: 16px; padding-bottom: 16px;">
                 <v-card-title class="edit-dialog-title">
                   Edit User Details
                 </v-card-title>
-                <v-card-text>
+                <v-card-text style="padding-top: 8px; padding-bottom: 8px;">
                   <v-form ref="editForm">
-                    <v-row align="center" style="margin-bottom: 16px">
+                    <v-row align="center" style="margin-bottom: 8px;">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Name:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-text-field v-model="editedUser.name" outlined dense class="input-field"></v-text-field>
+                        <v-text-field
+                          class="text-white"
+                          v-model="editedUser.name" 
+                          variant="underlined" 
+                          density="comfortable"
+                        ></v-text-field>
                       </v-col>
                     </v-row>
-                    <v-row align="center" style="margin-bottom: 16px">
+                    <v-row align="center" style="margin-bottom: 8px;">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Email:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-text-field v-model="editedUser.email" outlined dense class="input-field"></v-text-field>
+                        <v-text-field
+                          class="text-white" 
+                          v-model="editedUser.email" 
+                          variant="underlined" 
+                          density="comfortable"
+                        ></v-text-field>
                       </v-col>
                     </v-row>
-                    <v-row align="center" style="margin-bottom: 16px">
+                    <v-row align="center" style="margin-bottom: 8px;">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Password:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-text-field v-model="editedUser.password" type="password" outlined dense class="input-field"></v-text-field>
+                        <v-text-field
+                          class="text-white"
+                          v-model="editedUser.password" 
+                          type="password" 
+                          variant="underlined" 
+                          density="comfortable"
+                        ></v-text-field>
                       </v-col>
                     </v-row>
-                    <v-row align="start" style="margin-bottom: 16px">
+                    <v-row align="start" style="margin-bottom: 8px;">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Bio:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-textarea v-model="editedUser.bio" outlined dense rows="3" class="input-field"></v-textarea>
+                        <v-textarea
+                          class="text-white"
+                          v-model="editedUser.bio"
+                          variant="underlined"
+                          density="comfortable"
+                          no-resize
+                          rows="3"
+                        ></v-textarea>
                       </v-col>
                     </v-row>
                   </v-form>
                 </v-card-text>
-                <v-card-actions>
+                <v-card-actions style="padding-top: 8px;">
                   <v-btn text @click="editDialog = false" class="btn-cancel">
                     Cancel
                   </v-btn>
@@ -116,17 +157,17 @@
                 </v-card-actions>
               </v-card>
             </v-dialog>
-            
+
             <v-card class="mt-6 event-card" style="border-radius: 12px; background-color: #00041f; padding-top: 70px;">
-              <p class="text-h4 mt-16 mb-10" style="color: #ff00ee">UPCOMING EVENTS</p>
+              <p class="text-h4 mt-16 mb-10" style="color: #ff00ee">YOUR EVENTS</p>
               <v-card-text>
                 <v-row v-for="event in events" :key="event.id" class="event-row" align="center" style="margin-bottom: 16px;">
-                  <v-col cols="3" class="date-rectangle d-flex justify-center align-center" style="background-color: #000B52; border-radius: 8px;">
+                  <v-col cols="12" sm="3" class="date-rectangle d-flex justify-center align-center" style="background-color: #000B52; border-radius: 8px;">
                     <span class="text-white" style="font-size: 18px; font-weight: bold;">
                       {{ event.date }}
                     </span>
                   </v-col>
-                  <v-col cols="9">
+                  <v-col cols="12" sm="9">
                     <div class="event-details">
                       <h3 class="text-white" style="font-size: 18px; font-weight: 600;">{{ event.title }}</h3>
                       <p class="text-white">{{ event.location }}</p>
@@ -152,6 +193,7 @@ export default {
         email: "jessica@example.com",
         password: "mysecurepassword",
         bio: "Fusce nisi leo, porta nec diam vitae, dictum fermentum odio. Fusce venenatis, tortor in imperdiet semper, ante arcu accumsan orci.",
+        points: 1200, // Points added here
       },
       editedUser: {},
       editDialog: false,
@@ -204,8 +246,8 @@ export default {
 }
 
 .divider {
-  border-left: 2px solid #ff00ee;
-  height: 300px;
+  border-left: 3px solid #ff00ee; 
+  height: 450px;  
 }
 
 .v-btn {
@@ -295,4 +337,25 @@ export default {
   margin-top: 8px;
   font-size: 16px;
 }
+
+.custom-label {
+  font-weight: 600; 
+  font-size: 20px; 
+}
+
+@media (max-width: 600px) {
+  .profile-avatar img {
+    width: 150px; /* Adjust size for smaller screens */
+    height: 150px;
+  }
+
+  .edit-btn {
+    width: 180px; /* Adjust button width for smaller screens */
+  }
+
+  .event-row {
+    flex-direction: column;
+  }
+}
+
 </style>
