@@ -119,7 +119,20 @@
 
     <div class="d-flex flex-column w-75 align-self-center mt-16">
       <p class="text-h3 align-self-center" style="color:#ff00ee">Upcoming Events</p>
-      <div class="d-flex flex-row">
+      <div class="d-flex flex-column">
+        <!-- Cards -->
+        <div v-for="event in events" :key="event.id" class="d-flex flex-row mt-7">
+          <div class=" d-flex flex-column align-center justify-center text-white text-body1 font-weight-medium"
+            style="background-color: #000B52; min-height: 150px; width:10%">
+            <p> {{ event.BeginDateSmall.split(" ")[0] }}</p>
+            <p>{{ event.BeginDateSmall.split(" ")[1] }}</p>
+          </div>
+          <div class="d-flex flex-column justify-space-between ma-2 ml-5 " style="width:90%">
+            <p class="text-white text-h4">{{ event.Title }}</p>
+            <p class="text-white text-body1">{{ event.location }}</p>
+            <p class="text-white text-body1">{{ event.description }}</p>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -134,6 +147,7 @@ export default {
       event: {
         BeginDate: "21/05/2025",
         EndDate: "25/05/2025",
+        BeginDateSmall: "Mar 25",
         Title: "Porto Tech Hub",
         location: "21 King Street, 1205 Dhaka BD",
         timeleft: { days: 10, hours: 20, minutes: 10, seconds: 40 },
@@ -175,6 +189,29 @@ export default {
         })),
 
       },
+      events: [
+        {
+          id: 1,
+          BeginDateSmall: "24 Mar",
+          Title: "Vue.js Meetup",
+          location: "San Francisco, CA",
+          description: "Join us for a meetup to discuss the latest trends and best practices in Vue.js development.",
+        },
+        {
+          id: 2,
+          BeginDateSmall: "4 April",
+          Title: "JavaScript Conference",
+          location: "New York, NY",
+          description: "A major conference for JavaScript developers. Workshops, keynotes, and networking opportunities.",
+        },
+        {
+          id: 3,
+          BeginDateSmall: "15 April",
+          Title: "Web Development Bootcamp",
+          location: "Los Angeles, CA",
+          description: "A week-long bootcamp for aspiring web developers. Intensive training in HTML, CSS, and JavaScript.",
+        },
+      ],
     }
   },
 }

@@ -45,16 +45,17 @@ const router = createRouter({
       path: '/admin',
       name: 'admin',
       component: AdminPage,
-      beforeEnter: (to, from, next) => {
+      /*       beforeEnter: (to, from, next) => {
         //insert admin validation
-      },
-      children: [
-        {
-          path: '/admin/:eventId',
-          name: 'AdminEvent',
-          component: AdminEventPage,
-        },
-      ],
+      }, */
+    },
+    {
+      path: '/admin/:eventId',
+      name: 'AdminEvent',
+      component: AdminEventPage,
+      /*       beforeEnter: (to, from, next) => {
+        //insert admin validation
+      }, */
     },
   ],
 })
