@@ -1,9 +1,130 @@
 <template>
-  <div></div>
+  <div class="d-flex flex-column" style="background-color: #00041f; color: white; padding: 20px;">
+    <p class="text-h4 mb-5 text-center" style="color: #ff00ee;">Admin Dashboard</p>
+
+    <!-- Event Details Section -->
+    <div class="mb-10">
+      <p class="text-h5 mb-3">Edit Event Details</p>
+      <v-form>
+        <v-text-field v-model="event.BeginDate" label="Begin Date" style="color: white" outlined dense></v-text-field>
+        <v-text-field v-model="event.EndDate" label="End Date" style="color: white" outlined dense></v-text-field>
+        <v-text-field v-model="event.Title" label="Event Title" style="color: white" outlined dense></v-text-field>
+        <v-textarea v-model="event.details" label="Event Details" style="color: white" outlined dense></v-textarea>
+        <v-text-field v-model="event.location" label="Location" style="color: white" outlined dense></v-text-field>
+        <v-btn color="primary" class="mt-3" @click="saveEventDetails">Save Event Details</v-btn>
+      </v-form>
+    </div>
+
+    <v-divider color="white" class="mb-10"></v-divider>
+
+    <!-- Speakers Section -->
+    <div class="mb-10">
+      <p class="text-h5 mb-3">Manage Speakers</p>
+      <v-form>
+        <v-row>
+          <v-col cols="12" sm="4" v-for="(speaker, index) in event.speakers" :key="index" class="mb-5">
+            <v-card style="background-color: #59398e; color: white;">
+              <v-card-title>{{ speaker.name }}</v-card-title>
+              <v-card-subtitle>{{ speaker.role }}</v-card-subtitle>
+              <v-img :src="speaker.image" alt="" class="mb-3" height="150"></v-img>
+              <v-btn color="red" @click="removeSpeaker(index)">Remove Speaker</v-btn>
+            </v-card>
+          </v-col>
+        </v-row>
+        <p class="text-h6 mt-5">Add New Speaker</p>
+        <v-text-field v-model="newSpeaker.name" label="Name" outlined dense></v-text-field>
+        <v-text-field v-model="newSpeaker.role" label="Role" outlined dense></v-text-field>
+        <v-text-field v-model="newSpeaker.image" label="Image URL" outlined dense></v-text-field>
+        <v-btn color="primary" class="mt-3" @click="addSpeaker">Add Speaker</v-btn>
+      </v-form>
+    </div>
+
+    <v-divider color="white" class="mb-10"></v-divider>
+
+    <!-- Ticket Pricing Section -->
+    <div>
+      <p class="text-h5 mb-3">Edit Ticket Pricing</p>
+      <v-row>
+        <v-col cols="12" sm="4" v-for="(type, index) in Object.keys(event.princing)" :key="index">
+          <v-card style="background-color: #59398e; color: white;">
+            <v-card-title>{{ type }} Ticket</v-card-title>
+            <v-list dense>
+              <v-list-item v-for="(feature, featureIndex) in event.princing[type]" :key="featureIndex">
+                <v-text-field v-model="event.princing[type][featureIndex]" dense outlined></v-text-field>
+              </v-list-item>
+            </v-list>
+          </v-card>
+        </v-col>
+      </v-row>
+      <v-btn color="primary" class="mt-3" @click="savePricing">Save Pricing</v-btn>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      event: {
+        BeginDate: "21/05/2025",
+        EndDate: "25/05/2025",
+        Title: "Porto Tech Hub",
+        location: "21 King Street, 1205 Dhaka BD",
+        details:
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin...",
+        princing: {
+          advancedFeatures: [
+            "Access to all days of the event",
+            "Access to all the lectures",
+            "Get a free T-shirt",
+          ],
+          premiumFeatures: [
+            "Access to all days of the event",
+            "Get a personalized T-shirt",
+            "Meet event speakers",
+          ],
+          beginnerFeatures: ["Access to 1 day of the event", "Get a free T-shirt"],
+        },
+        speakers: [
+          {
+            name: "Jane Doe",
+            role: "Executive Producer",
+            image: "https://example.com/speaker1.jpg",
+          },
+          {
+            name: "John Smith",
+            role: "Senior Developer",
+            image: "https://example.com/speaker2.jpg",
+          },
+        ],
+      },
+      newSpeaker: {
+        name: "",
+        role: "",
+        image: "",
+      },
+    };
+  },
+  methods: {
+    saveEventDetails() {
+      alert("Event details saved!");
+    },
+    addSpeaker() {
+      this.event.speakers.push({ ...this.newSpeaker });
+      this.newSpeaker = { name: "", role: "", image: "" };
+    },
+    removeSpeaker(index) {
+      this.event.speakers.splice(index, 1);
+    },
+    savePricing() {
+      alert("Ticket pricing saved!");
+    },
+  },
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-card {
+  border: 1px solid white;
+}
+</style>
