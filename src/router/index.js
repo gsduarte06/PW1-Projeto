@@ -5,6 +5,7 @@ import RegisterPage from '../views/RegisterPageView.vue'
 import LeaderboardPage from '../views/LeaderboardPageView.vue'
 import ProfilePage from '../views/ProfilePageView.vue'
 import EventPage from '../views/EventPageView.vue'
+import MerchandisingPage from '../views/MerchandisingPageView.vue'
 import AdminPage from '../views/Admin/AdminPageView.vue'
 import AdminEventPage from '../views/Admin/AdminEventPageView.vue'
 
@@ -40,6 +41,11 @@ const router = createRouter({
       path: '/event/:eventId',
       name: 'event',
       component: EventPage,
+    },
+    {
+      path: '/merchandising',
+      name: 'merchandising',
+      component: MerchandisingPage,
     },
     {
       path: '/admin',

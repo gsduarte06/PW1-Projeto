@@ -6,7 +6,7 @@
 
       <v-btn class="mr-md-4 font-weight-bold" @click="ToEvent"> Events </v-btn>
       <v-btn @click="LeaderboardPage" class="mr-md-4 font-weight-bold"> LeaderBoard </v-btn>
-      <v-btn class="mr-md-4 font-weight-bold"> Merchandising </v-btn>
+      <v-btn @click="MerchandisingPage" class="mr-md-4 font-weight-bold"> Merchandising </v-btn>
 
       <v-btn @click="LoginRegister" style="background: #ff00ee" class="rounded-pill font-weight-bold px-6"
         rounded>Login/Register</v-btn>
@@ -31,6 +31,9 @@ export default {
     },
     ToLandingPage() {
       this.$router.push('/')
+    },
+    MerchandisingPage() {
+      this.$router.push('/merchandising')
     },
     ToEvent() {
       this.$router.push('/event/1')
