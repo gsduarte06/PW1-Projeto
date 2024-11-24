@@ -180,5 +180,18 @@ export default {
 </script>
 
 <style scoped>
-
+.v-row {
+  margin: 0; /* Removes the space between columns */
+}
+.v-card {
+  border: 1px solid white;
+}
+.pricing-card {
+  padding: 16px;
+  transition: transform 0.2s ease-in-out;
+}
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
 </style>

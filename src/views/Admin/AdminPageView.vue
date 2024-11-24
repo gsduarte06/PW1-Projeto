@@ -93,5 +93,10 @@ export default {
 </script>
 
 <style scoped>
-
+.v-row {
+  margin: 0; /* Removes the space between columns */
+}
+.v-card {
+  border: 1px solid white;
+}
 </style>
