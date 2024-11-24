@@ -1,11 +1,10 @@
 <template>
   <div>
     <v-toolbar color="#00041F" height="80">
-      <v-img src="./src/assets/Logo.png" max-height="60" max-width="133" cover @click="ToLandingPage"> </v-img>
-
+      <v-img :src="logo" max-height="60" max-width="133" cover @click="ToLandingPage"> </v-img>
       <v-spacer></v-spacer>
 
-      <v-btn class="mr-md-4 font-weight-bold"> Events </v-btn>
+      <v-btn class="mr-md-4 font-weight-bold" @click="ToEvent"> Events </v-btn>
       <v-btn @click="LeaderboardPage" class="mr-md-4 font-weight-bold"> LeaderBoard </v-btn>
       <v-btn class="mr-md-4 font-weight-bold"> Merchandising </v-btn>
 
@@ -19,6 +18,11 @@
 
 
 export default {
+  data() {
+    return {
+      logo: "./src/assets/Logo.png"
+    }
+  },
   methods: {
     LoginRegister() {
       this.$router.push('/login')
@@ -27,6 +31,9 @@ export default {
     },
     ToLandingPage() {
       this.$router.push('/')
+    },
+    ToEvent() {
+      this.$router.push('/event/1')
     }
   },
 }

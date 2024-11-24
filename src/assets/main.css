@@ -6,7 +6,14 @@
 #app {
   font-family: 'Axiforma', sans-serif !important;
 }
-.v-btn, .v-card, .v-data-table, .v-toolbar, .v-text-field, .v-select, .v-checkbox, .v-chip {
+.v-btn,
+.v-card,
+.v-data-table,
+.v-toolbar,
+.v-text-field,
+.v-select,
+.v-checkbox,
+.v-chip {
   font-family: 'Axiforma', sans-serif !important;
 }
 
@@ -14,37 +21,44 @@
   font-family: 'Axiforma', sans-serif !important;
 }
 
-
 .text-h1 {
-  font-family: 'Axiforma', sans-serif !important;
-  font-size: 48px !important;
-  font-weight: 700 !important;
-}
-
-.text-h2 {
   font-family: 'Axiforma', sans-serif !important;
   font-size: 38px !important;
   font-weight: 700 !important;
 }
 
-.text-h3 {
+.text-h2 {
   font-family: 'Axiforma', sans-serif !important;
   font-size: 25px !important;
   font-weight: 700 !important;
 }
 
-.text-body1 {
+.text-h3 {
   font-family: 'Axiforma', sans-serif !important;
   font-size: 23px !important;
-  font-weight: 400 !important;
+  font-weight: 700 !important;
+}
+
+.text-h3 {
+  font-family: 'Axiforma', sans-serif !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+}
+
+.text-body1 {
+  font-family: 'Axiforma', sans-serif !important;
+  font-size: 18px !important;
+  font-weight: 600 !important;
 }
 
 .text-body2 {
   font-family: 'Axiforma', sans-serif !important;
-  font-size: 18px !important;
+  font-size: 15px !important;
   font-weight: 400 !important;
 }
+
 .top-rank {
-  color: #FFFFFF !important;
-  text-shadow: -4px 4px 6px #FF00EE !important; 
+  color: #ffffff !important;
+  text-shadow: -4px 4px 6px #ff00ee !important;
 }
+
