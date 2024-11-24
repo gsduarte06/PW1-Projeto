@@ -1,8 +1,9 @@
 <template>
   <div class="d-flex flex-column" style="background-color: #00041f">
+    <!-- Top Event -->
     <div class="d-flex flex-row justify-space-evenly mt-16">
       <div>
-        <p class="text-h4 mb-5" style="color: #ff00ee">UPCOMING EVENTS</p>
+        <p class="text-h4 mb-5" style="color: #ff00ee">NEXT EVENT</p>
         <p class="text-body1 mb-15" style="color: #ffffff">
           {{ event.BeginDate }} - {{ event.EndDate }}
         </p>
@@ -59,6 +60,8 @@
       </div>
     </div>
 
+
+    <!-- Details Event -->
     <div style="margin-top: 100px" class="d-flex flex-row justify-space-evenly  w-75 align-self-center">
       <div style="margin-top: -140px" class="">
         <div style="
@@ -73,12 +76,55 @@
 
       </div>
       <div>
-        <p class="text-h4 mb-5" style="color: #ff00ee">EVENT DETAILS</p>
+        <p class="text-h3 mb-5" style="color: #ff00ee">EVENT DETAILS</p>
         <p class="text-body1 text-white">{{ event.details }}</p>
       </div>
 
     </div>
+
+    <!-- Keynote Speakers Event -->
+    <div class="d-flex flex-column w-75 align-self-center mt-16 mb-16">
+      <p class="text-h3 text-white">Keynote speakers</p>
+      <div class="d-flex flex-row justify-space-between  mt-15">
+        <div class="d-flex flex-column w-25"> <!-- Keynote Speaker 1 -->
+          <div>
+            <img :src="event.speakers[0].image" alt="" class="w-100 h-auto"
+              style="filter:drop-shadow(-4px 4px 4px #59398E)">
+            <p class="text-body1 bt-2" style="color:#ff00ee"> {{ event.speakers[0].name }}</p>
+            <p class="text-body1 text-white bt-4"> {{ event.speakers[0].role }}</p>
+          </div>
+        </div>
+        <div class="d-flex flex-column w-25" width="368"> <!-- Keynote Speaker 2 -->
+          <div>
+            <img :src="event.speakers[0].image" alt="" class="w-100 h-auto"
+              style="filter:drop-shadow(-4px 4px 4px #59398E)">
+            <p class="text-body1 bt-2" style="color:#ff00ee"> {{ event.speakers[0].name }}</p>
+            <p class="text-body1 text-white bt-4"> {{ event.speakers[0].role }}</p>
+          </div>
+        </div>
+        <div class="d-flex flex-column w-25" width="368"> <!-- Keynote Speaker 3 -->
+          <div>
+            <img :src="event.speakers[0].image" alt="" class="w-100 h-auto"
+              style="filter:drop-shadow(-4px 4px 4px #59398E)">
+            <p class="text-body1 bt-2" style="color:#ff00ee"> {{ event.speakers[0].name }}</p>
+            <p class="text-body1 text-white bt-4"> {{ event.speakers[0].role }}</p>
+          </div>
+        </div>
+      </div>
+      <v-btn class="rounded-xl text-white text-body1 align-self-center mt-16" elevation="6" style="
+            background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee);
+            text-transform: none;
+          ">List of All Speakers</v-btn>
+    </div>
+
+    <div class="d-flex flex-column w-75 align-self-center mt-16">
+      <p class="text-h3 align-self-center" style="color:#ff00ee">Upcoming Events</p>
+      <div class="d-flex flex-row">
+      </div>
+
+    </div>
   </div>
+
 </template>
 
 <script>
@@ -91,8 +137,8 @@ export default {
         Title: "Porto Tech Hub",
         location: "21 King Street, 1205 Dhaka BD",
         timeleft: { days: 10, hours: 20, minutes: 10, seconds: 40 },
-        details:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex",
+        details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.",
         princing: {
           advancedFeatures: [
             "Access to all days of the event",

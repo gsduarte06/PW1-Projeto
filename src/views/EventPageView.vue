@@ -86,8 +86,6 @@
                         </v-card-subtitle>
                       </div>
                     </div>
-
-
                   </v-card>
                 </v-col>
               </v-row>
