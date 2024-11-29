@@ -5,7 +5,7 @@
       <v-form class="d-flex flex-column">
         <div>
           <v-text-field v-model="username" :rules="rules" label="Username" width="500" variant="outlined"
-            class="text-white" style="margin-top: 62px"></v-text-field>
+            class="text-white" style="margin-top: 62px" v-on:input="this.registerError = false"></v-text-field>
           <v-text-field v-model="email" :rules="rules" label="Email" width="500" variant="outlined" class="text-white"
             style="margin-top: 15px "></v-text-field>
           <v-text-field v-model="password" :rules="rules" label="Password" width="500" variant="outlined"
@@ -16,25 +16,35 @@
           </p>
         </div>
         <div class="d-flex flex-row justify-space-between" style="margin-top: 25px">
-          <v-btn class="text-white text-body2" style="background-color: #ff00ee; width: 40%;height: 64px">
+          <v-btn class="text-white text-body2" style="background-color: #ff00ee; width: 40%;height: 64px"
+            @click="Register">
             Create Account
           </v-btn>
           <v-btn class="text-white text-body1" style="background-color: #ff00ee; width: 40%; height: 64px"
             @click="navigateToLogin">Login</v-btn>
         </div>
+        <v-alert v-if="registerError" type="error" border="left" class="mt-5">
+          Username already taken. Please choose a different one
+        </v-alert>
       </v-form>
+
     </div>
   </div>
 </template>
 
 <script>
+
+import { useUserStore } from '@/stores/users';
 export default {
   data() {
     return {
+      userStore: useUserStore(),
       username: null,
       password: null,
       confirmPassword: null,
       email: null,
+
+      registerError: false,
       rules: [
         value => {
           if (value) return true
@@ -54,7 +64,17 @@ export default {
   methods: {
     navigateToLogin() {
       this.$router.push('./login');
+    },
+    Register() {
+      if (this.userStore.createAccount(this.username, this.email, this.password)) {
+        console.log("Success");
+        this.registerError = false; // Reset error on successful login
+      } else {
+        console.log("Failure");
+        this.registerError = true; // Trigger error on failure
+      }
     }
+
   }
 };
 </script>

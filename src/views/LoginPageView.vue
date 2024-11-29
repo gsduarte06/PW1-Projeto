@@ -5,12 +5,14 @@
       <v-form class="d-flex flex-column">
         <div>
           <v-text-field v-model="username" :rules="rules" label="Username" width="500" variant="outlined"
-            class="text-white" style="margin-top: 62px"></v-text-field>
+            class="text-white" style="margin-top: 62px" v-on:input="this.loginError = false"></v-text-field>
           <v-text-field v-model="password" :rules="rules" label="Password" width="500" variant="outlined"
-            type="password" style="margin-top: 15px" class="mx-auto text-white"></v-text-field>
+            type="password" style="margin-top: 15px" class="mx-auto text-white"
+            v-on:input="this.loginError = false"></v-text-field>
         </div>
         <div class="d-flex flex-row justify-space-between" style="margin-top: 25px">
-          <v-btn class="text-white text-body1" style="background-color: #ff00ee; width: 40%; height: 64px">
+          <v-btn class="text-white text-body1" style="background-color: #ff00ee; width: 40%; height: 64px"
+            @click="Login">
             Login
           </v-btn>
           <v-btn class="text-white text-body1" style="background-color: #ff00ee; width: 40%; height: 64px"
@@ -18,17 +20,25 @@
             Register
           </v-btn>
         </div>
+        <v-alert v-if="loginError" type="error" border="left" class="mt-5">
+          Invalid username or password. Please try again.
+        </v-alert>
       </v-form>
+      <!-- Alert for login failure -->
+
     </div>
   </div>
 </template>
 
 <script>
+import { useUserStore } from '@/stores/users';
 export default {
   data() {
     return {
+      userStore: useUserStore(),
       username: null,
       password: null,
+      loginError: false,
       rules: [
         value => {
           if (value) return true;
@@ -42,6 +52,17 @@ export default {
     navigateToRegister() {
       this.$router.push('/register');
     },
+    Login() {
+      console.log(this.userStore.users[0].username, this.username);
+
+      if (this.userStore.CheckLogUserIn(this.username, this.password)) {
+        console.log("Success");
+        this.loginError = false; // Reset error on successful login
+      } else {
+        console.log("Failure");
+        this.loginError = true; // Trigger error on failure
+      }
+    }
   },
 };
 </script>

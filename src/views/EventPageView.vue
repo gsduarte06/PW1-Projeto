@@ -110,7 +110,8 @@
 
         <v-card-text style="background-color: #00041f">
           <v-tabs-window v-model="tab">
-            <v-tabs-window-item v-for="day in event.schedule" :key="day.id" :value="day.id" class="d-flex flex-column">
+            <v-tabs-window-item v-for="day in event.schedule" :key="day.day" :value="day.day"
+              class="d-flex flex-column">
               <div v-if="day.content != []" v-for="content in day.content" :key="content.begin"
                 class="d-flex flex-column justify-space-between text-white mt-3 mx-4" style="min-height: 200px;">
                 <div>
@@ -322,9 +323,9 @@ export default {
           image: "https://res.cloudinary.com/dvyic4oaf/image/upload/v1732401045/ezjwcc18pjwcrkygovpd.jpg", // Replace with actual image link
         })),
         schedule: [
-          { id: 1, content: [{ id: 0, begin: "10:00", end: "11:00", location: "Palco 1", speakers: "John Doe ,Jane Doe", title: "Welcome" }, { id: 1, begin: "11:00", end: "13:45", location: "Palco 2", speakers: "John Doe ,Jane Doe", title: "Welcome" }] },
-          { id: 2, content: [] },
-          { id: 3, content: [] }]
+          { day: 1, content: [{ id: 0, begin: "10:00", end: "11:00", location: "Palco 1", speakers: "John Doe ,Jane Doe", title: "Welcome" }, { id: 1, begin: "11:00", end: "13:45", location: "Palco 2", speakers: "John Doe ,Jane Doe", title: "Welcome" }] },
+          { day: 2, content: [] },
+          { day: 3, content: [] }]
 
       },
       comments: [{ id_comment: 1, user: "gsd", content: "loving the event" }, { id_comment: 2, user: "diogo", content: "loving the event" }],

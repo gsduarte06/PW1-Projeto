@@ -189,29 +189,6 @@ export default {
         })),
 
       },
-      events: [
-        {
-          id: 1,
-          BeginDateSmall: "24 Mar",
-          Title: "Vue.js Meetup",
-          location: "San Francisco, CA",
-          description: "Join us for a meetup to discuss the latest trends and best practices in Vue.js development.",
-        },
-        {
-          id: 2,
-          BeginDateSmall: "4 April",
-          Title: "JavaScript Conference",
-          location: "New York, NY",
-          description: "A major conference for JavaScript developers. Workshops, keynotes, and networking opportunities.",
-        },
-        {
-          id: 3,
-          BeginDateSmall: "15 April",
-          Title: "Web Development Bootcamp",
-          location: "Los Angeles, CA",
-          description: "A week-long bootcamp for aspiring web developers. Intensive training in HTML, CSS, and JavaScript.",
-        },
-      ],
     }
   },
 }

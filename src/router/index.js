@@ -38,7 +38,7 @@ const router = createRouter({
       component: ProfilePage,
     },
     {
-      path: '/event/:eventId',
+      path: '/event',
       name: 'event',
       component: EventPage,
     },
@@ -56,7 +56,7 @@ const router = createRouter({
       }, */
     },
     {
-      path: '/admin/:eventId',
+      path: '/admin/event',
       name: 'AdminEvent',
       component: AdminEventPage,
       /*       beforeEnter: (to, from, next) => {
