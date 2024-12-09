@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column" style="background-color: #00041f">
+  <div v-if="this.event != null" class="d-flex flex-column" style="background-color: #00041f">
     <!-- Top Event -->
     <div class="d-flex flex-row justify-space-evenly mt-16">
       <div>
@@ -16,7 +16,7 @@
         <v-btn class="rounded-xl text-white text-body1" elevation="6" style="
             background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee);
             text-transform: none;
-          ">See More...</v-btn>
+          " @click="goToEvent()">See More...</v-btn>
         <!-- timer -->
         <v-container style="color: white" class="pa-0">
           <v-row class="text-center mt-14">
@@ -77,7 +77,7 @@
       </div>
       <div>
         <p class="text-h3 mb-5" style="color: #ff00ee">EVENT DETAILS</p>
-        <p class="text-body1 text-white">{{ event.details }}</p>
+        <p class="text-body1 text-white">{{ truncate(event.details, 700, '...') }}</p>
       </div>
 
     </div>
@@ -117,80 +117,93 @@
           ">List of All Speakers</v-btn>
     </div>
 
-    <div class="d-flex flex-column w-75 align-self-center mt-16">
-      <p class="text-h3 " style="color:#ff00ee">Upcoming Events</p>
-      <div class="d-flex flex-column">
-        <!-- Cards -->
-        <div v-for="event in events" :key="event.id" class="d-flex flex-row mt-16">
-          <div class=" d-flex flex-column align-center justify-center text-white text-body1 font-weight-medium"
-            style="background-color: #000B52; min-height: 180px; width:10%">
-            <p> {{ event.BeginDateSmall.split(" ")[0] }}</p>
-            <p>{{ event.BeginDateSmall.split(" ")[1] }}</p>
-          </div>
-          <div class="d-flex flex-column justify-space-between ma-2 ml-5 " style="width:90%">
-            <p class="text-white text-h4">{{ event.Title }}</p>
-            <p class="text-white text-body1">{{ event.location }}</p>
-            <p class="text-white text-body1">{{ event.description }}</p>
-          </div>
-        </div>
+    <!-- schedule -->
+    <div class="w-75 align-self-center align-center mt-16">
+      <div class="d-flex flex-column align-center mb-10">
+        <p class=" text-h3 mb-5" style="color: #ff00ee">Schedule</p>
       </div>
+      <v-card class="elevation-5 rounded-lg" style="background-color: #00041f;">
+        <v-tabs v-model="tab" class="text-white" style="background-color: #000B52;">
+          <v-tab v-for="day in event.schedule" :key="day.id" :value="day.id">Day {{ day.id }}</v-tab>
+        </v-tabs>
 
+        <v-card-text style="background-color: #00041f">
+          <v-tabs-window v-model="tab">
+            <v-tabs-window-item v-for="day in event.schedule" :key="day.day" :value="day.day"
+              class="d-flex flex-column">
+              <div v-if="day.content != []" v-for="content in day.content" :key="content.begin"
+                class="d-flex flex-column justify-space-between text-white mt-3 mx-4" style="min-height: 200px;">
+                <div>
+                  <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
+                    {{ content.location }}
+                  </v-chip>
+                </div>
+                <p class="text-body1 font-weight-bold">{{ content.title }}</p>
+                <div>
+                  <p class="text-body2 ">From: {{ content.begin }}</p>
+                  <p class="text-body2 ">Until: {{ content.end }}</p>
+                </div>
+                <p class="text-body2"> Speakers: {{ content.speakers }}</p>
+                <v-divider v-if="content.id != parseInt(day.content.length)" color="#fffff" class="my-4"></v-divider>
+
+
+              </div>
+
+            </v-tabs-window-item>
+          </v-tabs-window>
+        </v-card-text>
+      </v-card>
+    </div>
+  </div>
+  <div v-else>
+    <div class="d-flex flex-column justify-center align-center h-80" style="background-color: #00041f">
+
+      <!-- Skeleton Loader -->
+      <v-skeleton-loader type="heading, image@2, paragraph@4" class="mt-5"
+        style="background-color: #00041f"></v-skeleton-loader>
     </div>
   </div>
 
 </template>
 
 <script>
+import * as api from "../api/api.js"
+import { useEventStore } from '../stores/event';
 export default {
   data() {
     return {
-      event: {
-        BeginDate: "21/05/2025",
-        EndDate: "25/05/2025",
-        BeginDateSmall: "Mar 25",
-        Title: "Porto Tech Hub",
-        location: "21 King Street, 1205 Dhaka BD",
-        timeleft: { days: 10, hours: 20, minutes: 10, seconds: 40 },
-        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex",
-        details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.",
-        princing: {
-          advancedFeatures: [
-            "Access to all days of the event",
-            "Access to all the lectures",
-            "Get a free T-shirt",
-            "Free meals throughout the day",
-            "Background access",
-            "Meet event speakers",
-            "Get a certificate",
-          ],
-          premiumFeatures: [
-            "Access to all days of the event",
-            "Access to all the lectures",
-            "Get a personalized T-shirt",
-            "Free meals throughout the day",
-            "Background access",
-            "Meet event speakers",
-            "Get a certificate",
-          ],
-          beginnerFeatures: [
-            "Access to 1 day of the event",
-            "Access to all the lectures",
-            "Get a free T-shirt",
-            "Free meals throughout the day",
-            "Background access",
-            "Meet event speakers",
-            "Get a certificate",
-          ],
-        },
-        speakers: Array.from({ length: 18 }, () => ({
-          name: "Jane Doe",
-          role: "Executive Producer",
-          image: "https://res.cloudinary.com/dvyic4oaf/image/upload/v1732401045/ezjwcc18pjwcrkygovpd.jpg", // Replace with actual image link
-        })),
+      eventStore: useEventStore(),
 
-      },
+
     }
   },
+  async mounted() {
+    await this.eventStore.fetchevents()
+    console.log("im here");
+
+  },
+  computed: {
+    event() {
+      console.log("JUICED UP");
+
+      return this.eventStore.getEvent
+    }
+  },
+
+  methods: {
+    truncate(text, length, suffix) {
+      if (text.length > length) {
+        return text.substring(0, length) + suffix;
+      } else {
+        return text;
+      }
+    },
+    goToEvent() {
+      this.$router.push('/event')
+    }
+  },
+
+
 }
 </script>
 

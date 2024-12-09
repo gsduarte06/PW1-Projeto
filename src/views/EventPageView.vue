@@ -7,7 +7,7 @@
           {{ event.BeginDate }} - {{ event.EndDate }}
         </v-chip>
         <v-spacer></v-spacer>
-        <p class="text-h2" style="color: #ffffff">{{ event.Title }}</p>
+        <p class="text-h2" style="color: #ff00ee">{{ event.Title }}</p>
 
         <p class="text-body1 mb-16" style="color: #ffffff">
           <v-icon icon="mdi-map-marker" style="color: #ff00ee"></v-icon>{{ event.location }}

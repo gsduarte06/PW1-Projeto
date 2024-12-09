@@ -1,0 +1,74 @@
+{
+  "PortoTechHub": [
+    {
+      "BeginDate": "21/05/2025",
+      "EndDate": "25/05/2025",
+      "Title": "Porto Tech Hub",
+      "location": "21 King Street, 1205 Dhaka BD",
+      "timeleft": { "days": 10, "hours": 20, "minutes": 10, "seconds": 40 },
+      "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.",
+      "princing": {
+        "advancedFeatures": [
+          "Access to all days of the event",
+          "Access to all the lectures",
+          "Get a free T-shirt",
+          "Free meals throughout the day",
+          "Background access",
+          "Meet event speakers",
+          "Get a certificate"
+        ],
+        "premiumFeatures": [
+          "Access to all days of the event",
+          "Access to all the lectures",
+          "Get a personalized T-shirt",
+          "Free meals throughout the day",
+          "Background access",
+          "Meet event speakers",
+          "Get a certificate"
+        ],
+        "beginnerFeatures": [
+          "Access to 1 day of the event",
+          "Access to all the lectures",
+          "Get a free T-shirt",
+          "Free meals throughout the day",
+          "Background access",
+          "Meet event speakers",
+          "Get a certificate"
+        ]
+      },
+      "speakers": [
+        {
+          "name": "Jane Doe",
+          "role": "Executive Producer",
+          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1732401045/ezjwcc18pjwcrkygovpd.jpg"
+        }
+      ],
+
+      "schedule": [
+        {
+          "day": 1,
+          "content": [
+            {
+              "id": 0,
+              "begin": "10:00",
+              "end": "11:00",
+              "location": "Palco 1",
+              "speakers": "John Doe ,Jane Doe",
+              "title": "Welcome"
+            },
+            {
+              "id": 1,
+              "begin": "11:00",
+              "end": "13:45",
+              "location": "Palco 2",
+              "speakers": "John Doe ,Jane Doe",
+              "title": "Welcome"
+            }
+          ]
+        },
+        { "day": 2, "content": [] },
+        { "day": 3, "content": [] }
+      ]
+    }
+  ]
+}

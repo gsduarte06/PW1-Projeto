@@ -49,7 +49,6 @@ export default {
       this.$router.push('/merchandising')
     },
     ToEvent() {
-      console.log(this.userStore.getLoggedInUserUse.foto);
 
       this.$router.push('/event')
     }
