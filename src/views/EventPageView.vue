@@ -1,5 +1,5 @@
 <template>
-  <div class="d-flex flex-column" style="background-color: #00041f">
+  <div v-if="this.event != null" class="d-flex flex-column" style="background-color: #00041f">
     <div class="d-flex flex-row justify-space-evenly mt-16">
       <div>
 
@@ -72,15 +72,14 @@
       <div class="d-flex flex-column w-75 align-self-center mx-auto mb-16">
         <p class="text-h3 mt-16 mb-10" style="color: #ff00ee">Speakers</p>
         <v-container>
-          <v-carousel class="h-auto" show-arrows="hover" hide-delimiters>
+          <v-carousel class="h-auto" show-arrows="hover" hide-delimiters v-model="activeSpeakerPage">
             <v-carousel-item v-for="(page, pageIndex) in paginatedSpeakers" :key="pageIndex">
               <v-row>
                 <v-col v-for="(speaker, index) in page" :key="index" sm="6" md="4"
-                  class="d-flex justify-center align-center ">
-                  <v-card style="background:#00041f; border: 1px solid white; width:60%" class="d-flex flex-column">
-                    <div class="d-flex flex-column align-center  justify-space-evenly ">
-
-                      <v-img class="mt-4 rounded-circle " :src="speaker.image" :alt="speaker.name" width="100"
+                  class="d-flex justify-center align-center">
+                  <v-card style="background:#00041f; border: 1px solid white; width:65%" class="d-flex flex-column">
+                    <div class="d-flex flex-column align-center justify-space-evenly">
+                      <v-img class="mt-4 rounded-circle" :src="speaker.image" :alt="speaker.name" width="100"
                         aspect-ratio="1/1"></v-img>
                       <div>
                         <v-card-title class="text-center text-white">{{ speaker.name }}</v-card-title>
@@ -94,6 +93,15 @@
               </v-row>
             </v-carousel-item>
           </v-carousel>
+
+          <!-- Custom Pagination Markers -->
+          <div class="d-flex justify-center mt-4">
+            <v-btn v-for="(page, pageIndex) in paginatedSpeakers" :key="pageIndex"
+              :color="pageIndex === activeSpeakerPage ? 'white' : 'indigo-darken-4'" class="mx-1" icon
+              style="width: 14px; height: 14px;" @click="activeSpeakerPage = pageIndex">
+
+            </v-btn>
+          </div>
         </v-container>
       </div>
     </div>
@@ -105,14 +113,18 @@
       </div>
       <v-card class="elevation-5 rounded-lg" style="background-color: #00041f;">
         <v-tabs v-model="tab" class="text-white" style="background-color: #000B52;">
-          <v-tab v-for="day in event.schedule" :key="day.id" :value="day.id">Day {{ day.id }}</v-tab>
+          <!-- Render each tab based on the schedule -->
+          <v-tab v-for="(day, index) in event.schedule" :key="index" :value="day.TimeOfDay">
+            {{ day.TimeOfDay }}
+          </v-tab>
         </v-tabs>
 
-        <v-card-text style="background-color: #00041f">
-          <v-tabs-window v-model="tab">
-            <v-tabs-window-item v-for="day in event.schedule" :key="day.day" :value="day.day"
-              class="d-flex flex-column">
-              <div v-if="day.content != []" v-for="content in day.content" :key="content.begin"
+        <v-card-text style="background-color: #00041f;">
+          <!-- Dynamically show content for the selected tab -->
+          <div v-for="day in event.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay">
+            <!-- Render content for the specific day -->
+            <div v-if="day.content && day.content.length">
+              <div v-for="content in day.content" :key="content.id"
                 class="d-flex flex-column justify-space-between text-white mt-3 mx-4" style="min-height: 200px;">
                 <div>
                   <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
@@ -120,20 +132,29 @@
                   </v-chip>
                 </div>
                 <p class="text-body1 font-weight-bold">{{ content.title }}</p>
+                <p v-if="content.type != null" class="text-body2"> Type: {{ content.type }}</p>
                 <div>
-                  <p class="text-body2 ">From: {{ content.begin }}</p>
-                  <p class="text-body2 ">Until: {{ content.end }}</p>
+                  <p class="text-body2 d-flex flex-row">
+                    From:
+                    <span class="text-body2 font-weight-bold ml-1"> {{ content.begin }}</span>
+                  </p>
+                  <p class="text-body2 d-flex flex-row">
+                    Until:
+                    <span class="text-body2 font-weight-bold ml-1"> {{ content.end }}</span>
+                  </p>
                 </div>
-                <p class="text-body2"> Speakers: {{ content.speakers }}</p>
-                <v-divider v-if="content.id != parseInt(day.content.length)" color="#fffff" class="my-4"></v-divider>
-
-
+                <p v-if="content.speakers != null" class="text-body2"> Speakers: {{ content.speakers }}</p>
+                <v-divider color="#fffff" class="my-4"></v-divider>
               </div>
-
-            </v-tabs-window-item>
-          </v-tabs-window>
+            </div>
+            <div v-else class="text-white text-center mt-4">
+              <p>No content available for this time period.</p>
+            </div>
+          </div>
         </v-card-text>
       </v-card>
+
+
     </div>
 
     <!-- Tickets  -->
@@ -272,79 +293,50 @@
       </div>
     </div>
   </div>
+
+  <div v-else>
+    <div class="d-flex flex-column justify-center align-center h-80" style="background-color: #00041f">
+
+      <!-- Skeleton Loader -->
+      <v-skeleton-loader type="heading, image@2, paragraph@4" class="mt-5"
+        style="background-color: #00041f"></v-skeleton-loader>
+    </div>
+  </div>
 </template>
 
 <script>
+import { useEventStore } from '../stores/event';
 export default {
   data() {
     return {
+      activeSpeakerPage: 0,
+      eventStore: useEventStore(),
       tab: null,
       cardsPerPage: 6,
-      event: {
-        BeginDate: "21/05/2025",
-        EndDate: "25/05/2025",
-        Title: "Porto Tech Hub",
-        location: "21 King Street, 1205 Dhaka BD",
-        timeleft: { days: 10, hours: 20, minutes: 10, seconds: 40 },
-        details:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.",
-        princing: {
-          advancedFeatures: [
-            "Access to all days of the event",
-            "Access to all the lectures",
-            "Get a free T-shirt",
-            "Free meals throughout the day",
-            "Background access",
-            "Meet event speakers",
-            "Get a certificate",
-          ],
-          premiumFeatures: [
-            "Access to all days of the event",
-            "Access to all the lectures",
-            "Get a personalized T-shirt",
-            "Free meals throughout the day",
-            "Background access",
-            "Meet event speakers",
-            "Get a certificate",
-          ],
-          beginnerFeatures: [
-            "Access to 1 day of the event",
-            "Access to all the lectures",
-            "Get a free T-shirt",
-            "Free meals throughout the day",
-            "Background access",
-            "Meet event speakers",
-            "Get a certificate",
-          ],
-        },
-        speakers: Array.from({ length: 18 }, () => ({
-          name: "Jane Doe",
-          role: "Executive Producer",
-          image: "https://res.cloudinary.com/dvyic4oaf/image/upload/v1732401045/ezjwcc18pjwcrkygovpd.jpg", // Replace with actual image link
-        })),
-        schedule: [
-          { day: 1, content: [{ id: 0, begin: "10:00", end: "11:00", location: "Palco 1", speakers: "John Doe ,Jane Doe", title: "Welcome" }, { id: 1, begin: "11:00", end: "13:45", location: "Palco 2", speakers: "John Doe ,Jane Doe", title: "Welcome" }] },
-          { day: 2, content: [] },
-          { day: 3, content: [] }]
 
-      },
       comments: [{ id_comment: 1, user: "gsd", content: "loving the event" }, { id_comment: 2, user: "diogo", content: "loving the event" }],
       createCommentContent: null
 
 
     };
   },
+  async mounted() {
+    await this.eventStore.fetchevents()
 
+  },
   computed: {
     paginatedSpeakers() {
       const pages = [];
       for (let i = 0; i < this.event.speakers.length; i += this.cardsPerPage) {
         pages.push(this.event.speakers.slice(i, i + this.cardsPerPage));
       }
-      console.log(pages);
 
       return pages;
     },
+    event() {
+
+      return this.eventStore.getEvent
+    }
   },
 };
 </script>
@@ -358,5 +350,9 @@ export default {
 
 .like-icon:hover {
   opacity: 1;
+}
+
+.custom-pagination .v-btn {
+  transition: transform 0.2s;
 }
 </style>

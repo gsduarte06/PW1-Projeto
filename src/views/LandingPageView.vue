@@ -129,8 +129,7 @@
 
         <v-card-text style="background-color: #00041f">
           <v-tabs-window v-model="tab">
-            <v-tabs-window-item v-for="day in event.schedule" :key="day.day" :value="day.day"
-              class="d-flex flex-column">
+            <v-tabs-window-item v-for="day in event.schedule" :key="day.id" :value="day.id" class="d-flex flex-column">
               <div v-if="day.content != []" v-for="content in day.content" :key="content.begin"
                 class="d-flex flex-column justify-space-between text-white mt-3 mx-4" style="min-height: 200px;">
                 <div>
@@ -167,7 +166,7 @@
 </template>
 
 <script>
-import * as api from "../api/api.js"
+
 import { useEventStore } from '../stores/event';
 export default {
   data() {
