@@ -73,7 +73,7 @@
                       </v-col>
                     </v-row>
 
-                    <!-- Badges Section -->
+                    <!-- Icon Badges Section -->
                     <v-row align="start" style="margin-bottom: 8px;">
                       <v-col cols="4">
                         <label class="text-white custom-label">Badges:</label>
@@ -92,7 +92,7 @@
                                 class="badge-chip"
                                 v-bind="props"
                                 style="margin: 4px; background-color: #ff00ee; color: white;">
-                                {{ badge.title }}
+                                <v-icon>{{ badge.icon }}</v-icon>
                               </v-chip>
                             </template>
                             <span>{{ badge.description }}</span>
@@ -111,7 +111,6 @@
                 Edit Data
               </v-btn>
             </v-row>
-
             <v-dialog v-model="editDialog" max-width="600px">
               <v-card class="edit-dialog-card" style="padding-top: 16px; padding-bottom: 16px;">
                 <v-card-title class="edit-dialog-title">
@@ -205,8 +204,8 @@ export default {
         bio: "Fusce nisi leo, porta nec diam vitae, badictum fermentum odio. Fusce venenatis, tortor in imperdiet semper, ante arcu accumsan orci.",
         points: 1200,
         badges: [
-          { id: 1, title: "Collector", description: "Awarded for collecting over 100 items." },
-          { id: 2, title: "Biggest Attender", description: "Given for attending the most events this year." },
+          { id: 1, icon: 'mdi-cart', description: 'Biggest Buyer' },
+          { id: 2, icon: 'mdi-account-group', description: 'Best Attendance' },
         ],
       },
       editedUser: {},
@@ -267,8 +266,6 @@ export default {
 .v-btn {
   text-transform: none;
 }
-
-
 
 .edit-dialog-card {
   background: linear-gradient(135deg, #1a1a2e, #262640);
