@@ -4,8 +4,7 @@
       <v-container fluid style="padding: 20px">
         <v-row justify="center">
           <v-col cols="12" md="8">
-            <v-card class="mx-auto elevation-0"
-              style="border-radius: 12px; background-color: #00041f; margin-top: 15px;">
+            <v-card class="mx-auto elevation-0" style="border-radius: 12px; background-color: #00041f; margin-top: 15px;">
               <v-card-text>
                 <v-row align="start">
                   <!-- Avatar and Divider -->
@@ -71,6 +70,34 @@
                         <span class="text-white font-weight-regular" style="text-align: left; display: block;">
                           {{ user.points }}
                         </span>
+                      </v-col>
+                    </v-row>
+
+                    <!-- Badges Section -->
+                    <v-row align="start" style="margin-bottom: 8px;">
+                      <v-col cols="4">
+                        <label class="text-white custom-label">Badges:</label>
+                      </v-col>
+                      <v-col cols="8">
+                        <div class="d-flex flex-wrap">
+                          <v-tooltip
+                            v-for="badge in user.badges"
+                            :key="badge.id"
+                            top
+                            :open-on-hover="true"
+                            transition="scale-transition"
+                          >
+                            <template v-slot:activator="{ props }">
+                              <v-chip
+                                class="badge-chip"
+                                v-bind="props"
+                                style="margin: 4px; background-color: #ff00ee; color: white;">
+                                {{ badge.title }}
+                              </v-chip>
+                            </template>
+                            <span>{{ badge.description }}</span>
+                          </v-tooltip>
+                        </div>
                       </v-col>
                     </v-row>
                   </v-col>
@@ -141,7 +168,7 @@
               </v-card>
             </v-dialog>
 
-            <div class="d-flex flex-column  align-self-center mt-16">
+            <div class="d-flex flex-column align-self-center mt-16">
               <p class="text-h3 " style="color:#ff00ee">Your Events</p>
               <div class="d-flex flex-column">
                 <!-- Cards -->
@@ -158,7 +185,6 @@
                   </div>
                 </div>
               </div>
-
             </div>
           </v-col>
         </v-row>
@@ -166,6 +192,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -175,8 +202,12 @@ export default {
         name: "Jessica Fletcher",
         email: "jessica@example.com",
         password: "mysecurepassword",
-        bio: "Fusce nisi leo, porta nec diam vitae, dictum fermentum odio. Fusce venenatis, tortor in imperdiet semper, ante arcu accumsan orci.",
-        points: 1200, // Points added here
+        bio: "Fusce nisi leo, porta nec diam vitae, badictum fermentum odio. Fusce venenatis, tortor in imperdiet semper, ante arcu accumsan orci.",
+        points: 1200,
+        badges: [
+          { id: 1, title: "Collector", description: "Awarded for collecting over 100 items." },
+          { id: 2, title: "Biggest Attender", description: "Given for attending the most events this year." },
+        ],
       },
       editedUser: {},
       editDialog: false,
@@ -230,12 +261,14 @@ export default {
 
 .divider {
   border-left: 3px solid #ff00ee;
-  height: 450px;
+  height: 500px;
 }
 
 .v-btn {
   text-transform: none;
 }
+
+
 
 .edit-dialog-card {
   background: linear-gradient(135deg, #1a1a2e, #262640);
@@ -339,5 +372,6 @@ export default {
   .event-row {
     flex-direction: column;
   }
+  
 }
 </style>
