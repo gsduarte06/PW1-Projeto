@@ -70,43 +70,67 @@
       <!-- Ticket Pricing Section -->
       <div>
         <p class="text-h5 mb-3">Edit Ticket Pricing</p>
-        <v-row>
-          <v-col cols="12" sm="6" md="4" v-for="(type, index) in Object.keys(event.pricing)" :key="index">
-            <v-card class="pricing-card" style="background-color: #59398e; color: white; border: 1px solid white; border-radius: 10px;">
-              <v-card-title class="d-flex justify-space-between align-center">
+        <v-row dense>
+          <v-col cols="12" sm="6" md="4" v-for="(features, type) in event.pricing" :key="type">
+            <v-card style="background-color: #2c2f3f; color: white; border-radius: 10px;" class="py-3 px-4">
+              <v-card-title class="d-flex justify-space-between">
                 <span class="text-subtitle-1">{{ type }} Ticket</span>
-                <v-icon color="white">mdi-ticket</v-icon>
+                <v-btn icon color="red" @click="removeTicketCategory(type)">
+                  <v-icon small>mdi-delete</v-icon>
+                </v-btn>
               </v-card-title>
               <v-divider color="white"></v-divider>
               <v-card-text>
-                <v-list dense>
-                  <v-list-item v-for="(feature, featureIndex) in event.pricing[type]" :key="featureIndex" class="d-flex align-center">
-                    <v-text-field
-                      v-model="event.pricing[type][featureIndex]"
-                      outlined
-                      dense
-                      hide-details
-                      style="flex: 1; background-color: #fff; color: #000; border-radius: 5px;"
-                    ></v-text-field>
-                    <v-btn icon color="red" @click="removeFeature(type, featureIndex)">
-                      <v-icon>mdi-delete</v-icon>
-                    </v-btn>
-                  </v-list-item>
-                </v-list>
-                <v-btn outlined color="white" class="mt-2" @click="addFeature(type)">
+                <v-row v-for="(feature, index) in features" :key="index" dense class="align-center mb-2">
+                  <v-col>
+                    <div class="d-flex align-center justify-space-between">
+                      <span>{{ feature }}</span>
+                      <v-btn icon small color="red" @click="removeFeature(type, index)">
+                        <v-icon x-small>mdi-close</v-icon>
+                      </v-btn>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+              <v-card-actions>
+                <v-btn outlined color="white" @click="openFeatureModal(type)">
                   <v-icon left>mdi-plus</v-icon>Add Feature
                 </v-btn>
-              </v-card-text>
+              </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
+        <v-col cols="12" sm="6" md="4">
+          <v-btn color="primary" class="mt-3" @click="addTicketCategory">
+            <v-icon left>mdi-plus</v-icon>Add Ticket Category
+          </v-btn>
+        </v-col>
         <v-btn color="primary" class="mt-5 mx-auto" style="display: block; max-width: 200px;" @click="savePricing">
           Save Pricing
         </v-btn>
+        <v-dialog v-model="featureModal" max-width="600px">
+          <v-card>
+            <v-card-title>
+              <span class="text-h6">Edit Features for {{ currentTicketType }}</span>
+            </v-card-title>
+            <v-divider></v-divider>
+            <v-card-text>
+              <v-form>
+                <v-text-field v-model="newFeature" label="New Feature" outlined dense placeholder="Enter feature description"></v-text-field>
+              </v-form>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn color="primary" @click="addFeature(currentTicketType)">Add</v-btn>
+              <v-btn text @click="featureModal = false">Cancel</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
       </div>
     </v-col>
   </v-row>
 </template>
+
 
 <script>
 export default {
@@ -119,36 +143,19 @@ export default {
         location: "21 King Street, 1205 Dhaka BD",
         details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin...",
         pricing: {
-          advancedFeatures: [
-            "Access to all days of the event",
-            "Access to all the lectures",
-            "Get a free T-shirt",
-          ],
-          premiumFeatures: [
-            "Access to all days of the event",
-            "Get a personalized T-shirt",
-            "Meet event speakers",
-          ],
-          beginnerFeatures: ["Access to 1 day of the event", "Get a free T-shirt"],
+          advanced: ["Access to all days of the event", "Access to all lectures", "Get a free T-shirt"],
+          premium: ["Access to all days", "Meet event speakers", "Get a personalized T-shirt"],
+          beginner: ["Access to 1 day", "Get a free T-shirt"],
         },
         speakers: [
-          {
-            name: "Jane Doe",
-            role: "Executive Producer",
-            image: "https://example.com/speaker1.jpg",
-          },
-          {
-            name: "John Smith",
-            role: "Senior Developer",
-            image: "https://example.com/speaker2.jpg",
-          },
+          { name: "Jane Doe", role: "Executive Producer", image: "https://example.com/speaker1.jpg" },
+          { name: "John Smith", role: "Senior Developer", image: "https://example.com/speaker2.jpg" },
         ],
       },
-      newSpeaker: {
-        name: "",
-        role: "",
-        image: "",
-      },
+      newSpeaker: { name: "", role: "", image: "" },
+      featureModal: false,
+      currentTicketType: "",
+      newFeature: "",
     };
   },
   methods: {
@@ -169,8 +176,31 @@ export default {
     savePricing() {
       alert("Ticket pricing saved!");
     },
+    addTicketCategory() {
+      const newCategory = prompt("Enter a new ticket category name:");
+      if (newCategory && !this.event.pricing[newCategory]) {
+        this.event.pricing[newCategory] = [];
+      } else {
+        alert("Invalid or duplicate category name.");
+      }
+    },
+    removeTicketCategory(type) {
+      if (confirm(`Are you sure you want to delete the ${type} category?`)) {
+        delete this.event.pricing[type];
+      }
+    },
+    openFeatureModal(type) {
+      this.currentTicketType = type;
+      this.featureModal = true;
+    },
     addFeature(type) {
-      this.event.pricing[type].push("");
+      if (this.newFeature) {
+        this.event.pricing[type].push(this.newFeature);
+        this.newFeature = "";
+        this.featureModal = false;
+      } else {
+        alert("Feature description cannot be empty.");
+      }
     },
     removeFeature(type, index) {
       this.event.pricing[type].splice(index, 1);
@@ -179,19 +209,22 @@ export default {
 };
 </script>
 
+
 <style scoped>
 .v-row {
-  margin: 0; /* Removes the space between columns */
+  margin: 0;
 }
 .v-card {
-  border: 1px solid white;
-}
-.pricing-card {
-  padding: 16px;
   transition: transform 0.2s ease-in-out;
 }
-.pricing-card:hover {
+.v-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+}
+.v-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 20px;
 }
 </style>
