@@ -14,8 +14,7 @@
         </p>
         <v-btn class="rounded-xl text-white text-body1" elevation="6" style="
             background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee);
-            text-transform: none;
-          ">Buy your ticket</v-btn>
+            text-transform: none;" @click="scrollTickets">Buy your ticket</v-btn>
         <!-- timer -->
         <v-container style="color: white" class="pa-0">
           <v-row class="text-center mt-14">
@@ -163,8 +162,10 @@
         <!-- Title Section -->
         <v-row justify="center" class="text-center mb-10 mt-16">
           <v-col cols="12">
-            <p class="text-h4">Choose a ticket</p>
-            <p style="color: #ff007f" class="text-h3">Get your ticket here</p>
+            <div ref="tickets">
+              <p class="text-h4">Choose a ticket</p>
+              <p style="color: #ff007f" class="text-h3">Get your ticket here</p>
+            </div>
           </v-col>
         </v-row>
 
@@ -336,6 +337,11 @@ export default {
     event() {
 
       return this.eventStore.getEvent
+    }
+  },
+  methods: {
+    scrollTickets() {
+      this.$refs.tickets?.scrollIntoView({ behavior: 'smooth' });
     }
   },
 };

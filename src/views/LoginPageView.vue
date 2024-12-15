@@ -53,15 +53,19 @@ export default {
       this.$router.push('/register');
     },
     Login() {
-      console.log(this.userStore.users[0].username, this.username);
-
-      if (this.userStore.CheckLogUserIn(this.username, this.password)) {
-        console.log("Success");
-        this.loginError = false; // Reset error on successful login
-      } else {
+      try {
+        if (this.userStore.CheckLogUserIn(this.username, this.password)) {
+          console.log("Success");
+          this.loginError = false; // Reset error on successful login
+          this.$router.push('/');
+        } else {
+          throw new Error("Failed login in")
+        }
+      } catch (error) {
         console.log("Failure");
         this.loginError = true; // Trigger error on failure
       }
+
     }
   },
 };

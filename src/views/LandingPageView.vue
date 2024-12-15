@@ -96,18 +96,18 @@
         </div>
         <div class="d-flex flex-column w-25" width="368"> <!-- Keynote Speaker 2 -->
           <div>
-            <img :src="event.speakers[0].image" alt="" class="w-100 h-auto"
+            <img :src="event.speakers[1].image" alt="" class="w-100 h-auto"
               style="filter:drop-shadow(-4px 4px 4px #59398E)">
-            <p class="text-body1 bt-2" style="color:#ff00ee"> {{ event.speakers[0].name }}</p>
-            <p class="text-body1 text-white bt-4"> {{ event.speakers[0].role }}</p>
+            <p class="text-body1 bt-2" style="color:#ff00ee"> {{ event.speakers[1].name }}</p>
+            <p class="text-body1 text-white bt-4"> {{ event.speakers[1].role }}</p>
           </div>
         </div>
         <div class="d-flex flex-column w-25" width="368"> <!-- Keynote Speaker 3 -->
           <div>
-            <img :src="event.speakers[0].image" alt="" class="w-100 h-auto"
+            <img :src="event.speakers[2].image" alt="" class="w-100 h-auto"
               style="filter:drop-shadow(-4px 4px 4px #59398E)">
-            <p class="text-body1 bt-2" style="color:#ff00ee"> {{ event.speakers[0].name }}</p>
-            <p class="text-body1 text-white bt-4"> {{ event.speakers[0].role }}</p>
+            <p class="text-body1 bt-2" style="color:#ff00ee"> {{ event.speakers[2].name }}</p>
+            <p class="text-body1 text-white bt-4"> {{ event.speakers[2].role }}</p>
           </div>
         </div>
       </div>
@@ -124,13 +124,18 @@
       </div>
       <v-card class="elevation-5 rounded-lg" style="background-color: #00041f;">
         <v-tabs v-model="tab" class="text-white" style="background-color: #000B52;">
-          <v-tab v-for="day in event.schedule" :key="day.id" :value="day.id">Day {{ day.id }}</v-tab>
+          <!-- Render each tab based on the schedule -->
+          <v-tab v-for="(day, index) in event.schedule" :key="index" :value="day.TimeOfDay">
+            {{ day.TimeOfDay }}
+          </v-tab>
         </v-tabs>
 
-        <v-card-text style="background-color: #00041f">
-          <v-tabs-window v-model="tab">
-            <v-tabs-window-item v-for="day in event.schedule" :key="day.id" :value="day.id" class="d-flex flex-column">
-              <div v-if="day.content != []" v-for="content in day.content" :key="content.begin"
+        <v-card-text style="background-color: #00041f;">
+          <!-- Dynamically show content for the selected tab -->
+          <div v-for="day in event.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay">
+            <!-- Render content for the specific day -->
+            <div v-if="day.content && day.content.length">
+              <div v-for="content in day.content" :key="content.id"
                 class="d-flex flex-column justify-space-between text-white mt-3 mx-4" style="min-height: 200px;">
                 <div>
                   <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
@@ -138,20 +143,29 @@
                   </v-chip>
                 </div>
                 <p class="text-body1 font-weight-bold">{{ content.title }}</p>
+                <p v-if="content.type != null" class="text-body2"> Type: {{ content.type }}</p>
                 <div>
-                  <p class="text-body2 ">From: {{ content.begin }}</p>
-                  <p class="text-body2 ">Until: {{ content.end }}</p>
+                  <p class="text-body2 d-flex flex-row">
+                    From:
+                    <span class="text-body2 font-weight-bold ml-1"> {{ content.begin }}</span>
+                  </p>
+                  <p class="text-body2 d-flex flex-row">
+                    Until:
+                    <span class="text-body2 font-weight-bold ml-1"> {{ content.end }}</span>
+                  </p>
                 </div>
-                <p class="text-body2"> Speakers: {{ content.speakers }}</p>
-                <v-divider v-if="content.id != parseInt(day.content.length)" color="#fffff" class="my-4"></v-divider>
-
-
+                <p v-if="content.speakers != null" class="text-body2"> Speakers: {{ content.speakers }}</p>
+                <v-divider color="#fffff" class="my-4"></v-divider>
               </div>
-
-            </v-tabs-window-item>
-          </v-tabs-window>
+            </div>
+            <div v-else class="text-white text-center mt-4">
+              <p>No content available for this time period.</p>
+            </div>
+          </div>
         </v-card-text>
       </v-card>
+
+
     </div>
   </div>
   <div v-else>
@@ -171,20 +185,15 @@ import { useEventStore } from '../stores/event';
 export default {
   data() {
     return {
+      tab: null,
       eventStore: useEventStore(),
-
-
     }
   },
   async mounted() {
     await this.eventStore.fetchevents()
-    console.log("im here");
-
   },
   computed: {
     event() {
-      console.log("JUICED UP");
-
       return this.eventStore.getEvent
     }
   },

@@ -8,7 +8,7 @@ import EventPage from '../views/EventPageView.vue'
 import MerchandisingPage from '../views/MerchandisingPageView.vue'
 import AdminPage from '../views/Admin/AdminPageView.vue'
 import AdminEventPage from '../views/Admin/AdminEventPageView.vue'
-
+import { useUserStore } from '@/stores/users'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -65,11 +65,21 @@ const router = createRouter({
     },
   ],
 })
-/* router.beforeEach((to, from, next) => {
-  if (from.path != '/' || from.path != '/leaderboard') {
-    //Insert login validation
-  } else {
-    next()
+
+router.beforeEach((to, from) => {
+  if (
+    !useUserStore().getUserNameLoggedIn &&
+    !['/', '/leaderboard', '/login', '/register'].includes(to.path)
+  ) {
+    return {
+      path: '/login',
+      query: { redirect: to.fullPath },
+    }
   }
+})
+
+/* // Track navigation
+router.afterEach((to, from) => {
+  router.history.push(to.fullPath)
 }) */
 export default router

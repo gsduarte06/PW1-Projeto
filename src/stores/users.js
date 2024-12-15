@@ -10,9 +10,11 @@ export const useUserStore = defineStore('users', {
     getUsers() {
       return this.users
     },
-
-    getLoggedInUserUse() {
-      return this.users.find((user) => user.username == this.userLoggedInUsername)
+    getUserNameLoggedIn() {
+      return this.userLoggedInUsername
+    },
+    getLoggedInUser() {
+      return this.users.find((user) => user.username == this.userLoggedInUsername) || null
     },
   },
   actions: {
@@ -32,9 +34,7 @@ export const useUserStore = defineStore('users', {
       this.userLoggedInUsername = user
       this.uploadData()
     },
-    encodePassword(password) {
-      return
-    },
+
     createAccount(username, email, password) {
       if (!this.users.find((user) => user.username == username)) {
         this.users.push({
@@ -54,10 +54,6 @@ export const useUserStore = defineStore('users', {
     uploadData() {
       localStorage.setItem('usersPortoTechHub', JSON.stringify(this.users))
       sessionStorage.setItem('LogedInuserPortoTechHub', JSON.stringify(this.userLoggedInUsername))
-    },
-
-    getLoggedInUser() {
-      return this.users.find((user) => user.username == this.userLoggedInUsername)
     },
   },
 })
