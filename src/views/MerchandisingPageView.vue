@@ -53,35 +53,33 @@
 </template>
 
 <script>
-import VueTshirt from "../assets/images/vue_shirt.png";
-import VueMug from "../assets/images/vue_mug.png";
-import VueHoodie from "../assets/images/vue_zip_hoodie.png";
+import BlackTshirt from '../assets/images/black_tshirt.png'
+import WhiteMug from "../assets/images/white_mug.png";
+import Keychain from "../assets/images/keychain.png";
 
 export default {
   data() {
     return {
       // Single event data
       event: {
-        id: 1,
-        title: "Vue.js Meetup",
         merchandise: [
           {
             id: 1,
-            name: "Vue.js T-shirt",
-            price: 25.99,
-            image: VueTshirt,
+            name: "Black T-Shirt",
+            price: 19.99,
+            image: BlackTshirt,
           },
           {
             id: 2,
-            name: "Vue.js Mug",
-            price: 12.99,
-            image: VueMug,
+            name: "White Mug",
+            price: 8.99,
+            image: WhiteMug,
           },
           {
             id: 3,
-            name: "Vue.js Zip Hoodie",
-            price: 61.98,
-            image: VueHoodie,
+            name: "Keychain",
+            price: 3.99,
+            image: Keychain,
           },
         ],
       },
