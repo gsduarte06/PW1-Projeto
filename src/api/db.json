@@ -1,10 +1,9 @@
 {
   "PortoTechHub": [
     {
-      "BeginDate": "21/05/2025",
-      "EndDate": "25/05/2025",
+      "BeginDate": "21/11/2025",
       "Title": "Porto Tech Hub",
-      "location": "21 King Street, 1205 Dhaka BD",
+      "location": "EDIFÍCIO DA ALFÂNDEGA, R. Nova da Alfândega, 4050-430 Porto",
       "timeleft": { "days": 10, "hours": 20, "minutes": 10, "seconds": 40 },
       "details": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex, at volutpat est odio ac ligula.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin, lorem eu tristique imperdiet, risus erat feugiat ex.",
       "princing": {
@@ -188,7 +187,6 @@
           "image": "https://sessionize.com/image/9f6e-200o200o2-EHvMKwbfP43RYxL9qJMwGv.jpg"
         }
       ],
-
       "schedule": [
         {
           "TimeOfDay": "morning",
@@ -529,6 +527,26 @@
               "description": "Beer Party 🍺🎉"
             }
           ]
+        }
+      ],
+      "merchandise": [
+        {
+          "id": 1,
+          "name": "Black T-Shirt",
+          "price": 19.99,
+          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734296777/ptivv59zriavf3pldkyx.png"
+        },
+        {
+          "id": 2,
+          "name": "White Mug",
+          "price": 8.99,
+          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734296823/pojahy6zd9nwhif6pgpd.png"
+        },
+        {
+          "id": 3,
+          "name": "Keychain",
+          "price": 3.99,
+          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734297204/gpd1tvmkabmsxgvethku.png"
         }
       ]
     }

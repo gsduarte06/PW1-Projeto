@@ -5,7 +5,7 @@
       <div>
         <p class="text-h4 mb-5" style="color: #ff00ee">NEXT EVENT</p>
         <v-chip variant="outlined" class="text-body1 mb-15 text-white" style="border-color: #ff00ee">
-          {{ event.BeginDate }} - {{ event.EndDate }}
+          {{ event.BeginDate }}
         </v-chip>
         <v-spacer></v-spacer>
         <p class="text-h2" style="color: #ffffff">{{ event.Title }}</p>
@@ -117,56 +117,6 @@
           ">List of All Speakers</v-btn>
     </div>
 
-    <!-- schedule -->
-    <div class="w-75 align-self-center align-center mt-16">
-      <div class="d-flex flex-column align-center mb-10">
-        <p class=" text-h3 mb-5" style="color: #ff00ee">Schedule</p>
-      </div>
-      <v-card class="elevation-5 rounded-lg" style="background-color: #00041f;">
-        <v-tabs v-model="tab" class="text-white" style="background-color: #000B52;">
-          <!-- Render each tab based on the schedule -->
-          <v-tab v-for="(day, index) in event.schedule" :key="index" :value="day.TimeOfDay">
-            {{ day.TimeOfDay }}
-          </v-tab>
-        </v-tabs>
-
-        <v-card-text style="background-color: #00041f;">
-          <!-- Dynamically show content for the selected tab -->
-          <div v-for="day in event.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay">
-            <!-- Render content for the specific day -->
-            <div v-if="day.content && day.content.length">
-              <div v-for="content in day.content" :key="content.id"
-                class="d-flex flex-column justify-space-between text-white mt-3 mx-4" style="min-height: 200px;">
-                <div>
-                  <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
-                    {{ content.location }}
-                  </v-chip>
-                </div>
-                <p class="text-body1 font-weight-bold">{{ content.title }}</p>
-                <p v-if="content.type != null" class="text-body2"> Type: {{ content.type }}</p>
-                <div>
-                  <p class="text-body2 d-flex flex-row">
-                    From:
-                    <span class="text-body2 font-weight-bold ml-1"> {{ content.begin }}</span>
-                  </p>
-                  <p class="text-body2 d-flex flex-row">
-                    Until:
-                    <span class="text-body2 font-weight-bold ml-1"> {{ content.end }}</span>
-                  </p>
-                </div>
-                <p v-if="content.speakers != null" class="text-body2"> Speakers: {{ content.speakers }}</p>
-                <v-divider color="#fffff" class="my-4"></v-divider>
-              </div>
-            </div>
-            <div v-else class="text-white text-center mt-4">
-              <p>No content available for this time period.</p>
-            </div>
-          </div>
-        </v-card-text>
-      </v-card>
-
-
-    </div>
   </div>
   <div v-else>
     <div class="d-flex flex-column justify-center align-center h-80" style="background-color: #00041f">

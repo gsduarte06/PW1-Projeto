@@ -4,7 +4,7 @@
       <div>
 
         <v-chip variant="outlined" class="text-body1 mt-14 mb-15 text-white" style="border-color: #ff00ee">
-          {{ event.BeginDate }} - {{ event.EndDate }}
+          {{ event.BeginDate }}
         </v-chip>
         <v-spacer></v-spacer>
         <p class="text-h2" style="color: #ff00ee">{{ event.Title }}</p>
@@ -118,37 +118,43 @@
           </v-tab>
         </v-tabs>
 
-        <v-card-text style="background-color: #00041f;">
+        <v-card-text style="background-color: #00041f;" elevation="0">
           <!-- Dynamically show content for the selected tab -->
-          <div v-for="day in event.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay">
+          <div v-for="day in event.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay" class="w-100">
             <!-- Render content for the specific day -->
             <div v-if="day.content && day.content.length">
-              <div v-for="content in day.content" :key="content.id"
-                class="d-flex flex-column justify-space-between text-white mt-3 mx-4" style="min-height: 200px;">
-                <div>
-                  <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
-                    {{ content.location }}
-                  </v-chip>
-                </div>
-                <p class="text-body1 font-weight-bold">{{ content.title }}</p>
-                <p v-if="content.type != null" class="text-body2"> Type: {{ content.type }}</p>
-                <div>
-                  <p class="text-body2 d-flex flex-row">
-                    From:
-                    <span class="text-body2 font-weight-bold ml-1"> {{ content.begin }}</span>
-                  </p>
-                  <p class="text-body2 d-flex flex-row">
-                    Until:
-                    <span class="text-body2 font-weight-bold ml-1"> {{ content.end }}</span>
-                  </p>
-                </div>
-                <p v-if="content.speakers != null" class="text-body2"> Speakers: {{ content.speakers }}</p>
-                <v-divider color="#fffff" class="my-4"></v-divider>
+              <div v-for="content in day.content" :key="content.id" class="d-flex flex-column text-white mx-1">
+                <v-container elevation="0" fluid>
+                  <v-row>
+                    <v-col v-for="contentHour in content" :key="event.id" cols="12" md="6">
+                      <div class="ma-2">
+                        <div>
+                          <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
+                            {{ contentHour.location }}
+                          </v-chip>
+                        </div>
+                        <p class="text-body1 font-weight-bold">{{ contentHour.title }}</p>
+                        <p v-if="contentHour.type != null" class="text-body2"> Type: {{ contentHour.type }}</p>
+                        <div>
+                          <p class="text-body2 d-flex flex-row">
+                            From:
+                            <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.begin }}</span>
+                          </p>
+                          <p class="text-body2 d-flex flex-row">
+                            Until:
+                            <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.end }}</span>
+                          </p>
+                        </div>
+                        <p v-if="contentHour.speakers != null" class="text-body2"> Speakers: {{ contentHour.speakers }}
+                        </p>
+                      </div>
+                    </v-col>
+                  </v-row>
+                  <v-divider color="#fffff" class="my-4"></v-divider>
+                </v-container>
               </div>
             </div>
-            <div v-else class="text-white text-center mt-4">
-              <p>No content available for this time period.</p>
-            </div>
+
           </div>
         </v-card-text>
       </v-card>
@@ -324,6 +330,7 @@ export default {
   async mounted() {
     await this.eventStore.fetchevents()
 
+
   },
   computed: {
     paginatedSpeakers() {
@@ -335,7 +342,7 @@ export default {
       return pages;
     },
     event() {
-
+      console.log(this.eventStore.getEvent);
       return this.eventStore.getEvent
     }
   },

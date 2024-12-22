@@ -68,6 +68,8 @@ export default {
     Register() {
       if (this.userStore.createAccount(this.username, this.email, this.password)) {
         console.log("Success");
+        this.userStore.CheckLogUserIn(this.username, this.password)
+        this.$router.push('/');
         this.registerError = false; // Reset error on successful login
       } else {
         console.log("Failure");

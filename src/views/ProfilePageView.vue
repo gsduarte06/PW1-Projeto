@@ -4,13 +4,18 @@
       <v-container fluid style="padding: 20px">
         <v-row justify="center">
           <v-col cols="12" md="8">
-            <v-card class="mx-auto elevation-0" style="border-radius: 12px; background-color: #00041f; margin-top: 15px;">
+            <v-card class="mx-auto elevation-0"
+              style="border-radius: 12px; background-color: #00041f; margin-top: 15px;">
               <v-card-text>
                 <v-row align="start">
                   <!-- Avatar and Divider -->
                   <v-col cols="12" md="4" class="d-flex justify-center align-center" style="margin-top: 90px;">
                     <v-avatar size="200" class="profile-avatar">
-                      <img src="../assets/images/profile_image.jpg" alt="User's Profile Picture" />
+                      <img v-if="user.foto" src="../assets/images/profile_image.jpg" alt="User's Profile Picture" />
+                      <v-icon v-else class="mr-md-4" color="white" size="200">
+                        <!-- Inserir metodo de modificar a imagem + cloudinary -->
+                        mdi-account-circle
+                      </v-icon>
                     </v-avatar>
                   </v-col>
 
@@ -39,16 +44,7 @@
                         </span>
                       </v-col>
                     </v-row>
-                    <v-row align="center" style="margin-bottom: 8px;">
-                      <v-col cols="4">
-                        <label class="text-white custom-label">Password:</label>
-                      </v-col>
-                      <v-col cols="8">
-                        <span class="text-white font-weight-regular" style="text-align: left; display: block;">
-                          {{ user.password.replace(/./g, '●') }}
-                        </span>
-                      </v-col>
-                    </v-row>
+
                     <v-row align="start" style="margin-bottom: 8px;">
                       <v-col cols="4">
                         <label class="text-white custom-label">Bio:</label>
@@ -80,23 +76,13 @@
                       </v-col>
                       <v-col cols="8">
                         <div class="d-flex flex-wrap">
-                          <v-tooltip
-                            v-for="badge in user.badges"
-                            :key="badge.id"
-                            top
-                            :open-on-hover="true"
-                            transition="scale-transition"
-                          >
+                          <v-tooltip v-for="badge in user.badges" :key="badge.id" top :open-on-hover="true"
+                            transition="scale-transition">
                             <template v-slot:activator="{ props }">
-                              <v-chip
-                                class="badge-chip"
-                                v-bind="props"
-                                :style="badge.achieved 
-                                  ? 'background-color: #ff00ee; color: white;' 
-                                  : 'background-color: #555; color: #aaa;'"
-                                style="margin: 4px;"
-                                @click="showBadgeDetails(badge)"
-                              >
+                              <v-chip class="badge-chip" v-bind="props" :style="badge.achieved
+                                ? 'background-color: #ff00ee; color: white;'
+                                : 'background-color: #555; color: #aaa;'" style="margin: 4px;"
+                                @click="showBadgeDetails(badge)">
                                 <v-icon>{{ badge.icon }}</v-icon>
                               </v-chip>
                             </template>
@@ -113,11 +99,11 @@
                           {{ selectedBadge?.title || 'Badge Details' }}
                         </v-card-title>
                         <v-card-text>
-                          <p v-if="selectedBadge?.achieved" class="text-white text-body1">
+                          <p v-if="1 == 1" class="text-white text-body1">
                             {{ selectedBadge.description }}
                           </p>
                           <p v-else class="text-white text-body1">
-                            You haven’t obtained this badge yet!
+                            You haven't obtained this badge yet!
                           </p>
                         </v-card-text>
                         <v-card-actions>
@@ -222,37 +208,18 @@
 
 
 <script>
+
+
+import { useUserStore } from '@/stores/users';
 export default {
   data() {
     return {
-      user: {
-        name: "Jessica Fletcher",
-        email: "jessica@example.com",
-        password: "mysecurepassword",
-        bio: "Fusce nisi leo, porta nec diam vitae, badictum fermentum odio. Fusce venenatis, tortor in imperdiet semper, ante arcu accumsan orci.",
-        points: 1200,
-        badges: [
-        { id: 1, icon: 'mdi-cart', title: 'Biggest Buyer', description: 'Awarded for purchasing the most items in a single month.', achieved: true },
-        { id: 2, icon: 'mdi-account-group', title: 'Best Attendance', description: 'Recognized for attending every event in a year.', achieved: true },
-        { id: 3, icon: 'mdi-calendar-star', title: 'Event Star', description: 'Earned for organizing three successful events.', achieved: false },
-        { id: 4, icon: 'mdi-code-tags', title: 'Tech Enthusiast', description: 'For contributing code to open-source projects.', achieved: false },
-        { id: 5, icon: 'mdi-earth', title: 'Global Networker', description: 'Granted for connecting with members from five countries.', achieved: true },
-        { id: 6, icon: 'mdi-star', title: 'Rising Star', description: 'Given to a participant who showed exceptional progress in the workshops or coding bootcamps.', achieved: true },
-        { id: 7, icon: 'mdi-trophy', title: 'Innovator of the Year', description: 'Awarded to the participant who proposed the most groundbreaking idea during the event\'s innovation challenge.', achieved: false },
-        { id: 8, icon: 'mdi-hand-heart', title: 'Event Ally', description: 'For assisting the most attendees during the event by sharing knowledge or providing guidance.', achieved: true },
-        { id: 9, icon: 'mdi-code-braces', title: 'Hackathon Master', description: 'Recognized for leading a winning team in the event’s hackathon.', achieved: false },
-        { id: 10, icon: 'mdi-microphone', title: 'Inspirational Speaker', description: 'Given to keynote speakers who delivered compelling and impactful sessions.', achieved: true },
-        { id: 11, icon: 'mdi-leaf', title: 'Eco-Tech Advocate', description: 'Awarded for presenting sustainable tech solutions during the event.', achieved: false },
-        { id: 12, icon: 'mdi-account-multiple', title: 'Most Connected', description: 'Granted to attendees who networked with 50+ participants during the event.', achieved: true },
-        { id: 13, icon: 'mdi-rocket', title: 'Tech Trailblazer', description: 'For showcasing a product or prototype that adopts emerging technologies.', achieved: false },
-        { id: 14, icon: 'mdi-shield-check', title: 'Cybersecurity Advocate', description: 'Given to participants who presented significant contributions to securing digital ecosystems.', achieved: true },
-      ],
-
-      },
+      userStore: useUserStore(),
       badgeModal: false,
       selectedBadge: null,
       editedUser: {},
       editDialog: false,
+      password: "",
       events: [
         {
           id: 1,
@@ -284,15 +251,24 @@ export default {
       this.badgeModal = true;
     },
 
-    saveData() {
-      Object.assign(this.user, this.editedUser);
+    saveData() { //ADD PASSWORD HASSHING AND HANDLE FOR CHANGE
+      if (this.editedUser.password != "") {
+        Object.assign(this.user, this.editedUser);
+      }
       this.editDialog = false;
+
     },
+  },
+  computed: {
+    user() {
+      return this.userStore.getLoggedInUser
+    }
   },
   watch: {
     editDialog(val) {
       if (val) {
         this.editedUser = { ...this.user };
+        this.editedUser.password = ""
       }
     },
   },
@@ -434,6 +410,6 @@ export default {
   .event-row {
     flex-direction: column;
   }
-  
+
 }
 </style>

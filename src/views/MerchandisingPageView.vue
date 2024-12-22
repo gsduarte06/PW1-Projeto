@@ -1,93 +1,74 @@
 <template>
-  <v-container fluid class="main-container">
-    <v-row justify="center">
-      <v-col cols="12" md="10" class="pa-4">
-        <v-card class="mx-auto card-container">
-          <v-card-title class="text-h4 card-title">
-            MERCHANDISE OF THE EVENT
-          </v-card-title>
-          <v-card-text>
-            <!-- Merchandise Row -->
-            <v-row class="d-flex justify-start">
-              <v-col
-                v-for="merchandise in event.merchandise"
-                :key="merchandise.id"
-                cols="12" sm="6" md="4"
-                class="d-flex justify-center mb-4"
-              >
-                <v-card class="merchandise-card">
-                  <v-img
-                    :src="merchandise.image"
-                    aspect-ratio="1"
-                    class="merchandise-image"
-                  ></v-img>
-                  <v-card-title class="text-white text-h6 merchandise-title">
-                    {{ merchandise.name }}
-                  </v-card-title>
-                  <v-card-subtitle class="text-white merchandise-price">
-                    Price: ${{ merchandise.price }}
-                  </v-card-subtitle>
-                  <v-card-actions class="d-flex justify-center">
-                    <v-btn
-                      class="add-to-cart-btn"
-                      @click="addToCart(merchandise)"
-                      color="pink"
-                      dark
-                    >
-                      Add to Cart
-                    </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-col>
-            </v-row>
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div v-if="this.event != null">
+    <v-container fluid class="main-container">
+      <v-row justify="center">
+        <v-col cols="12" md="10" class="pa-4">
+          <v-card class="mx-auto card-container">
+            <v-card-title class="text-h4 card-title">
+              MERCHANDISE OF THE EVENT
+            </v-card-title>
+            <v-card-text>
+              <!-- Merchandise Row -->
+              <v-row class="d-flex justify-start">
+                <v-col v-for="merchandise in event.merchandise" :key="merchandise.id" cols="12" sm="6" md="4"
+                  class="d-flex justify-center mb-4">
+                  <v-card class="merchandise-card">
+                    <v-img :src="merchandise.image" aspect-ratio="1" class="merchandise-image"></v-img>
+                    <v-card-title class="text-white text-h6 merchandise-title">
+                      {{ merchandise.name }}
+                    </v-card-title>
+                    <v-card-subtitle class="text-white merchandise-price">
+                      Price: ${{ merchandise.price }}
+                    </v-card-subtitle>
+                    <v-card-actions class="d-flex justify-center">
+                      <v-btn class="add-to-cart-btn" @click="addToCart(merchandise)" color="pink" dark>
+                        Add to Cart
+                      </v-btn>
+                    </v-card-actions>
+                  </v-card>
+                </v-col>
+              </v-row>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
 
-  <!-- Simple Alert -->
-  <div v-if="alert.visible" class="simple-alert">
-    <span>{{ alert.message }}</span>
+    <!-- Simple Alert -->
+    <div v-if="alert.visible" class="simple-alert">
+      <span>{{ alert.message }}</span>
+    </div>
+  </div>
+  <div v-else>
+    <div class="d-flex flex-column justify-center align-center h-80" style="background-color: #00041f">
+
+      <!-- Skeleton Loader -->
+      <v-skeleton-loader type="heading, image@2, paragraph@4" class="mt-5"
+        style="background-color: #00041f"></v-skeleton-loader>
+    </div>
   </div>
 </template>
 
 <script>
-import BlackTshirt from '../assets/images/black_tshirt.png'
-import WhiteMug from "../assets/images/white_mug.png";
-import Keychain from "../assets/images/keychain.png";
-
+import { useEventStore } from '../stores/event';
 export default {
   data() {
     return {
-      // Single event data
-      event: {
-        merchandise: [
-          {
-            id: 1,
-            name: "Black T-Shirt",
-            price: 19.99,
-            image: BlackTshirt,
-          },
-          {
-            id: 2,
-            name: "White Mug",
-            price: 8.99,
-            image: WhiteMug,
-          },
-          {
-            id: 3,
-            name: "Keychain",
-            price: 3.99,
-            image: Keychain,
-          },
-        ],
-      },
+      eventStore: useEventStore(),
+
       alert: {
         visible: false,
         message: "",
       },
     };
+  },
+  async mounted() {
+    await this.eventStore.fetchevents()
+  },
+  computed: {
+    event() {
+      return this.eventStore.getEvent
+    }
   },
   methods: {
     addToCart(item) {
