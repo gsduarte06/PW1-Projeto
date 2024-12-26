@@ -6,6 +6,7 @@ import LeaderboardPage from '../views/LeaderboardPageView.vue'
 import ProfilePage from '../views/ProfilePageView.vue'
 import EventPage from '../views/EventPageView.vue'
 import MerchandisingPage from '../views/MerchandisingPageView.vue'
+import SpeakerPage from '../views/SpeakerPageView.vue'
 import AdminPage from '../views/Admin/AdminPageView.vue'
 import AdminEventPage from '../views/Admin/AdminEventPageView.vue'
 import { useUserStore } from '@/stores/users'
@@ -46,6 +47,11 @@ const router = createRouter({
       path: '/merchandising',
       name: 'merchandising',
       component: MerchandisingPage,
+    },
+    {
+      path: '/speaker',
+      name: 'speaker',
+      component: SpeakerPage,
     },
     {
       path: '/admin',
