@@ -190,9 +190,11 @@
               </div>
               <v-divider color="#fff" class="my-4"></v-divider>
               <v-list dense style="background-color: #59398E;">
-                <v-list-item v-for="(feature, index) in event.princing.advancedFeatures" :key="index">
-                  <v-icon class="mr-2" color="light-green">mdi-check-circle</v-icon>
-                  <span class="text-white">{{ feature }}</span>
+                <v-list-item v-for="(feature, index) in event.princing.premiumFeatures" :key="index">
+                  <v-icon class="mr-2"
+                    :color="event.princing.advancedFeatures[index] == feature ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
+                  <span :class="event.princing.advancedFeatures[index] == feature ? 'text-white' : 'text-grey'">{{
+                    feature }}</span>
                 </v-list-item>
               </v-list>
               <v-card-actions class="justify-center mt-5">
@@ -218,7 +220,7 @@
               </div>
               <v-divider color="black" class="my-4"></v-divider>
               <v-list dense style="background-color: #FFF;">
-                <v-list-item v-for="(feature, index) in event.princing.advancedFeatures" :key="index">
+                <v-list-item v-for="(feature, index) in event.princing.premiumFeatures" :key="index">
                   <v-icon class="mr-2" color="light-green">mdi-check-circle</v-icon>
                   <span class="text-black">{{ feature }}</span>
                 </v-list-item>
@@ -246,9 +248,11 @@
               </div>
               <v-divider color="#fff" class="my-4"></v-divider>
               <v-list dense style="background-color: #000B52;">
-                <v-list-item v-for="(feature, index) in event.princing.advancedFeatures" :key="index">
-                  <v-icon class="mr-2" color="light-green">mdi-check-circle</v-icon>
-                  <span class="text-white">{{ feature }}</span>
+                <v-list-item v-for="(feature, index) in event.princing.premiumFeatures" :key="index">
+                  <v-icon class="mr-2"
+                    :color="event.princing.beginnerFeatures[index] == feature ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
+                  <span :class="event.princing.beginnerFeatures[index] == feature ? 'text-white' : 'text-grey'">{{
+                    feature }}</span>
                 </v-list-item>
               </v-list>
               <v-card-actions class="justify-center mt-5">
@@ -323,12 +327,11 @@ export default {
       timeleft: {},
       comments: [{ id_comment: 1, user: "gsd", content: "loving the event" }, { id_comment: 2, user: "diogo", content: "loving the event" }],
       createCommentContent: null
-
-
     };
   },
   async beforeMount() {
     await this.eventStore.fetchevents()
+
   },
   mounted() {
     this.intervalId = setInterval(() => {
@@ -347,7 +350,11 @@ export default {
 
       this.timeleft = { days, hours, minutes, seconds }
     }, 1000);
+
+
   },
+
+
   computed: {
     paginatedSpeakers() {
       const pages = [];
@@ -358,8 +365,8 @@ export default {
       return pages;
     },
     event() {
-      console.log(this.eventStore.getEvent);
       return this.eventStore.getEvent
+
     }
   },
   methods: {

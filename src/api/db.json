@@ -11,29 +11,18 @@
           "Access to all days of the event",
           "Access to all the lectures",
           "Get a free T-shirt",
-          "Free meals throughout the day",
-          "Background access",
-          "Meet event speakers",
-          "Get a certificate"
+          "Free meals throughout the day"
         ],
         "premiumFeatures": [
           "Access to all days of the event",
-          "Access to all the lectures",
-          "Get a personalized T-shirt",
-          "Free meals throughout the day",
-          "Background access",
-          "Meet event speakers",
-          "Get a certificate"
-        ],
-        "beginnerFeatures": [
-          "Access to 1 day of the event",
           "Access to all the lectures",
           "Get a free T-shirt",
           "Free meals throughout the day",
           "Background access",
           "Meet event speakers",
           "Get a certificate"
-        ]
+        ],
+        "beginnerFeatures": ["Access to all days of the event", "Access to all the lectures"]
       },
       "speakers": [
         {

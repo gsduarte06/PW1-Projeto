@@ -13,7 +13,6 @@ import { useUserStore } from '@/stores/users'
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   scrollBehavior(to, from, savedPosition) {
-    // always scroll to top
     return { top: 0 }
   },
   routes: [
@@ -51,11 +50,6 @@ const router = createRouter({
       path: '/merchandising',
       name: 'merchandising',
       component: MerchandisingPage,
-    },
-    {
-      path: '/speaker',
-      name: 'speaker',
-      component: SpeakerPage,
     },
     {
       path: '/admin',

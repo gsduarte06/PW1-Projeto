@@ -30,7 +30,7 @@
                       </v-col>
                       <v-col cols="8">
                         <span class="text-white font-weight-regular" style="text-align: left; display: block;">
-                          {{ user.name }}
+                          {{ user.username }}
                         </span>
                       </v-col>
                     </v-row>
@@ -141,7 +141,7 @@
                         <label class="text-white text-body1 font-weight-medium">Name:</label>
                       </v-col>
                       <v-col cols="8">
-                        <v-text-field class="text-white" v-model="editedUser.name" variant="underlined"
+                        <v-text-field class="text-white" v-model="editedUser.username" variant="underlined"
                           density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>

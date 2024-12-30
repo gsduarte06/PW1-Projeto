@@ -153,7 +153,6 @@ export const useUserStore = defineStore('users', {
           ],
           merchandising: [],
         })
-        this.uploadData()
         return true
       } else {
         return false

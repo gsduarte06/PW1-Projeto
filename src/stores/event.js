@@ -8,7 +8,7 @@ const API_ENDPOINT = 'PortoTechHub'
 export const useEventStore = defineStore('eventStore', {
   state: () => ({
     event: null,
-    ticketOptions: [
+    AllticketOptions: [
       'Access to all days of the event',
       'Access to all the lectures',
       'Get a free T-shirt',
@@ -28,17 +28,18 @@ export const useEventStore = defineStore('eventStore', {
   actions: {
     async fetchevents() {
       try {
-        this.event = (await api.get(API_BASE_URL, API_ENDPOINT))[0]
-        for (let index = 0; index < this.event.schedule.length; index++) {
-          const groupedByBegin = this.event.schedule[index].content.reduce((acc, item) => {
+        const eventData = (await api.get(API_BASE_URL, API_ENDPOINT))[0]
+        for (let index = 0; index < eventData.schedule.length; index++) {
+          const groupedByBegin = eventData.schedule[index].content.reduce((acc, item) => {
             if (!acc[item.begin]) {
               acc[item.begin] = []
             }
             acc[item.begin].push(item)
             return acc
           }, {})
-          this.event.schedule[index].content = Object.values(groupedByBegin)
+          eventData.schedule[index].content = Object.values(groupedByBegin)
         }
+        this.event = eventData
       } catch (error) {
         throw new Error('Erro ao obter os dados do evento: ' + error)
       }
