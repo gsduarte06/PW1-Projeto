@@ -13,10 +13,15 @@
 
       <v-btn v-if="this.userStore.getLoggedInUser == null" @click="LoginRegister" style="background: #ff00ee"
         class="rounded-pill font-weight-bold px-6" rounded>Login/Register</v-btn>
-      <v-avatar v-else-if="foto != null" :image="foto" size="x-large" @click="ProfilePage"></v-avatar>
-      <v-avatar v-else size="x-large" @click="ProfilePage"> <v-icon class="mr-md-4" color="white" size="40">
-          mdi-account-circle
-        </v-icon></v-avatar>
+      <div v-else>
+        <v-avatar size="auto">
+          <v-icon class="mr-md-4" color="white" size="35"> mdi-bell</v-icon>
+        </v-avatar>
+        <v-avatar v-if="foto != null" :image="foto" size="x-large" @click="ProfilePage"></v-avatar>
+        <v-avatar v-else size="x-large" @click="ProfilePage"> <v-icon class="mr-md-4" color="white" size="40">
+            mdi-account-circle
+          </v-icon></v-avatar>
+      </div>
     </v-toolbar>
   </div>
 </template>

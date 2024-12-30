@@ -22,14 +22,8 @@
               <v-card-title>{{ user.name }}</v-card-title>
               <v-card-subtitle>Role: {{ user.role }}</v-card-subtitle>
               <v-card-text>
-                <v-select
-                  v-model="user.role"
-                  :items="roles"
-                  label="Change Role"
-                  dense
-                  outlined
-                  style="color: white;"
-                ></v-select>
+                <v-select v-model="user.role" :items="roles" label="Change Role" dense outlined
+                  style="color: white;"></v-select>
               </v-card-text>
               <v-card-actions>
                 <v-btn color="red" @click="removeUser(index)">Remove User</v-btn>
@@ -42,13 +36,7 @@
         <p class="text-h6 mt-5">Add New User</p>
         <v-form>
           <v-text-field v-model="newUser.name" label="Name" outlined dense></v-text-field>
-          <v-select
-            v-model="newUser.role"
-            :items="roles"
-            label="Role"
-            outlined
-            dense
-          ></v-select>
+          <v-select v-model="newUser.role" :items="roles" label="Role" outlined dense></v-select>
           <v-btn color="primary" class="mt-3" @click="addUser">Add User</v-btn>
         </v-form>
       </div>
@@ -74,8 +62,7 @@ export default {
   },
   methods: {
     redirectToEvents() {
-      // Navigate to /admin/1
-      this.$router.push('/admin/1');
+      this.$router.push('/admin/event');
     },
     addUser() {
       if (this.newUser.name && this.newUser.role) {
@@ -94,8 +81,10 @@ export default {
 
 <style scoped>
 .v-row {
-  margin: 0; /* Removes the space between columns */
+  margin: 0;
+  /* Removes the space between columns */
 }
+
 .v-card {
   border: 1px solid white;
 }

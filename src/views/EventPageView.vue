@@ -20,25 +20,25 @@
           <v-row class="text-center mt-14">
             <v-col class="pa-0">
               <div>
-                <div class="text-h3">{{ event.timeleft.days }}</div>
+                <div class="text-h3">{{ timeleft.days }}</div>
                 <div class="text-body2">days</div>
               </div>
             </v-col>
             <v-col class="pa-0">
               <div>
-                <div class="text-h3">{{ event.timeleft.hours }}</div>
+                <div class="text-h3">{{ timeleft.hours }}</div>
                 <div class="text-body2">hours</div>
               </div>
             </v-col>
             <v-col class="pa-0">
               <div>
-                <div class="text-h3">{{ event.timeleft.minutes }}</div>
+                <div class="text-h3">{{ timeleft.minutes }}</div>
                 <div class="text-body2">minutes</div>
               </div>
             </v-col>
             <v-col class="pa-0">
               <div>
-                <div class="text-h3">{{ event.timeleft.seconds }}</div>
+                <div class="text-h3">{{ timeleft.seconds }}</div>
                 <div class="text-body2">seconds</div>
               </div>
             </v-col>
@@ -320,17 +320,33 @@ export default {
       eventStore: useEventStore(),
       tab: null,
       cardsPerPage: 6,
-
+      timeleft: {},
       comments: [{ id_comment: 1, user: "gsd", content: "loving the event" }, { id_comment: 2, user: "diogo", content: "loving the event" }],
       createCommentContent: null
 
 
     };
   },
-  async mounted() {
+  async beforeMount() {
     await this.eventStore.fetchevents()
+  },
+  mounted() {
+    this.intervalId = setInterval(() => {
+      const now = new Date();
+      const eventDate = new Date(this.event.timeleft);
+      const timeDiff = eventDate - now;
 
+      if (timeDiff <= 0) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      }
 
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      this.timeleft = { days, hours, minutes, seconds }
+    }, 1000);
   },
   computed: {
     paginatedSpeakers() {

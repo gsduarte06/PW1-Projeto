@@ -3,8 +3,8 @@ const saltRounds = 10
 import bcrypt from 'bcryptjs'
 export const useUserStore = defineStore('users', {
   state: () => ({
-    users: JSON.parse(localStorage.getItem('usersPortoTechHub')) || [],
-    userLoggedInUsername: JSON.parse(sessionStorage.getItem('LogedInuserPortoTechHub')) || null,
+    users: [],
+    userLoggedInUsername: null,
   }),
   getters: {
     getUsers() {
@@ -32,9 +32,7 @@ export const useUserStore = defineStore('users', {
     },
     setLoggedInUser(user) {
       this.userLoggedInUsername = user
-      this.uploadData()
     },
-
     createAccount(username, email, password) {
       if (!this.users.find((user) => user.username == username)) {
         this.users.push({
@@ -161,10 +159,17 @@ export const useUserStore = defineStore('users', {
         return false
       }
     },
-
-    uploadData() {
-      localStorage.setItem('usersPortoTechHub', JSON.stringify(this.users))
-      sessionStorage.setItem('LogedInuserPortoTechHub', JSON.stringify(this.userLoggedInUsername))
-    },
   },
+  persist: [
+    {
+      key: 'usersPortoTechHub',
+      pick: ['users'],
+      storage: localStorage,
+    },
+    {
+      key: 'LogedInuserPortoTechHub',
+      pick: ['userLoggedInUsername'],
+      storage: sessionStorage,
+    },
+  ],
 })

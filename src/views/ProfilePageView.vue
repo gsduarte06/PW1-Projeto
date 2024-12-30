@@ -120,10 +120,14 @@
             </v-card>
 
             <!-- Edit Button -->
-            <v-row justify="center" class="mt-4">
+            <v-row justify="center" class="mt-4 d-flex flex-row justify-space-evenly">
+              <v-btn class="edit-btn" @click="logout">
+                Logout
+              </v-btn>
               <v-btn class="edit-btn" @click="editDialog = true">
                 Edit Data
               </v-btn>
+
             </v-row>
             <v-dialog v-model="editDialog" max-width="600px">
               <v-card class="edit-dialog-card" style="padding-top: 16px; padding-bottom: 16px;">
@@ -250,7 +254,10 @@ export default {
       this.selectedBadge = badge;
       this.badgeModal = true;
     },
-
+    logout() {
+      this.userStore.setLoggedInUser("")
+      this.$router.push('/')
+    },
     saveData() { //ADD PASSWORD HASSHING AND HANDLE FOR CHANGE
       if (this.editedUser.password != "") {
         Object.assign(this.user, this.editedUser);

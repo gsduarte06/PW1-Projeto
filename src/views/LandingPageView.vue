@@ -22,25 +22,25 @@
           <v-row class="text-center mt-14">
             <v-col class="pa-0">
               <div>
-                <div class="text-h3">{{ event.timeleft.days }}</div>
+                <div class="text-h3">{{ timeleft.days }}</div>
                 <div class="text-body2">days</div>
               </div>
             </v-col>
             <v-col class="pa-0">
               <div>
-                <div class="text-h3">{{ event.timeleft.hours }}</div>
+                <div class="text-h3">{{ timeleft.hours }}</div>
                 <div class="text-body2">hours</div>
               </div>
             </v-col>
             <v-col class="pa-0">
               <div>
-                <div class="text-h3">{{ event.timeleft.minutes }}</div>
+                <div class="text-h3">{{ timeleft.minutes }}</div>
                 <div class="text-body2">minutes</div>
               </div>
             </v-col>
             <v-col class="pa-0">
               <div>
-                <div class="text-h3">{{ event.timeleft.seconds }}</div>
+                <div class="text-h3">{{ timeleft.seconds }}</div>
                 <div class="text-body2">seconds</div>
               </div>
             </v-col>
@@ -59,7 +59,6 @@
         </div>
       </div>
     </div>
-
 
     <!-- Details Event -->
     <div style="margin-top: 100px" class="d-flex flex-row justify-space-evenly  w-75 align-self-center">
@@ -114,13 +113,12 @@
       <v-btn class="rounded-xl text-white text-body1 align-self-center mt-16" elevation="6" style="
             background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee);
             text-transform: none;
-          ">List of All Speakers</v-btn>
+          " @click="goToEvent()">List of All Speakers</v-btn>
     </div>
 
   </div>
   <div v-else>
     <div class="d-flex flex-column justify-center align-center h-80" style="background-color: #00041f">
-
       <!-- Skeleton Loader -->
       <v-skeleton-loader type="heading, image@2, paragraph@4" class="mt-5"
         style="background-color: #00041f"></v-skeleton-loader>
@@ -137,15 +135,39 @@ export default {
     return {
       tab: null,
       eventStore: useEventStore(),
+      intervalId: null,
+      timeleft: {},
     }
   },
-  async mounted() {
+  async beforeMount() {
     await this.eventStore.fetchevents()
+  },
+  mounted() {
+    this.intervalId = setInterval(() => {
+      const now = new Date();
+      const eventDate = new Date(this.event.timeleft);
+      const timeDiff = eventDate - now;
+
+      if (timeDiff <= 0) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+      }
+
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      this.timeleft = { days, hours, minutes, seconds }
+    }, 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.intervalId);
   },
   computed: {
     event() {
       return this.eventStore.getEvent
-    }
+    },
+
   },
 
   methods: {
@@ -158,7 +180,8 @@ export default {
     },
     goToEvent() {
       this.$router.push('/event')
-    }
+    },
+
   },
 
 
