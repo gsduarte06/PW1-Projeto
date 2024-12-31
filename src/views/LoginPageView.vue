@@ -57,6 +57,7 @@ export default {
         if (this.userStore.CheckLogUserIn(this.username, this.password)) {
           console.log("Success");
           this.loginError = false; // Reset error on successful login
+
           this.$router.push('/');
         } else {
           throw new Error("Failed login in")

@@ -5,13 +5,13 @@
         <v-row justify="center">
           <v-col cols="12" md="8">
             <v-card class="mx-auto elevation-0"
-              style="border-radius: 12px; background-color: #00041f; margin-top: 15px;">
+              style="border-radius: 12px; background-color: #00041f; margin-top: 15px">
               <v-card-text>
                 <v-row align="start">
                   <!-- Avatar and Divider -->
-                  <v-col cols="12" md="4" class="d-flex justify-center align-center" style="margin-top: 90px;">
+                  <v-col cols="12" md="4" class="d-flex justify-center align-center" style="margin-top: 90px">
                     <v-avatar size="200" class="profile-avatar">
-                      <img v-if="user.foto" src="../assets/images/profile_image.jpg" alt="User's Profile Picture" />
+                      <img v-if="user.foto" :src="user.foto" alt="User's Profile Picture" />
                       <v-icon v-else class="mr-md-4" color="white" size="200">
                         <!-- Inserir metodo de modificar a imagem + cloudinary -->
                         mdi-account-circle
@@ -22,55 +22,55 @@
                   <!-- Adjusted Divider -->
                   <v-col cols="1" class="divider d-flex justify-center align-stretch"></v-col>
 
-                  <v-col cols="12" md="7" style="margin-top: 20px; padding-left: 10px; padding-right: 10px;">
+                  <v-col cols="12" md="7" style="margin-top: 20px; padding-left: 10px; padding-right: 10px">
                     <!-- User Info (Name, Email, etc.) -->
-                    <v-row align="center" style="margin-bottom: 8px;">
+                    <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white custom-label">Name:</label>
                       </v-col>
                       <v-col cols="8">
-                        <span class="text-white font-weight-regular" style="text-align: left; display: block;">
+                        <span class="text-white font-weight-regular" style="text-align: left; display: block">
                           {{ user.username }}
                         </span>
                       </v-col>
                     </v-row>
-                    <v-row align="center" style="margin-bottom: 8px;">
+                    <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white custom-label">Email:</label>
                       </v-col>
                       <v-col cols="8">
-                        <span class="text-white font-weight-regular" style="text-align: left; display: block;">
+                        <span class="text-white font-weight-regular" style="text-align: left; display: block">
                           {{ user.email }}
                         </span>
                       </v-col>
                     </v-row>
 
-                    <v-row align="start" style="margin-bottom: 8px;">
+                    <v-row align="start" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white custom-label">Bio:</label>
                       </v-col>
                       <v-col cols="8">
                         <span class="text-white font-weight-regular"
-                          style="font-size: 18px; text-align: left; display: block;">
+                          style="font-size: 18px; text-align: left; display: block">
                           {{ user.bio }}
                         </span>
                       </v-col>
                     </v-row>
 
                     <!-- Points info placed below Bio -->
-                    <v-row align="center" style="margin-bottom: 8px;">
+                    <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white custom-label">Points:</label>
                       </v-col>
                       <v-col cols="8">
-                        <span class="text-white font-weight-regular" style="text-align: left; display: block;">
+                        <span class="text-white font-weight-regular" style="text-align: left; display: block">
                           {{ user.points }}
                         </span>
                       </v-col>
                     </v-row>
 
                     <!-- Icon Badges Section -->
-                    <v-row align="start" style="margin-bottom: 8px;">
+                    <v-row align="start" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white custom-label">Badges:</label>
                       </v-col>
@@ -81,8 +81,8 @@
                             <template v-slot:activator="{ props }">
                               <v-chip class="badge-chip" v-bind="props" :style="badge.achieved
                                 ? 'background-color: #ff00ee; color: white;'
-                                : 'background-color: #555; color: #aaa;'" style="margin: 4px;"
-                                @click="showBadgeDetails(badge)">
+                                : 'background-color: #555; color: #aaa;'
+                                " style="margin: 4px" @click="showBadgeDetails(badge)">
                                 <v-icon>{{ badge.icon }}</v-icon>
                               </v-chip>
                             </template>
@@ -96,7 +96,7 @@
                     <v-dialog v-model="badgeModal" max-width="500px">
                       <v-card class="badge-modal-card">
                         <v-card-title class="badge-modal-title">
-                          {{ selectedBadge?.title || 'Badge Details' }}
+                          {{ selectedBadge?.title || "Badge Details" }}
                         </v-card-title>
                         <v-card-text>
                           <p v-if="1 == 1" class="text-white text-body1">
@@ -113,7 +113,6 @@
                         </v-card-actions>
                       </v-card>
                     </v-dialog>
-
                   </v-col>
                 </v-row>
               </v-card-text>
@@ -121,22 +120,15 @@
 
             <!-- Edit Button -->
             <v-row justify="center" class="mt-4 d-flex flex-row justify-space-evenly">
-              <v-btn class="edit-btn" @click="logout">
-                Logout
-              </v-btn>
-              <v-btn class="edit-btn" @click="editDialog = true">
-                Edit Data
-              </v-btn>
-
+              <v-btn class="edit-btn" @click="logout"> Logout </v-btn>
+              <v-btn class="edit-btn" @click="editDialog = true"> Edit Data </v-btn>
             </v-row>
             <v-dialog v-model="editDialog" max-width="600px">
-              <v-card class="edit-dialog-card" style="padding-top: 16px; padding-bottom: 16px;">
-                <v-card-title class="edit-dialog-title">
-                  Edit User Details
-                </v-card-title>
-                <v-card-text style="padding-top: 8px; padding-bottom: 8px;">
+              <v-card class="edit-dialog-card" style="padding-top: 16px; padding-bottom: 16px">
+                <v-card-title class="edit-dialog-title"> Edit User Details </v-card-title>
+                <v-card-text style="padding-top: 8px; padding-bottom: 8px">
                   <v-form ref="editForm">
-                    <v-row align="center" style="margin-bottom: 8px;">
+                    <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Name:</label>
                       </v-col>
@@ -145,7 +137,7 @@
                           density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>
-                    <v-row align="center" style="margin-bottom: 8px;">
+                    <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Email:</label>
                       </v-col>
@@ -154,7 +146,7 @@
                           density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>
-                    <v-row align="center" style="margin-bottom: 8px;">
+                    <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Password:</label>
                       </v-col>
@@ -163,7 +155,7 @@
                           variant="underlined" density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>
-                    <v-row align="start" style="margin-bottom: 8px; " class="">
+                    <v-row align="start" style="margin-bottom: 8px" class="">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Bio:</label>
                       </v-col>
@@ -174,28 +166,26 @@
                     </v-row>
                   </v-form>
                 </v-card-text>
-                <v-card-actions style="padding-top: 8px;" class="mr-4">
+                <v-card-actions style="padding-top: 8px" class="mr-4">
                   <v-btn text @click="editDialog = false" class="btn-cancel">
                     Cancel
                   </v-btn>
-                  <v-btn text @click="saveData" class="btn-save">
-                    Save
-                  </v-btn>
+                  <v-btn text @click="saveData" class="btn-save"> Save </v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
 
             <div class="d-flex flex-column align-self-center mt-16">
-              <p class="text-h3 " style="color:#ff00ee">Your Events</p>
+              <p class="text-h3" style="color: #ff00ee">Your Events</p>
               <div class="d-flex flex-column">
                 <!-- Cards -->
                 <div v-for="event in events" :key="event.id" class="d-flex flex-row mt-16">
-                  <div class=" d-flex flex-column align-center justify-center text-white text-body1 font-weight-medium"
-                    style="background-color: #000B52; min-height: 180px; width:10%">
-                    <p> {{ event.BeginDateSmall.split(" ")[0] }}</p>
+                  <div class="d-flex flex-column align-center justify-center text-white text-body1 font-weight-medium"
+                    style="background-color: #000b52; min-height: 180px; width: 10%">
+                    <p>{{ event.BeginDateSmall.split(" ")[0] }}</p>
                     <p>{{ event.BeginDateSmall.split(" ")[1] }}</p>
                   </div>
-                  <div class="d-flex flex-column justify-space-between ma-2 ml-5 " style="width:90%">
+                  <div class="d-flex flex-column justify-space-between ma-2 ml-5" style="width: 90%">
                     <p class="text-white text-h4">{{ event.Title }}</p>
                     <p class="text-white text-body1">{{ event.location }}</p>
                     <p class="text-white text-body1">{{ event.description }}</p>
@@ -210,11 +200,8 @@
   </div>
 </template>
 
-
 <script>
-
-
-import { useUserStore } from '@/stores/users';
+import { useUserStore } from "@/stores/users";
 export default {
   data() {
     return {
@@ -230,21 +217,24 @@ export default {
           BeginDateSmall: "24 Mar",
           Title: "Vue.js Meetup",
           location: "San Francisco, CA",
-          description: "Join us for a meetup to discuss the latest trends and best practices in Vue.js development.",
+          description:
+            "Join us for a meetup to discuss the latest trends and best practices in Vue.js development.",
         },
         {
           id: 2,
           BeginDateSmall: "4 April",
           Title: "JavaScript Conference",
           location: "New York, NY",
-          description: "A major conference for JavaScript developers. Workshops, keynotes, and networking opportunities.",
+          description:
+            "A major conference for JavaScript developers. Workshops, keynotes, and networking opportunities.",
         },
         {
           id: 3,
           BeginDateSmall: "15 April",
           Title: "Web Development Bootcamp",
           location: "Los Angeles, CA",
-          description: "A week-long bootcamp for aspiring web developers. Intensive training in HTML, CSS, and JavaScript.",
+          description:
+            "A week-long bootcamp for aspiring web developers. Intensive training in HTML, CSS, and JavaScript.",
         },
       ],
     };
@@ -255,27 +245,29 @@ export default {
       this.badgeModal = true;
     },
     logout() {
-      this.userStore.setLoggedInUser("")
-      this.$router.push('/')
+      this.userStore.setLoggedInUser("");
+      this.$router.push("/");
     },
-    saveData() { //ADD PASSWORD HASSHING AND HANDLE FOR CHANGE
-      if (this.editedUser.password != "") {
-        Object.assign(this.user, this.editedUser);
+    saveData() {
+      if (!(this.userStore.checkpassword(this.editedUser.password)) && this.editedUser.password != "") {
+        this.editedUser.password = this.userStore.encryptPassword(this.editedUser.password);
+      } else {
+        this.editedUser.password = this.userStore.getLoggedInUser.password;
       }
+      this.userStore.updateUser(this.editedUser);
       this.editDialog = false;
-
     },
   },
   computed: {
     user() {
-      return this.userStore.getLoggedInUser
-    }
+      return this.userStore.getLoggedInUser;
+    },
   },
   watch: {
     editDialog(val) {
       if (val) {
         this.editedUser = { ...this.user };
-        this.editedUser.password = ""
+        this.editedUser.password = "";
       }
     },
   },
@@ -401,7 +393,6 @@ export default {
   font-weight: bold;
 }
 
-
 @media (max-width: 600px) {
   .profile-avatar img {
     width: 150px;
@@ -417,6 +408,5 @@ export default {
   .event-row {
     flex-direction: column;
   }
-
 }
 </style>
