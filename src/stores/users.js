@@ -18,18 +18,9 @@ export const useUserStore = defineStore('users', {
     },
   },
   actions: {
-    checkpassword(password) {
-      const FoundUser = this.users.find((user) => user.username === this.userLoggedInUsername)
-      const match = bcrypt.compareSync(password, FoundUser.password)
-      return match
-    },
-
-    encryptPassword(password) {
-      return bcrypt.hashSync(password, 10)
-    },
-
     CheckLogUserIn(username, password) {
       const FoundUser = this.users.find((user) => user.username === username)
+      console.log(FoundUser.password)
 
       const match = bcrypt.compareSync(password, FoundUser.password)
 
@@ -162,22 +153,38 @@ export const useUserStore = defineStore('users', {
           ],
           merchandising: [],
         })
+        this.uploadData()
         return true
       } else {
         return false
       }
     },
-
-    updateUser(user) {
-      console.log(
-        this.users[
-          this.users.indexOf(this.users.find((user) => user.username === this.userLoggedInUsername))
-        ],
-      )
-
-      this.users[
-        this.users.indexOf(this.users.find((user) => user.username === this.userLoggedInUsername))
-      ] = user
+    addItemToCart(item) {
+      const loggedInUser = this.getLoggedInUser;
+      if (loggedInUser) {
+        loggedInUser.merchandising.push(item);
+        this.uploadData(); // Ensure persistence
+      } else {
+        console.error('No user is logged in to add items to the cart.');
+      }
+    },
+    removeItemFromCart(index) {
+      const loggedInUser = this.getLoggedInUser;
+      if (loggedInUser) {
+        loggedInUser.merchandising.splice(index, 1);
+        this.uploadData(); // Ensure persistence
+      }
+    },
+    clearCart() {
+      const loggedInUser = this.getLoggedInUser;
+      if (loggedInUser) {
+        loggedInUser.merchandising = [];
+        this.uploadData(); // Ensure persistence
+      }
+    },
+    getCartItems() {
+      const loggedInUser = this.getLoggedInUser;
+      return loggedInUser ? loggedInUser.merchandising : [];
     },
   },
   persist: [

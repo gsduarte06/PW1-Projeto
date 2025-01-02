@@ -76,7 +76,7 @@
               <v-row>
                 <v-col v-for="(speaker, index) in page" :key="index" sm="6" md="4"
                   class="d-flex justify-center align-center">
-                  <v-card style="background:#00041f; border: 1px solid white; width:65%" class="d-flex flex-column">
+                  <v-card @click="showSpeakerModal(speaker)"  style="background:#00041f; border: 1px solid white; width:65%" class="d-flex flex-column">
                     <div class="d-flex flex-column align-center justify-space-evenly">
                       <v-img class="mt-4 rounded-circle" :src="speaker.image" :alt="speaker.name" width="100"
                         aspect-ratio="1/1"></v-img>
@@ -313,6 +313,27 @@
         style="background-color: #00041f"></v-skeleton-loader>
     </div>
   </div>
+    <!-- Speaker Modal -->
+  <v-dialog v-model="speakerModalVisible" max-width="600px">
+    <v-card style="background-color: #00041f; color: white;">
+      <v-card-title class="text-h5" style="color: #ff00ee;">
+        {{ selectedSpeaker?.name }}
+      </v-card-title>
+      <v-card-subtitle style="color: #ff00ee;">
+        {{ selectedSpeaker?.role }}
+      </v-card-subtitle>
+      <v-card-text>
+        <p>{{ selectedSpeaker?.bio }}</p>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn text @click="speakerModalVisible = false" style="color: #ff00ee;">
+          Close
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+
+
 </template>
 
 <script>
@@ -320,6 +341,8 @@ import { useEventStore } from '../stores/event';
 export default {
   data() {
     return {
+      speakerModalVisible: false,
+      selectedSpeaker: null,
       activeSpeakerPage: 0,
       eventStore: useEventStore(),
       tab: null,
@@ -370,7 +393,11 @@ export default {
   methods: {
     scrollTickets() {
       this.$refs.tickets?.scrollIntoView({ behavior: 'smooth' });
-    }
+    },
+    showSpeakerModal(speaker) {
+      this.selectedSpeaker = speaker;
+      this.speakerModalVisible = true;
+    },
   },
 };
 </script>
