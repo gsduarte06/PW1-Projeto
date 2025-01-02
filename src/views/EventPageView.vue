@@ -190,10 +190,10 @@
               </div>
               <v-divider color="#fff" class="my-4"></v-divider>
               <v-list dense style="background-color: #59398E;">
-                <v-list-item v-for="(feature, index) in event.princing.premiumFeatures" :key="index">
+                <v-list-item v-for="(feature, index) in event.pricing.premiumFeatures" :key="index">
                   <v-icon class="mr-2"
-                    :color="event.princing.advancedFeatures[index] == feature ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
-                  <span :class="event.princing.advancedFeatures[index] == feature ? 'text-white' : 'text-grey'">{{
+                    :color="event.pricing.advancedFeatures[index] == feature ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
+                  <span :class="event.pricing.advancedFeatures[index] == feature ? 'text-white' : 'text-grey'">{{
                     feature }}</span>
                 </v-list-item>
               </v-list>
@@ -220,7 +220,7 @@
               </div>
               <v-divider color="black" class="my-4"></v-divider>
               <v-list dense style="background-color: #FFF;">
-                <v-list-item v-for="(feature, index) in event.princing.premiumFeatures" :key="index">
+                <v-list-item v-for="(feature, index) in event.pricing.premiumFeatures" :key="index">
                   <v-icon class="mr-2" color="light-green">mdi-check-circle</v-icon>
                   <span class="text-black">{{ feature }}</span>
                 </v-list-item>
@@ -248,10 +248,10 @@
               </div>
               <v-divider color="#fff" class="my-4"></v-divider>
               <v-list dense style="background-color: #000B52;">
-                <v-list-item v-for="(feature, index) in event.princing.premiumFeatures" :key="index">
+                <v-list-item v-for="(feature, index) in event.pricing.premiumFeatures" :key="index">
                   <v-icon class="mr-2"
-                    :color="event.princing.beginnerFeatures[index] == feature ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
-                  <span :class="event.princing.beginnerFeatures[index] == feature ? 'text-white' : 'text-grey'">{{
+                    :color="event.pricing.beginnerFeatures[index] == feature ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
+                  <span :class="event.pricing.beginnerFeatures[index] == feature ? 'text-white' : 'text-grey'">{{
                     feature }}</span>
                 </v-list-item>
               </v-list>

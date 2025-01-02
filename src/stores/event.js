@@ -21,7 +21,6 @@ export const useEventStore = defineStore('eventStore', {
 
   getters: {
     getEvent() {
-      this.updateevents
       return this.event
     },
   },
@@ -38,9 +37,10 @@ export const useEventStore = defineStore('eventStore', {
       }
       console.log(this.event)
     },
-    async updateevents() {
+    async updateevents(event) {
       try {
-        const update = await api.put(API_BASE_URL, API_ENDPOINT, this.event)
+        this.event = event
+        const update = await api.put(API_BASE_URL, `${API_ENDPOINT}/1`, this.event)
       } catch (error) {
         throw new Error('Erro ao obter os dados do evento: ' + error)
       }

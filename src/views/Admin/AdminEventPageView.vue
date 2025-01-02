@@ -1,5 +1,5 @@
 <template>
-  <v-row no-gutters class="fill-height" style="background-color: #00041f; color: white;">
+  <v-row v-if="updateEvent != null" no-gutters class="fill-height" style="background-color: #00041f; color: white;">
     <v-col cols="12" class="d-flex flex-column mx-auto" style="padding: 20px; max-width: 1000px;">
       <p class="text-h4 mb-5 text-center" style="color: #ff00ee;">Admin Dashboard</p>
 
@@ -9,20 +9,15 @@
         <v-form>
           <v-row dense>
             <v-col cols="12" md="6">
-              <v-text-field v-model="event.BeginDate" label="Begin Date" outlined dense></v-text-field>
+              <v-text-field v-model="updateEvent.BeginDate" label="Event Date" outlined dense></v-text-field>
             </v-col>
             <v-col cols="12" md="6">
-              <v-text-field v-model="event.EndDate" label="End Date" outlined dense></v-text-field>
+              <v-text-field v-model="updateEvent.location" label="Location" outlined dense></v-text-field>
             </v-col>
             <v-col cols="12">
-              <v-text-field v-model="event.Title" label="Event Title" outlined dense></v-text-field>
+              <v-textarea v-model="updateEvent.details" label="Event Details" outlined dense auto-grow></v-textarea>
             </v-col>
-            <v-col cols="12">
-              <v-textarea v-model="event.details" label="Event Details" outlined dense></v-textarea>
-            </v-col>
-            <v-col cols="12">
-              <v-text-field v-model="event.location" label="Location" outlined dense></v-text-field>
-            </v-col>
+
           </v-row>
           <v-btn color="primary" class="mt-3" @click="saveEventDetails">Save Event Details</v-btn>
         </v-form>
@@ -34,7 +29,7 @@
       <div class="mb-10">
         <p class="text-h5 mb-3">Manage Speakers</p>
         <v-row>
-          <v-col cols="12" sm="6" md="4" v-for="(speaker, index) in event.speakers" :key="index" class="mb-5">
+          <v-col cols="12" sm="6" md="4" v-for="(speaker, index) in updateEvent.speakers" :key="index" class="mb-5">
             <v-card style="background-color: #59398e; color: white; border-radius: 10px;">
               <v-card-title class="d-flex justify-space-between">
                 <span>{{ speaker.name }}</span>
@@ -51,16 +46,22 @@
         <p class="text-h6 mt-5">Add New Speaker</p>
         <v-form>
           <v-row dense>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="6">
               <v-text-field v-model="newSpeaker.name" label="Name" outlined dense></v-text-field>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="6">
               <v-text-field v-model="newSpeaker.role" label="Role" outlined dense></v-text-field>
             </v-col>
-            <v-col cols="12" md="4">
+            <v-col cols="12" md="6">
               <v-text-field v-model="newSpeaker.image" label="Image URL" outlined dense></v-text-field>
             </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field v-model="newSpeaker.linkedIn" label="LinkedIn URL" outlined dense></v-text-field>
+            </v-col>
           </v-row>
+          <v-col cols="12">
+            <v-textarea v-model="newSpeaker.description" label="Description" outlined dense auto-grow></v-textarea>
+          </v-col>
           <v-btn color="primary" class="mt-3" @click="addSpeaker">Add Speaker</v-btn>
         </v-form>
       </div>
@@ -71,13 +72,10 @@
       <div>
         <p class="text-h5 mb-3">Edit Ticket Pricing</p>
         <v-row dense>
-          <v-col cols="12" sm="6" md="4" v-for="(features, type) in event.pricing" :key="type">
+          <v-col cols="12" sm="6" md="4" v-for="(features, type) in updateEvent.pricing" :key="type">
             <v-card style="background-color: #2c2f3f; color: white; border-radius: 10px;" class="py-3 px-4">
               <v-card-title class="d-flex justify-space-between">
                 <span class="text-subtitle-1">{{ type }} Ticket</span>
-                <v-btn icon color="red" @click="removeTicketCategory(type)">
-                  <v-icon small>mdi-delete</v-icon>
-                </v-btn>
               </v-card-title>
               <v-divider color="white"></v-divider>
               <v-card-text>
@@ -100,11 +98,6 @@
             </v-card>
           </v-col>
         </v-row>
-        <v-col cols="12" sm="6" md="4">
-          <v-btn color="primary" class="mt-3" @click="addTicketCategory">
-            <v-icon left>mdi-plus</v-icon>Add Ticket Category
-          </v-btn>
-        </v-col>
         <v-btn color="primary" class="mt-5 mx-auto" style="display: block; max-width: 200px;" @click="savePricing">
           Save Pricing
         </v-btn>
@@ -116,7 +109,8 @@
             <v-divider></v-divider>
             <v-card-text>
               <v-form>
-                <v-text-field v-model="newFeature" label="New Feature" outlined dense placeholder="Enter feature description"></v-text-field>
+                <v-text-field v-model="newFeature" label="New Feature" outlined dense
+                  placeholder="Enter feature description"></v-text-field>
               </v-form>
             </v-card-text>
             <v-card-actions>
@@ -133,10 +127,13 @@
 
 
 <script>
+import { useEventStore } from '@/stores/event';
 export default {
   data() {
     return {
-      event: {
+      eventStore: useEventStore(),
+      updateEvent: null,
+      /* event: {
         BeginDate: "21/05/2025",
         EndDate: "25/05/2025",
         Title: "Porto Tech Hub",
@@ -151,21 +148,34 @@ export default {
           { name: "Jane Doe", role: "Executive Producer", image: "https://example.com/speaker1.jpg" },
           { name: "John Smith", role: "Senior Developer", image: "https://example.com/speaker2.jpg" },
         ],
-      },
-      newSpeaker: { name: "", role: "", image: "" },
+      }, */
+      newSpeaker: { name: "", role: "", image: "", description: "", linkedIn: "" },
       featureModal: false,
       currentTicketType: "",
       newFeature: "",
     };
   },
+  mounted() {
+    this.updateEvent = this.event
+  },
+  computed: {
+    event() {
+      return this.eventStore.getEvent
+    }
+  },
   methods: {
     saveEventDetails() {
-      alert("Event details saved!");
+      if (window.confirm('Are you sure you want to update the event?')) {
+        this.eventStore.updateevents(this.updateEvent)
+        this.eventStore.$persist()
+        alert("Event details saved!");
+      }
+
     },
     addSpeaker() {
       if (this.newSpeaker.name && this.newSpeaker.role && this.newSpeaker.image) {
         this.event.speakers.push({ ...this.newSpeaker });
-        this.newSpeaker = { name: "", role: "", image: "" };
+        this.newSpeaker = { name: "", role: "", image: "", description: "", linkedIn: "" };
       } else {
         alert("Please fill in all speaker fields.");
       }
@@ -175,19 +185,6 @@ export default {
     },
     savePricing() {
       alert("Ticket pricing saved!");
-    },
-    addTicketCategory() {
-      const newCategory = prompt("Enter a new ticket category name:");
-      if (newCategory && !this.event.pricing[newCategory]) {
-        this.event.pricing[newCategory] = [];
-      } else {
-        alert("Invalid or duplicate category name.");
-      }
-    },
-    removeTicketCategory(type) {
-      if (confirm(`Are you sure you want to delete the ${type} category?`)) {
-        delete this.event.pricing[type];
-      }
     },
     openFeatureModal(type) {
       this.currentTicketType = type;
@@ -214,13 +211,16 @@ export default {
 .v-row {
   margin: 0;
 }
+
 .v-card {
   transition: transform 0.2s ease-in-out;
 }
+
 .v-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
+
 .v-chip {
   display: flex;
   align-items: center;
