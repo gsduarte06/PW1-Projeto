@@ -331,7 +331,7 @@ export default {
   },
   async beforeMount() {
     await this.eventStore.fetchevents()
-
+    this.eventStore.$persist()
   },
   mounted() {
     this.intervalId = setInterval(() => {
@@ -350,8 +350,6 @@ export default {
 
       this.timeleft = { days, hours, minutes, seconds }
     }, 1000);
-
-
   },
 
 

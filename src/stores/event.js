@@ -21,25 +21,26 @@ export const useEventStore = defineStore('eventStore', {
 
   getters: {
     getEvent() {
+      this.updateevents
       return this.event
     },
   },
 
   actions: {
     async fetchevents() {
-      try {
-        const eventData = (await api.get(API_BASE_URL, API_ENDPOINT))[0]
-        for (let index = 0; index < eventData.schedule.length; index++) {
-          const groupedByBegin = eventData.schedule[index].content.reduce((acc, item) => {
-            if (!acc[item.begin]) {
-              acc[item.begin] = []
-            }
-            acc[item.begin].push(item)
-            return acc
-          }, {})
-          eventData.schedule[index].content = Object.values(groupedByBegin)
+      if (this.event == null) {
+        try {
+          let eventData = await api.get(API_BASE_URL, `${API_ENDPOINT}/1`)
+          this.event = eventData
+        } catch (error) {
+          throw new Error('Erro ao obter os dados do evento: ' + error)
         }
-        this.event = eventData
+      }
+      console.log(this.event)
+    },
+    async updateevents() {
+      try {
+        const update = await api.put(API_BASE_URL, API_ENDPOINT, this.event)
       } catch (error) {
         throw new Error('Erro ao obter os dados do evento: ' + error)
       }

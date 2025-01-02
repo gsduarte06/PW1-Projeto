@@ -31,6 +31,7 @@ export async function put(apiBaseUrl, endpoint, data) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
     })
+
     return handleResponse(response)
   } catch (error) {
     console.error(`Error updating ${endpoint}:`, error)
