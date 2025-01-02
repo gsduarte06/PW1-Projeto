@@ -51,11 +51,11 @@
 
 <script>
 import { useEventStore } from '../stores/event';
+import { useUserStore } from '../stores/users';
+
 export default {
   data() {
     return {
-      eventStore: useEventStore(),
-
       alert: {
         visible: false,
         message: "",
@@ -63,25 +63,36 @@ export default {
     };
   },
   async mounted() {
-    await this.eventStore.fetchevents()
+    await this.eventStore.fetchevents();
   },
   computed: {
     event() {
-      return this.eventStore.getEvent
-    }
+      return this.eventStore.getEvent;
+    },
   },
   methods: {
     addToCart(item) {
-      this.alert.message = `${item.name} added to cart!`;
-      this.alert.visible = true;
-      setTimeout(() => {
-        this.alert.visible = false;
-      }, 3000); // Automatically hide alert after 3 seconds
-      console.log(`${item.name} added to cart`);
+      if (this.userStore) {
+        this.userStore.addItemToCart(item);
+        this.alert.message = `${item.name} added to cart!`;
+        this.alert.visible = true;
+        setTimeout(() => {
+          this.alert.visible = false;
+        }, 3000);
+      } else {
+        console.error("userStore is undefined");
+      }
     },
+  },
+  setup() {
+    const eventStore = useEventStore();
+    const userStore = useUserStore();
+
+    return { eventStore, userStore };
   },
 };
 </script>
+
 
 <style scoped>
 /* Container adjustments */
