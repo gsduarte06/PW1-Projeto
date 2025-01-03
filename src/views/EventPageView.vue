@@ -108,7 +108,7 @@
     <!-- schedule -->
     <div class="w-75 align-self-center align-center mt-16">
       <div class="d-flex flex-column align-center mb-10">
-        <p class=" text-h3 mb-5" style="color: #ff00ee">Schedule</p>
+        <p class="text-h3 mb-5" style="color: #ff00ee">Schedule</p>
       </div>
       <v-card class="elevation-5 rounded-lg" style="background-color: #00041f;">
         <v-tabs v-model="tab" class="text-white" style="background-color: #000B52;">
@@ -126,27 +126,27 @@
               <div v-for="content in day.content" :key="content.id" class="d-flex flex-column text-white mx-1">
                 <v-container elevation="0" fluid>
                   <v-row>
-                    <v-col v-for="contentHour in content" :key="event.id" cols="12" md="6">
+                    <v-col v-for="contentHour in content" :key="contentHour.id" cols="12" md="6">
                       <div class="ma-2">
-                        <div>
+                        <v-card  class="elevation-5 rounded-lg" style="background-color: #00041f;">
                           <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
                             {{ contentHour.location }}
                           </v-chip>
-                        </div>
-                        <p class="text-body1 font-weight-bold">{{ contentHour.title }}</p>
-                        <p v-if="contentHour.type != null" class="text-body2"> Type: {{ contentHour.type }}</p>
-                        <div>
-                          <p class="text-body2 d-flex flex-row">
-                            From:
-                            <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.begin }}</span>
-                          </p>
-                          <p class="text-body2 d-flex flex-row">
-                            Until:
-                            <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.end }}</span>
-                          </p>
-                        </div>
-                        <p v-if="contentHour.speakers != null" class="text-body2"> Speakers: {{ contentHour.speakers }}
-                        </p>
+                          <p class="text-body1 font-weight-bold text-white">{{ contentHour.title }}</p>
+                          <p v-if="contentHour.type != null" class="text-body2 text-white"> Type: {{ contentHour.type }}</p>
+                          <div>
+                            <p class="text-body2 d-flex flex-row text-white">
+                              From:
+                              <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.begin }}</span>
+                            </p>
+                            <p class="text-body2 d-flex flex-row text-white">
+                              Until:
+                              <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.end }}</span>
+                            </p>
+                          </div>
+                          <p v-if="contentHour.speakers != null" class="text-body2 text-white"> Speakers: {{ contentHour.speakers }}</p>
+                        </v-card>
+
                       </div>
                     </v-col>
                   </v-row>
@@ -154,12 +154,9 @@
                 </v-container>
               </div>
             </div>
-
           </div>
         </v-card-text>
       </v-card>
-
-
     </div>
 
     <!-- Tickets  -->
@@ -313,25 +310,27 @@
         style="background-color: #00041f"></v-skeleton-loader>
     </div>
   </div>
-    <!-- Speaker Modal -->
   <v-dialog v-model="speakerModalVisible" max-width="600px">
-    <v-card style="background-color: #00041f; color: white;">
-      <v-card-title class="text-h5" style="color: #ff00ee;">
-        {{ selectedSpeaker?.name }}
-      </v-card-title>
-      <v-card-subtitle style="color: #ff00ee;">
-        {{ selectedSpeaker?.role }}
-      </v-card-subtitle>
-      <v-card-text>
-        <p>{{ selectedSpeaker?.bio }}</p>
-      </v-card-text>
-      <v-card-actions>
-        <v-btn text @click="speakerModalVisible = false" style="color: #ff00ee;">
-          Close
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+  <v-card style="background-color: #00041f; color: white;">
+    <v-card-title class="text-h5" style="color: #ff00ee;">
+      {{ selectedSpeaker?.name }}
+    </v-card-title>
+    <v-card-subtitle style="color: #ff00ee;">
+      {{ selectedSpeaker?.role }}
+    </v-card-subtitle>
+    <v-card-text>
+      <p>{{ selectedSpeaker?.bio }}</p>
+    </v-card-text>
+    <v-card-actions>
+      <v-btn text @click="speakerModalVisible = false" style="color: #ff00ee;">
+        Close
+      </v-btn>
+      <v-btn text style="color: #ff00ee;" @click="navigateToSpeakerPage(selectedSpeaker?.name)">
+        See More
+      </v-btn>
+    </v-card-actions>
+  </v-card>
+</v-dialog>
 
 
 </template>
@@ -398,7 +397,13 @@ export default {
       this.selectedSpeaker = speaker;
       this.speakerModalVisible = true;
     },
+    navigateToSpeakerPage(speakerName) {
+      if (!speakerName) return;
+      this.speakerModalVisible = false; // Close the modal
+      this.$router.push({ name: 'SpeakerDetails', params: { name: speakerName } });
+    },
   },
+
 };
 </script>
 
