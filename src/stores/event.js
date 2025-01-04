@@ -51,7 +51,6 @@ export const useEventStore = defineStore('eventStore', {
           throw new Error('Erro ao obter os dados do evento: ' + error)
         }
       }
-      console.log(this.event)
     },
     async updateevents(event) {
       try {

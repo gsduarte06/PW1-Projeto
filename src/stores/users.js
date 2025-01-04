@@ -165,7 +165,6 @@ export const useUserStore = defineStore('users', {
       const loggedInUser = this.getLoggedInUser
       if (loggedInUser) {
         loggedInUser.cart.push(item)
-        this.uploadData() // Ensure persistence
       } else {
         console.error('No user is logged in to add items to the cart.')
       }
@@ -173,15 +172,13 @@ export const useUserStore = defineStore('users', {
     removeItemFromCart(index) {
       const loggedInUser = this.getLoggedInUser
       if (loggedInUser) {
-        loggedInUser.merchandising.splice(index, 1)
-        this.uploadData() // Ensure persistence
+        loggedInUser.cart.splice(index, 1)
       }
     },
     clearCart() {
       const loggedInUser = this.getLoggedInUser
       if (loggedInUser) {
-        loggedInUser.merchandising = []
-        this.uploadData() // Ensure persistence
+        loggedInUser.cart = []
       }
     },
     getCartItems() {

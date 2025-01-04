@@ -29,152 +29,250 @@
         {
           "name": "Alex Shershebnev",
           "role": "Head of ML/DevOps",
-          "image": "https://cache.sessionize.com/image/35f7-200o200o2-HyMbsZshERnp2TPyqcoX44.jpg"
+          "image": "https://cache.sessionize.com/image/35f7-200o200o2-HyMbsZshERnp2TPyqcoX44.jpg",
+          "description": "Alex Shershebnev is a seasoned Computer Vision and MLOps Engineer with over nine years of experience shaping the future of AI-driven software development. Currently, Alex leads the ML/DevOps team at Zencoder, where he leverages his extensive background in Software Engineering, ML and DevOps to deliver high-quality machine learning solutions. His work spans complex data pipelines, cloud infrastructure management (GCP, Kubernetes), and advanced ML/DevOps pipelines, ensuring scalability and efficiency. Before Zencoder, Alex played pivotal roles in numerous projects, including leading teams at Sanas, ivi and MTS AI. His technical expertise in machine learning, data science, and bioinformatics has led to impactful solutions across industries, ranging from bioinformatics at the University of Massachusetts to video analysis at ivi.ru and MTS AI. Alex has a proven track record of managing complex infrastructure that scales to hundreds of GPUs, enabling effective and easy use of cloud infrastructure for data scientists while driving down costs through cloud consolidation efforts and boosting productivity through the deployment of sophisticated AI models. In addition to his technical contributions, Alex has been instrumental in mentoring teams and fostering a culture of innovation and collaboration. His deep understanding of AI systems, from developing recommendation engines to cutting-edge computer vision algorithms to voice and NLP, positions him as a thought leader in the AI and ML space. Whether it’s speaking on the latest advancements in MLOps, sharing insights on AI-driven automation, or discussing the future of AI in the enterprise, Alex brings a wealth of knowledge, practical experience, and a passion for pushing the boundaries of what's possible with AI.",
+          "linkedIn": "https://www.linkedin.com/in/shershebnev",
+          "talks": ["Going beyond copilot with AI Agents"]
         },
         {
           "name": "Aldan Creo",
           "role": "Tech Research Specialist",
-          "image": "https://cache.sessionize.com/image/fdb1-200o200o2-KZ2Qk2kdE34vjwtHtCDzEk.jpg"
+          "image": "https://cache.sessionize.com/image/fdb1-200o200o2-KZ2Qk2kdE34vjwtHtCDzEk.jpg",
+          "description": "Aldan studied CS in Spain, France and Switzerland, graduating as valedictorian. He completed 4 internships and was selected by Django as a Google Summer of Code contributor. He received a grant from the Spanish government to undertake research on Natural Language Processing. He garnered recognition for leadership and academic excellence through several awards. He's also the founder of 3 associations and contributes to open-source. Currently, he works as Technology Research Specialist in AI at The Dock, Accenture's flagship R&D and global innovation center.",
+          "linkedIn": "https://linkedin.com/in/acmcmc",
+          "talks": ["Knowledge Graphs + LLMs: What's the latest in research?"]
         },
         {
           "name": "Alena Schmickl",
           "role": "Solutions Architect",
-          "image": "https://cache.sessionize.com/image/f722-200o200o2-G5jGCBuot2WcuYuSQactDi.jpg"
+          "image": "https://cache.sessionize.com/image/f722-200o200o2-G5jGCBuot2WcuYuSQactDi.jpg",
+          "description": "I have 10 years of experience in the technology field and am passionate about using technology as a business enabler. My focus is on Cloud Computing and Analytics.",
+          "linkedIn": "https://www.linkedin.com/in/alena-schmickl-910025b9/",
+          "talks": ["Building an Enterprise Data Lake Architecture on AWS"]
         },
         {
           "name": "Alex Soto",
           "role": "Director of Dev Experience",
-          "image": "https://sessionize.com/image/9d0a-200o200o2-Vj8VMmiq2VU3Yx7YUohwhj.jpg"
+          "image": "https://sessionize.com/image/9d0a-200o200o2-Vj8VMmiq2VU3Yx7YUohwhj.jpg",
+          "description": "Alex Soto is a Director of Developer Experience at Red Hat. He is passionate about the Java world, software automation and he believes in the open-source software model. Alex is the co-author of Testing Java Microservice, Quarkus cookbook, Kubernetes Secrets Management, GitOps cookbook, and RHCE Ansible Automation Study Guide books and contributor to several open-source projects. A Java Champion since 2017, he is also an international speaker and teacher at Salle URL University. You can follow him on Twitter (@alexsotob) to stay tuned to what's going on in Kubernetes and Java world.",
+          "linkedIn": "https://www.linkedin.com/in/asotobu/",
+          "talks": ["Progressive Delivery in the Kubernetes era"]
         },
         {
           "name": "Alina Yurenko",
           "role": "Developer Advocate",
-          "image": "https://sessionize.com/image/ee7d-200o200o2-M1GouG5D7tuFwyuFeECYyM.jpg"
+          "image": "https://sessionize.com/image/ee7d-200o200o2-M1GouG5D7tuFwyuFeECYyM.jpg",
+          "description": "Alina is a developer advocate for GraalVM at Oracle Labs, a research & development organization at Oracle. Loves both programming & natural languages, compilers, and open source.",
+          "linkedIn": "https://www.linkedin.com/in/alinayurenko/",
+          "talks": ["Bring the action: using GraalVM in production"]
         },
         {
           "name": "Álvaro Mariscal",
           "role": "Technical Staff",
-          "image": "https://sessionize.com/image/ecb7-200o200o2-sGioVV5Ho4iXfUwBN56jJb.jpg"
+          "image": "https://sessionize.com/image/ecb7-200o200o2-sGioVV5Ho4iXfUwBN56jJb.jpg",
+          "description": "Álvaro is a passionate developer and agile enthusiast with over 23 years of experience. He is now a Principal Member of Technical Staff at Oracle Labs, where he is a Micronaut committer, helping to maintain and evolve the open-source framework. Before that, he was a Staff Engineer at VMWare, where he led the creation of new products to build, package, verify and publish software solutions with confidence in the VMware Marketplace. Previously, he spent some years working in different industries like gambling games (Odobo) and fintech (4Finance). Prior to that, he created his own company, Salenda, in 2005, a software factory and Atlassian Solution Partner headquartered in Madrid, Spain. Adaptavist acquired Salenda in 2019. Previously, he worked at companies like IBM BCS, Sun Microsystems or BEA Systems, where he was recognised as BEA Technical Director, an MVP awards program. He was also one of the initial founders and member of the Board of Directors of javaHispano in 2002, the world's largest Spanish-speaking Java User Group. Álvaro has spoken in 20 different countries at conferences like Devoxx BE/FR/MA, several Voxxed Days, GeeCON, JavaLand, JavaZone, jPrime, Codemotion and Commit Conf, among others. In his spare time, as well as coding and experimenting with new technologies, he likes to spend time with his wife and children, support CD Leganés football team, and play paddle tennis.",
+          "linkedIn": "https://www.linkedin.com/in/mariscal/",
+          "talks": ["Developer experience in a modern Java framework"]
         },
         {
           "name": "Andres Almiray",
           "role": "Seasoned Sourceror",
-          "image": "https://sessionize.com/image/9118-200o200o2-XbQVKgAqxS9z5yb1yZ9f69.jpg"
+          "image": "https://sessionize.com/image/9118-200o200o2-XbQVKgAqxS9z5yb1yZ9f69.jpg",
+          "description": "Andres is a Java/Groovy developer and a Java Champion Alumni, Developer Advocate for the Database Group At Oracle, with more than 2 decades of experience in software design and development. He has been involved in web and desktop application development since the early days of Java. Andres is a true believer in open source and has participated on popular projects like Groovy, Griffon, and DbUnit, as well as starting his own projects. Founding member of the Griffon framework and Hackergarten community event. Author of JReleaser. You can find him on twitter too as @aalmiray. He likes to spend time with his beloved wife, Ixchel, when not hacking around.",
+          "linkedIn": "https://www.linkedin.com/in/aalmiray/",
+          "talks": ["Going beyond ORMs"]
         },
         {
           "name": "Andrzej Lassak",
           "role": "Senior Director",
-          "image": "https://sessionize.com/image/9200-200o200o2-9KsHLBJ47iggRJeJHJpUvk.jpg"
+          "image": "https://sessionize.com/image/9200-200o200o2-9KsHLBJ47iggRJeJHJpUvk.jpg",
+          "description": "Andrzej Lassak is a seasoned professional with extensive experience in software development, services operations, Cloud infrastructure, and Generative AI. Currently, he specializes in architecting, deploying, and operating large-scale Generative AI services in the Cloud. Beyond his professional endeavors, Andrzej is a father of three, passionate about European integration and geoeconomics, holds an MBA, and has earned over 30 IT professional certificates.",
+          "linkedIn": "https://linkedin.com/in/lassak",
+          "talks": ["From theory to practice: The rise of Generative AI"]
         },
         {
           "name": "Bartłomiej Pisulak",
           "role": "Director",
-          "image": "https://sessionize.com/image/528b-200o200o2-HLgLW2HFWwcUBcknj73j24.jpg"
+          "image": "https://sessionize.com/image/528b-200o200o2-HLgLW2HFWwcUBcknj73j24.jpg",
+          "description": "Director of Cloud Quality Engineering with 12+ years of professional experience. Passionate about building successful organisations. Seasoned IT Trainer and university lecturer, with more than seven years of experience and 400+ people trained. Executive MBA graduate.",
+          "linkedIn": "https://www.linkedin.com/in/bart%C5%82omiej-pisulak-82b94036/",
+          "talks": ["From Bugs to Brilliance: Leveraging AI in Modern Software Testing"]
         },
         {
           "name": "Christian Woerz",
           "role": "Fullstack Developer",
-          "image": "https://sessionize.com/image/44e6-200o200o2-7GEdqMJuCcDvowZjWPiGVX.png"
+          "image": "https://sessionize.com/image/44e6-200o200o2-7GEdqMJuCcDvowZjWPiGVX.png",
+          "description": "Christian is a freelance fullstack developer writing code in languages like Java, Kotlin, Typescript and Javascript. He's been working as a software engineer since over a decade. He loves learning from others and sharing his knowledge.",
+          "linkedIn": "https://www.linkedin.com/in/christian-w%C3%B6rz-a1228380/",
+          "talks": ["The Eventloop in JavaScript - How does it work?"]
         },
         {
           "name": "Daniel Afonso",
           "role": "Senior Developer",
-          "image": "https://sessionize.com/image/5b02-200o200o2-HUcG2okVHLGNxM5uAaAWDJ.jpg"
+          "image": "https://sessionize.com/image/5b02-200o200o2-HUcG2okVHLGNxM5uAaAWDJ.jpg",
+          "description": "Daniel Afonso is a Senior Developer Advocate at PagerDuty, SolidJS DX team member, Instructor at Egghead.io, and Author of State Management with React Query. Daniel has a full-stack background, having worked with different languages and frameworks on various projects from IoT to Fraud Detection. He is passionate about learning and teaching and has spoken at multiple conferences around the world about topics he loves. In his free time, when he's not learning new technologies or writing about them, he's probably reading comics or watching superhero movies and shows.",
+          "linkedIn": "https://www.linkedin.com/in/danieljcafonso/",
+          "talks": ["SolidStart: The Shape of Frameworks to Come"]
         },
         {
           "name": "Gavin King",
           "role": "Hibernate",
-          "image": "https://sessionize.com/image/89c4-200o200o2-SBF5ptmFg9gTrZ1eeyJUbh.jpg"
+          "image": "https://sessionize.com/image/89c4-200o200o2-SBF5ptmFg9gTrZ1eeyJUbh.jpg",
+          "description": "Gavin King is a Java Champion and Distinguished Engineer at Red Hat. He's the creator of Hibernate, the most popular persistence solution for Java, and of the Ceylon programming language. He contributed to the Java Community Process as JBoss and then Red Hat representative for the EJB3 and JPA specifications and as spec lead and author of the CDI specification. He's currently a major contributor to the design of Jakarta Data and Jakarta Persistence, and an EGC representative for the Commonhaus Foundation.",
+          "linkedIn": "https://www.linkedin.com/in/gavinking/",
+          "talks": ["A quick introduction to quantum information and quantum circuits"]
         },
         {
           "name": "Glenn Versweyveld",
           "role": "Microsoft MVP",
-          "image": "https://sessionize.com/image/5dc8-200o200o2-QSS29orFM3oiKMy7Xu7Gpj.png"
+          "image": "https://sessionize.com/image/5dc8-200o200o2-QSS29orFM3oiKMy7Xu7Gpj.png",
+          "description": "I'm interested in everything surrounding Microsoft and .NET in particular, for the moment working as a System Expert at Baliose Insurances. Still loves Windows Phone, but don't judge him for it :) Currently Microsoft MVP in Developer Technologies and Pluralsight author.",
+          "linkedIn": "https://www.linkedin.com/in/depechie/",
+          "talks": [".NET Aspire: Let's build a cloud application with baked in observability"]
         },
         {
           "name": "Ivar Grimstad",
           "role": "Jakarta EE Dev",
-          "image": "https://sessionize.com/image/8264-200o200o2-GJGs9tWWTrPMJzn4HuvTH4.png"
+          "image": "https://sessionize.com/image/8264-200o200o2-GJGs9tWWTrPMJzn4HuvTH4.png",
+          "description": "Ivar Grimstad is the Jakarta EE Developer Advocate at Eclipse Foundation. He is a Java Champion and JUG Leader based in Sweden. Besides advocating the Jakarta EE technologies, Ivar is contributing to the Jakarta EE specifications as well as being the PMC Lead for Eclipse Enterprise for Java (EE4J). He is also one of the specification leads for Jakarta MVC and represents Eclipse Foundation on the JCP Executive Committee. Ivar is also involved in a wide range of other open-source projects and communities. He is a frequent speaker at International developer conferences.",
+          "linkedIn": "https://www.linkedin.com/in/ivargrimstad/",
+          "talks": ["Jakarta EE Meets AI"]
         },
         {
           "name": "Kim van Wilgen",
           "role": "CTO Financial",
-          "image": "https://sessionize.com/image/6e0c-200o200o2-a2-eb4e-4f5b-9dfe-1ec40c87828c.c19f682d-5867-4f58-86a8-ce6014fe6f52.jpeg"
+          "image": "https://sessionize.com/image/6e0c-200o200o2-a2-eb4e-4f5b-9dfe-1ec40c87828c.c19f682d-5867-4f58-86a8-ce6014fe6f52.jpeg",
+          "description": "Kim van Wilgen is an experienced leader in software product development. She works at Schuberg Philis, an IT outsourcing company for mission critical IT solutions, delivering a 100% customer satisfaction. She’s passionate about topics such as DevOps, continuous delivery, agile and continuous security. Dealing with today’s complexity and innovation asks for empowering people to levels that are uncomfortable for most of us. And it asks us to upskill our ability to automate and innovate our work in the field of IT. Kim is interested in the cultural, organizational and technological changes associated with these developments. Although a nerd at heart, she also has over a decade of experience on the other side: the business. A huge benefit to bridge the gap between business and IT. She is a speaker at national and international conferences on topics such as agile and continuous delivery.",
+          "linkedIn": "https://www.linkedin.com/in/kimvanwilgen/",
+          "talks": ["Leading self-organizing teams"]
         },
         {
           "name": "Luciano Mammino",
           "role": "FullStack dev",
-          "image": "https://sessionize.com/image/58bc-200o200o2-HtjRDVyBYJ7d2oLD8tqt1c.jpg"
+          "image": "https://sessionize.com/image/58bc-200o200o2-HtjRDVyBYJ7d2oLD8tqt1c.jpg",
+          "description": "Luciano is an AWS Serverless Hero who was born in 1987, the same year Super Mario Bros was released in Europe, which, by chance is his favorite game! He started coding at the age of 12, hacking away with his father's old i386 armed only with MS-DOS and the QBasic interpreter and since then he has been professionally a software developer for more than 14 years. He is currently a senior Architect at fourTheorem where he is helping companies to get the best of the cloud, AWS, and serverless. He loves the full-stack web, Node.js & Serverless and co-authored Node.js design patterns (https://www.nodejsdesignpatterns.com), maintains https://fstack.link and co-hosts https://awsbites.com",
+          "linkedIn": "https://www.linkedin.com/notifications/",
+          "talks": ["Faster/Greener/Cheaper Serverless compute with AWS Lambda & Rust"]
         },
         {
           "name": "Małgorzata Janeczek",
           "role": "Senior Full-Stack Dev",
-          "image": "https://sessionize.com/image/9ce3-200o200o2-MTHAJUXVq6BJQ1PxQcCiZ1.jpg"
+          "image": "https://sessionize.com/image/9ce3-200o200o2-MTHAJUXVq6BJQ1PxQcCiZ1.jpg",
+          "description": "Hi! I am Gosia, but some people know me as a mom, a daughter, some as friend, others coworker, but for some, I am just “ey, you!”. A few years back I graduated from Automatic Control and Robotics, and soon after starting my job in that field, I knew... it's not for me. So I started looking for something new. Then.. it hit me how cool was programming during my studies, so HERE I AM! For quite a few years now I have been working as a full-stack developer with .NET and React (and knockout, Angular JavaScript..). However, recently I have been feeling a growing passion and interest in DevOps too. I am only beginning my DevOps journey, but I am facing some exciting challenges. At the times when I am not coding, you will probably find me either playing with our little one, in my cave painting or trying to play piano.",
+          "linkedIn": "https://www.linkedin.com/in/mjaneczek/",
+          "talks": ["JavaScript is weird. MythBusters special."]
         },
         {
           "name": "Marc Backes",
           "role": "Tech Lead",
-          "image": "https://sessionize.com/image/8c0a-200o200o2-BiWfh29T7WGWqiQmnZu6Wt.jpg"
+          "image": "https://sessionize.com/image/8c0a-200o200o2-BiWfh29T7WGWqiQmnZu6Wt.jpg",
+          "description": "Tech Lead and Full-Stack Developer. Enthusiast of Vue + Nuxt 💚",
+          "linkedIn": "https://linkedin.com/in/themarcba",
+          "talks": ["Building a Time Machine with ES6 Proxies"]
         },
         {
           "name": "Mete Atamel",
           "role": "Software Engineer",
-          "image": "https://sessionize.com/image/2ce0-200o200o2-73-a28c-4ad1-8885-7c52ba397fe3.2e3567c5-b2c6-4a8c-a297-74a96a80b2df.jpg"
+          "image": "https://sessionize.com/image/2ce0-200o200o2-73-a28c-4ad1-8885-7c52ba397fe3.2e3567c5-b2c6-4a8c-a297-74a96a80b2df.jpg",
+          "description": "I'm a Software Engineer and a Developer Advocate at Google in London. I build tools, demos, tutorials, and give talks to educate and help developers to be successful on Google Cloud.",
+          "linkedIn": "https://www.linkedin.com/in/meteatamel",
+          "talks": ["Avoid common LLM pitfalls"]
         },
         {
           "name": "Michel Schildmeijer",
           "role": "Lead Technologist",
-          "image": "https://sessionize.com/image/df90-200o200o2-VmXSz1D6ZeoSNSEKnB2rkE.jpg"
+          "image": "https://sessionize.com/image/df90-200o200o2-VmXSz1D6ZeoSNSEKnB2rkE.jpg",
+          "description": "Michel started his career as a medical officer in the Royal Dutch Airforce, with a focus on pharma. After the air force, he continued in pharma, followed by time working in clinical pharmacology. While there, he transitioned to IT by learning UNIX and MUMPS, and developed a system for managing patients’ medical records. As his career developed, his responsibility shifted from a deep technical perspective to a more visionary role. At the end of 2011, Michel authored a book on WebLogic Administration for beginners. He joined Qualogy in April 2012 where he expanded his repertoire significantly, serving a wide range of customers with his knowledge about Java Application Servers, Middleware and Application Integration. He also increased his multiple-industry knowledge in his role as Solutions or IT architect by working for customers in a range of sectors, including financials, telecom, public transportation and government organizations. In 2012, he received the IT Industry-recognized title of Oracle ACE for being an ambassador and community leader in his area of expertise. In 2019, this was enhanced to Oracle ACE Director. Michel is asked regularly to speak about technology and the impact of innovation at national and international conferences such as KubeCon, Oracle OpenWorld, Oracle Community Tours and others. He contributes actively to the OpenSource community and solutions regarding containerization, CI/CD and DevOps. Read more via blog: https://bit.ly/3fAxrqf | Medium: https://mschildmeijer.medium.com/ | Books: Oracle Weblogic Server 11gR1 PS2: Administration Essentials: https://bit.ly/3IhALmf | Oracle WebLogic Server 12c: First Look1: https://bit.ly/31olbpj",
+          "linkedIn": "http://nl.linkedin.com/in/mschldmr",
+          "talks": ["Which Vault? Don't tell me your secret(s)!"]
         },
         {
           "name": "Mihaela Ghidersa",
           "role": "Technical Lead",
-          "image": "https://sessionize.com/image/8d4d-200o200o2-P1PUTTwDdK29rhPrwicvA5.jpeg"
+          "image": "https://sessionize.com/image/8d4d-200o200o2-P1PUTTwDdK29rhPrwicvA5.jpeg",
+          "description": "Driven by a zest for technology and fun in equal measure, I've navigated from hands-on coding across full-stack and frontend to steering technical leadership and architecture. Embracing change, I've evolved, always eager to push beyond the familiar. My experience spans a rich variety of domains, including remote device management and monitoring, payroll, healthcare, media, e-commerce, and software for municipalities, in both insourcing and outsourcing models. Alongside my technical contributions, I've enriched my career by mentoring emerging talent and engaging audiences at conferences, sharing insights and fostering a community of learning and innovation. Beyond the realm of coding, I am passionate about sharing insights, whether through thought-provoking articles or by distilling my experience into my book, Software Architecture for Web Developers.",
+          "linkedIn": "https://www.linkedin.com/in/ghidersam/",
+          "talks": [
+            "Supercharge your coding: Integrating ChatGPT and Copilot in long-term projects"
+          ]
         },
         {
           "name": "Nicolas Fränkel",
           "role": "Developer Advocate",
-          "image": "https://sessionize.com/image/1f69-200o200o2-MVSybLoJJYvYT7ku79HWNt.jpg"
+          "image": "https://sessionize.com/image/1f69-200o200o2-MVSybLoJJYvYT7ku79HWNt.jpg",
+          "description": "Developer Advocate with 15+ years experience consulting for many different customers, in a wide range of contexts (such as telecoms, banking, insurances, large retail and public sector). Usually working on Java/Java EE and Spring technologies, but with focused interests like Rich Internet Applications, Testing, CI/CD and DevOps. Also double as a trainer and triples as a book author.",
+          "linkedIn": "https://www.linkedin.com/in/nicolasfrankel/",
+          "talks": ["Make your security policy auditable"]
         },
         {
           "name": "Olimpiu Pop",
           "role": "Tech Executive",
-          "image": "https://sessionize.com/image/9063-200o200o2-LCqBVwRmBSugkFYczRbMar.jpg"
+          "image": "https://sessionize.com/image/9063-200o200o2-LCqBVwRmBSugkFYczRbMar.jpg",
+          "description": "Olimpiu is a technology executive, who balances his tech savviness with a focus on people and their wellbeing. A constant explorer of new technology trends, he enjoys digesting and spreading knowledge through podcasts or written articles. He is a strong believer in the power of communities and open source, getting involved in technical community building and curating content for conferences as program committee. Even though he started working with Java in the days of the 1.4 JDK, lately he explored other ecosystems like JS and Go continuously trying to learn other languages and paradigms.",
+          "linkedIn": "https://www.linkedin.com/in/olimpiupop/",
+          "talks": [
+            "Five Adjustments You Need To Do To Your CI/CD Pipeline Before Integrating LLMs In your Application"
+          ]
         },
         {
           "name": "Ricardo Sueiras",
           "role": "Principal Advocate",
-          "image": "https://sessionize.com/image/e066-200o200o2-MGTL3UyyyLSyQEf6inXuSu.jpg"
+          "image": "https://sessionize.com/image/e066-200o200o2-MGTL3UyyyLSyQEf6inXuSu.jpg",
+          "description": "I have spent the last 30 years spent working in the technology industry, and have over 20 years experience working with open source. I help customers solve business problems with open source technologies and cloud. I am a Developer Advocate for open source at AWS. I help increase awareness of AWS contributions in open source, and why AWS is a great place to run your open source workloads.",
+          "linkedIn": "https://www.linkedin.com/in/ricardosueiras/",
+          "talks": ["Build without limits - lessons learned from using generative AI dev tools"]
         },
         {
           "name": "Samuel Pampolini",
           "role": "Global Lead of .NET",
-          "image": "https://sessionize.com/image/4320-200o200o2-4viWfJS4RnSkWSvchgCqep.jpg"
+          "image": "https://sessionize.com/image/4320-200o200o2-4viWfJS4RnSkWSvchgCqep.jpg",
+          "description": "I have spent the last 30 years spent working in the technology industry, and have over 20 years experience working with open source. I help customers solve business problems with open source technologies and cloud. I am a Developer Advocate for open source at AWS. I help increase awareness of AWS contributions in open source, and why AWS is a great place to run your open source workloads.",
+          "linkedIn": "https://www.linkedin.com/in/ricardosueiras/",
+          "talks": ["Build without limits - lessons learned from using generative AI dev tools"]
         },
         {
           "name": "Sander Hoogendoorn",
           "role": "Freelancer",
-          "image": "https://sessionize.com/image/d5be-200o200o2-KrxqM7k4XAdV1ENhobvinY.jpg"
+          "image": "https://sessionize.com/image/d5be-200o200o2-KrxqM7k4XAdV1ENhobvinY.jpg",
+          "description": "Meet Sander Hoogendoorn, an independent dad and traveler. A seasoned developer with over four decades of experience and still daily writing code, Sander has survived in the tech world in various roles, from CTO of companies like iBOOD (currently), ANVA, and Klaverblad to being Capgemini's global agile thought leader. Known for his post-agile mindset and provocative perspectives, Sander empowers organizations and teams to break free from the norm and embrace innovation. He's not just about writing code; he's about rewriting the rules. As an author and captivating speaker, Sander has shared his ideas and practices at international conferences, covering topics from disruption, culture, and life beyond agile to continuous delivery, microteams, software architecture, monads, microservices, and the art of writing elegant code. He believes in the power of critical thinking to solve problems and encourages teams to approach software development with a strategic, mindful touch.",
+          "linkedIn": "https://www.linkedin.com/in/aahoogendoorn/",
+          "talks": [
+            "Getting Unstuck. Strategies for Surviving in a Rapidly Changing Post-Agile World"
+          ]
         },
         {
           "name": "Sander Mak",
           "role": "Tech",
-          "image": "https://sessionize.com/image/592e-200o200o2-sphUgahxXU894qtW8VC3Ad.jpg"
+          "image": "https://sessionize.com/image/592e-200o200o2-sphUgahxXU894qtW8VC3Ad.jpg",
+          "description": "Sander is part of the tech leadership team at Picnic —the Dutch online grocery scale-up— building Java-based systems at scale. He also is a Java Champion and author of the O'Reilly book 'Java 9 Modularity' (see javamodularity.com). As an avid conference speaker, Sander loves sharing knowledge, also through his blog at http://branchandbound.net and as Pluralsight instructor.",
+          "linkedIn": "https://www.linkedin.com/in/sandermak/",
+          "talks": ["The Art of Software Development"]
         },
         {
           "name": "Sheen Brisals",
           "role": "O'Reilly Author",
-          "image": "https://sessionize.com/image/f513-200o200o2-Bgr1mQ64MYU5m8GtM9toi2.png"
+          "image": "https://sessionize.com/image/f513-200o200o2-Bgr1mQ64MYU5m8GtM9toi2.png",
+          "description": "Sheen is an AWS Serverless Hero and co-author of 'Serverless Development on AWS: Building Enterprise-Scale Serverless Solutions' (O'Reilly, 2024). Sheen is an experienced engineering leader who guides enterprise teams to architect, build, and operate sustainable serverless solutions. Sheen has held several positions at leading software organizations over his long career. He is very passionate about serverless and loves sharing knowledge with the community. His writings and thoughts on serverless have helped several engineers, teams, and organizations on their serverless adoption journey. He talks about serverless at conferences around the world.",
+          "linkedIn": "https://www.linkedin.com/in/sheen-brisals/",
+          "talks": [
+            "Patterns and practices for developing enterprise-scale applications with serverless!"
+          ]
         },
         {
           "name": "Simon Brown",
           "role": "Independent Consultant",
-          "image": "https://sessionize.com/image/0bdb-200o200o2-R4hb5YcPrPypZr7moEMjD3.jpg"
+          "image": "https://sessionize.com/image/0bdb-200o200o2-R4hb5YcPrPypZr7moEMjD3.jpg",
+          "description": "Simon is an independent consultant specialising in software architecture, and the author of “Software Architecture for Developers” (a developer-friendly guide to software architecture, technical leadership and the balance with agility). He is also the creator of the C4 model for visualising software architecture, and the founder of Structurizr. Simon is a regular speaker at international software development conferences, and travels the world to help organisations visualise and document their software architecture.",
+          "linkedIn": "https://www.linkedin.com/in/simonbrownjersey/",
+          "talks": ["Visualising software architecture with the C4 model"]
         },
         {
           "name": "Stephen Chin",
           "role": "Vice President",
-          "image": "https://sessionize.com/image/9f6e-200o200o2-EHvMKwbfP43RYxL9qJMwGv.jpg"
+          "image": "https://sessionize.com/image/9f6e-200o200o2-EHvMKwbfP43RYxL9qJMwGv.jpg",
+          "description": "Stephen Chin is VP of Developer Relations at JFrog, member of the CNCF governing board, and author of The Definitive Guide to Modern Client Development, Raspberry Pi with Java, Pro JavaFX Platform, and the DevOps Tools for Java Developers title from O'Reilly. He has keynoted numerous conferences around the world including swampUP, Devoxx, JNation, JavaOne, Joker, and Open Source India. Stephen is an avid motorcyclist who has done evangelism tours in Europe, Japan, and Brazil, interviewing hackers in their natural habitat. When he is not traveling, he enjoys teaching kids how to do embedded and robot programming together with his daughters.",
+          "linkedIn": "https://www.linkedin.com/in/steveonjava/",
+          "talks": ["Give Your LLMs a Left Brain"]
         }
       ],
       "schedule": [
@@ -558,8 +656,21 @@
         }
       ],
       "comments": [
-        { "id_comment": 1, "user": "gsd", "content": "loving the event" },
-        { "id_comment": 2, "user": "diogo", "content": "loving the event" }
+        {
+          "id_comment": 1,
+          "user": "gsd",
+          "content": "loving the event"
+        },
+        {
+          "id_comment": 2,
+          "user": "diogo",
+          "content": "loving the event 2"
+        },
+        {
+          "id_comment": 3,
+          "user": "gsduarte",
+          "content": "Got some new speakers"
+        }
       ]
     }
   ]

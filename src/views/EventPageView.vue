@@ -124,33 +124,44 @@
           <div v-for="day in event.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay" class="w-100">
             <!-- Render content for the specific day -->
             <div v-if="day.content && day.content.length">
-              <div v-for="content in day.content" :key="content.id" class="d-flex flex-column text-white mx-1">
+              <div v-for="(content, index) in day.content" :key="content.id" class="d-flex flex-column text-white ">
                 <v-container elevation="0" fluid>
                   <v-row>
                     <v-col v-for="contentHour in content" :key="contentHour.id" cols="12" md="6">
-                      <div class="ma-2">
-                        <v-card class="elevation-5 rounded-lg" style="background-color: #00041f;">
-                          <v-chip class="text-body3 align-center" small elevated style="background-color: #ff00ee;">
-                            {{ contentHour.location }}
-                          </v-chip>
-                          <p class="text-body1 font-weight-bold text-white">{{ contentHour.title }}</p>
-                          <p v-if="contentHour.type != null" class="text-body2 text-white"> Type: {{ contentHour.type }}
-                          </p>
-                          <div>
-                            <p class="text-body2 d-flex flex-row text-white">
-                              From:
-                              <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.begin }}</span>
+                      <v-card class="elevation-0 rounded-lg" style="background-color: #00041f;">
+                        <v-row>
+                          <v-col cols="12" md="8"
+                            @click="goToDetails(contentHour, day.TimeOfDay, index, content.indexOf(contentHour))">
+                            <v-chip class="text-body3 align-center text-white mb-2" small elevated
+                              style="background-color: #ff00ee;">
+                              {{ contentHour.location }}
+                            </v-chip>
+                            <p class="text-body1 font-weight-bold text-white">{{ contentHour.title }}</p>
+                            <p v-if="contentHour.type != null" class="text-body2 text-white"> Type: {{
+                              contentHour.type }}
                             </p>
-                            <p class="text-body2 d-flex flex-row text-white">
-                              Until:
-                              <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.end }}</span>
-                            </p>
-                          </div>
-                          <p v-if="contentHour.speakers != null" class="text-body2 text-white"> Speakers: {{
-                            contentHour.speakers }}</p>
-                        </v-card>
+                            <div>
+                              <p class="text-body2 d-flex flex-row text-white">
+                                From:
+                                <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.begin }}</span>
+                              </p>
+                              <p class="text-body2 d-flex flex-row text-white">
+                                Until:
+                                <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.end }}</span>
+                              </p>
+                            </div>
+                            <p v-if="contentHour.speakers != null" class="text-body2 text-white"> Speakers: {{
+                              contentHour.speakers }}</p>
+                          </v-col>
+                          <v-col cols="12" md="4">
+                            <v-btn variant="outlined" class="text-body mt-14 mb-15 text-white"
+                              style="border-color: #ff00ee"
+                              @click="goToDetails(contentHour, day.TimeOfDay, index, content.indexOf(contentHour))">See
+                              More</v-btn>
+                          </v-col>
+                        </v-row>
+                      </v-card>
 
-                      </div>
                     </v-col>
                   </v-row>
                   <v-divider color="#fffff" class="my-4"></v-divider>
@@ -278,14 +289,14 @@
     <!-- Comment Section -->
     <div class="mt-16 w-75 align-self-center">
       <p class="text-h3  my-16" style="color: #ff00ee">Comment Section</p>
-      <div v-for="comment in this.event.comments" :key="comment.id_comment" class="d-flex flex-column ">
+      <div v-for="(comment, index) in this.event.comments" :key="comment.id_comment" class="d-flex flex-column ">
         <v-divider v-if="comment.id_comment != 1" color="#fff" class="my-4"></v-divider>
         <div class="d-flex flex-row justify-space-between">
           <p class="mr-4 text-white text-body1">
             <strong>{{ comment.user }}:</strong>
             {{ comment.content }}
           </p>
-          <span class="like-icon" @click="">
+          <span v-if="userStore.getLoggedInUser.role == 'Admin'" class="like-icon" @click="removeComment(index)">
             🗑️
           </span>
         </div>
@@ -319,17 +330,14 @@
       <v-card-title class="text-h5" style="color: #ff00ee;">
         {{ selectedSpeaker?.name }}
       </v-card-title>
-      <v-card-subtitle style="color: #ff00ee;">
+      <v-card-subtitle style="color: #ffff;">
         {{ selectedSpeaker?.role }}
       </v-card-subtitle>
-      <v-card-text>
-        <p>{{ selectedSpeaker?.bio }}</p>
-      </v-card-text>
       <v-card-actions>
-        <v-btn text @click="speakerModalVisible = false" style="color: #ff00ee;">
+        <v-btn text @click="speakerModalVisible = false" style="color: #ffff;">
           Close
         </v-btn>
-        <v-btn text style="color: #ff00ee;" @click="navigateToSpeakerPage(selectedSpeaker?.name)">
+        <v-btn text style="color: #ffffff;" @click="navigateToSpeakerPage(selectedSpeaker?.name)">
           See More
         </v-btn>
       </v-card-actions>
@@ -388,6 +396,15 @@ export default {
     }
   },
   methods: {
+    removeComment(index) {
+      this.event.comments.splice(index, 1);
+      console.log(this.event);
+      this.eventStore.updateevents(this.event);
+      this.eventStore.$persist()
+    },
+    goToDetails(talk, TimeOfDay, hourIndex, indexTalk) {
+      this.$router.push({ path: '/talk-details', query: { talk: JSON.stringify(talk), TimeOfDay: TimeOfDay, indexContent: hourIndex, indexTalk: indexTalk } });
+    },
     submitComment() {
       const lastId = this.event.comments[this.event.comments.length - 1];
       let id = parseInt(lastId.id_comment) + 1;

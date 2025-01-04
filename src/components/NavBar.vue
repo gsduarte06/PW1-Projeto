@@ -8,13 +8,8 @@
       <v-btn @click="LeaderboardPage" class="mr-md-4 font-weight-bold">LeaderBoard</v-btn>
       <v-btn @click="MerchandisingPage" class="mr-md-4 font-weight-bold">Merchandising</v-btn>
 
-      <v-btn
-        v-if="userStore.getLoggedInUser == null"
-        @click="LoginRegister"
-        style="background: #ff00ee"
-        class="rounded-pill font-weight-bold px-6"
-        rounded
-      >
+      <v-btn v-if="userStore.getLoggedInUser == null" @click="LoginRegister" style="background: #ff00ee"
+        class="rounded-pill font-weight-bold px-6" rounded>
         Login/Register
       </v-btn>
 
@@ -47,26 +42,40 @@
           </v-btn>
         </v-card-title>
         <v-card-text>
-          <v-list>
-            <v-list-item-group v-if="cartItems.length > 0">
-              <v-list-item v-for="(item, index) in cartItems" :key="index" class="cart-item">
-                <v-list-item-avatar>
-                  <v-img :src="item.image" max-width="50" max-height="50" />
-                </v-list-item-avatar>
-                <v-list-item-content>
-                  <v-list-item-title class="cart-item-title">{{ item.name }}</v-list-item-title>
-                  <v-list-item-subtitle class="cart-item-subtitle">${{ item.price }}</v-list-item-subtitle>
-                </v-list-item-content>
-                <v-btn icon @click="removeFromCart(index)" class="cart-remove-btn">
-                  <v-icon>mdi-delete</v-icon>
-                </v-btn>
-              </v-list-item>
-            </v-list-item-group>
-            <p v-if="cartItems.length === 0" class="empty-cart-text">Your cart is empty.</p>
-          </v-list>
+          <div>
+            <div v-if="cartItems.length > 0">
+              <v-container>
+                <v-row v-for="(item, index) in cartItems" :key="index" class="cart-item align-center mb-3 elevation-0"
+                  style="border: none;">
+                  <!-- Image Column -->
+                  <v-col cols="auto">
+                    <v-img :src="item.image" max-width="50" min-width="50" max-height="50" class="rounded-circle" />
+                  </v-col>
+
+                  <!-- Text Column -->
+                  <v-col>
+                    <div class="cart-item-title font-weight-medium">{{ item.name }}</div>
+                    <div class="cart-item-subtitle text-secondary">{{ item.price }}€</div>
+                  </v-col>
+
+                  <!-- Button Column -->
+                  <v-col cols="auto" class="text-end">
+                    <v-btn icon @click="removeFromCart(index)" class="cart-remove-btn">
+                      <v-icon>mdi-delete</v-icon>
+                    </v-btn>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </div>
+            <p v-else class="empty-cart-text text-center">Your cart is empty.</p>
+          </div>
+
+
+
+
         </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
+        <v-card-actions class="d-flex justify-space-between ma-2">
+          <p class="text-white text-body2 ml-5">Total: {{ this.total }}€</p>
           <v-btn color="green" @click="checkout" :disabled="cartItems.length === 0">Checkout</v-btn>
         </v-card-actions>
       </v-card>
@@ -98,7 +107,11 @@ export default {
       const user = this.userStore.getLoggedInUser;
       return user ? user.foto : null;
     },
+    total() {
+      return this.cartItems.reduce(function (acc, obj) { return acc + obj.price; }, 0).toFixed(2);
+    }
   },
+
   methods: {
     LoginRegister() {
       this.$router.push('/login');
@@ -122,7 +135,10 @@ export default {
       this.isCartModalOpen = !this.isCartModalOpen;
     },
     removeFromCart(index) {
+      console.log(index);
+
       this.userStore.removeItemFromCart(index);
+      this.userStore.$persist()
     },
     checkout() {
       alert('Checkout successful!');
@@ -135,7 +151,8 @@ export default {
 
 <style scoped>
 .cart-modal-card {
-  background: #1a1a2e; /* Background consistent with website theme */
+  background: #1a1a2e;
+  /* Background consistent with website theme */
   border-radius: 12px;
   padding: 20px;
   position: relative;
@@ -153,12 +170,14 @@ export default {
   justify-content: space-between;
   padding: 12px 0;
   border-bottom: 1px solid #444;
-  background-color: #262640; /* Blended background color */
+  background: #1a1a2e;
+  /* Blended background color */
   transition: background-color 0.3s ease;
 }
 
 .cart-item:hover {
-  background-color: #333544; /* Light hover effect for better readability */
+  background-color: #333544;
+  /* Light hover effect for better readability */
 }
 
 .cart-item-title {
@@ -184,7 +203,8 @@ export default {
 }
 
 .empty-cart-text {
-  color: #ff00ee; /* Matching color with website theme */
+  color: #ff00ee;
+  /* Matching color with website theme */
   font-size: 16px;
   text-align: center;
   margin-top: 20px;
