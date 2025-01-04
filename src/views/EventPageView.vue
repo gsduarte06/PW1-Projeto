@@ -76,7 +76,8 @@
               <v-row>
                 <v-col v-for="(speaker, index) in page" :key="index" sm="6" md="4"
                   class="d-flex justify-center align-center">
-                  <v-card @click="showSpeakerModal(speaker)"  style="background:#00041f; border: 1px solid white; width:65%" class="d-flex flex-column">
+                  <v-card @click="showSpeakerModal(speaker)"
+                    style="background:#00041f; border: 1px solid white; width:65%" class="d-flex flex-column">
                     <div class="d-flex flex-column align-center justify-space-evenly">
                       <v-img class="mt-4 rounded-circle" :src="speaker.image" :alt="speaker.name" width="100"
                         aspect-ratio="1/1"></v-img>
@@ -192,8 +193,8 @@
               <v-list dense style="background-color: #59398E;">
                 <v-list-item v-for="(feature, index) in event.pricing.premiumFeatures" :key="index">
                   <v-icon class="mr-2"
-                    :color="event.pricing.advancedFeatures[index] == feature ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
-                  <span :class="event.pricing.advancedFeatures[index] == feature ? 'text-white' : 'text-grey'">{{
+                    :color="event.pricing.advancedFeatures.includes(feature) ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
+                  <span :class="event.pricing.advancedFeatures.includes(feature) ? 'text-white' : 'text-grey'">{{
                     feature }}</span>
                 </v-list-item>
               </v-list>
@@ -250,8 +251,8 @@
               <v-list dense style="background-color: #000B52;">
                 <v-list-item v-for="(feature, index) in event.pricing.premiumFeatures" :key="index">
                   <v-icon class="mr-2"
-                    :color="event.pricing.beginnerFeatures[index] == feature ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
-                  <span :class="event.pricing.beginnerFeatures[index] == feature ? 'text-white' : 'text-grey'">{{
+                    :color="event.pricing.beginnerFeatures.includes(feature) ? 'light-green' : 'grey'">mdi-check-circle</v-icon>
+                  <span :class="event.pricing.beginnerFeatures.includes(feature) ? 'text-white' : 'text-grey'">{{
                     feature }}</span>
                 </v-list-item>
               </v-list>
@@ -278,7 +279,7 @@
     <!-- Comment Section -->
     <div class="mt-16 w-75 align-self-center">
       <p class="text-h3  my-16" style="color: #ff00ee">Comment Section</p>
-      <div v-for="comment in comments" :key="comment.id_comment" class="d-flex flex-column ">
+      <div v-for="comment in this.event.comments" :key="comment.id_comment" class="d-flex flex-column ">
         <v-divider v-if="comment.id_comment != 1" color="#fff" class="my-4"></v-divider>
         <div class="d-flex flex-row justify-space-between">
           <p class="mr-4 text-white text-body1">
@@ -300,7 +301,7 @@
         <v-btn class="rounded-xl text-white text-body1" elevation="6" style="
             background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee);
             text-transform: none;
-          ">Submit Comment</v-btn>
+          " @click="submitComment()">Submit Comment</v-btn>
       </div>
     </div>
   </div>
@@ -313,7 +314,7 @@
         style="background-color: #00041f"></v-skeleton-loader>
     </div>
   </div>
-    <!-- Speaker Modal -->
+  <!-- Speaker Modal -->
   <v-dialog v-model="speakerModalVisible" max-width="600px">
     <v-card style="background-color: #00041f; color: white;">
       <v-card-title class="text-h5" style="color: #ff00ee;">
@@ -338,6 +339,7 @@
 
 <script>
 import { useEventStore } from '../stores/event';
+import { useUserStore } from '../stores/users';
 export default {
   data() {
     return {
@@ -345,10 +347,10 @@ export default {
       selectedSpeaker: null,
       activeSpeakerPage: 0,
       eventStore: useEventStore(),
+      userStore: useUserStore(),
       tab: null,
       cardsPerPage: 6,
       timeleft: {},
-      comments: [{ id_comment: 1, user: "gsd", content: "loving the event" }, { id_comment: 2, user: "diogo", content: "loving the event" }],
       createCommentContent: null
     };
   },
@@ -361,36 +363,36 @@ export default {
       const now = new Date();
       const eventDate = new Date(this.event.timeleft);
       const timeDiff = eventDate - now;
-
       if (timeDiff <= 0) {
         return { days: 0, hours: 0, minutes: 0, seconds: 0 };
       }
-
       const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-
       this.timeleft = { days, hours, minutes, seconds }
     }, 1000);
   },
-
-
   computed: {
     paginatedSpeakers() {
       const pages = [];
       for (let i = 0; i < this.event.speakers.length; i += this.cardsPerPage) {
         pages.push(this.event.speakers.slice(i, i + this.cardsPerPage));
       }
-
       return pages;
     },
     event() {
       return this.eventStore.getEvent
-
     }
   },
   methods: {
+    submitComment() {
+      const lastId = this.event.comments[this.event.comments.length - 1];
+      let id = parseInt(lastId.id_comment) + 1;
+      this.event.comments.push({ ...{ id_comment: id, user: this.userStore.getUserNameLoggedIn, content: this.createCommentContent } });
+      this.eventStore.updateevents(this.event);
+      this.createCommentContent = "";
+    },
     scrollTickets() {
       this.$refs.tickets?.scrollIntoView({ behavior: 'smooth' });
     },

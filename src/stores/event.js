@@ -23,9 +23,25 @@ export const useEventStore = defineStore('eventStore', {
     getEvent() {
       return this.event
     },
+    getTicketOptions() {
+      return this.AllticketOptions
+    },
   },
 
   actions: {
+    addTicketOption(option) {
+      const finder = this.AllticketOptions.find(
+        (item) =>
+          item.toLowerCase().replaceAll(' ', '') == option.toLowerCase().replaceAll(' ', ''),
+      )
+      if (!finder) {
+        this.AllticketOptions.push(option)
+        return true
+      } else {
+        return false
+      }
+    },
+
     async fetchevents() {
       if (this.event == null) {
         try {
@@ -55,7 +71,7 @@ export const useEventStore = defineStore('eventStore', {
     },
     {
       key: 'eventPortoTechHubTicketOptions',
-      pick: ['ticketOptions'],
+      pick: ['AllticketOptions'],
       storage: localStorage,
     },
   ],

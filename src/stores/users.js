@@ -152,6 +152,7 @@ export const useUserStore = defineStore('users', {
             },
           ],
           merchandising: [],
+          cart: [],
         })
         this.uploadData()
         return true
@@ -159,32 +160,33 @@ export const useUserStore = defineStore('users', {
         return false
       }
     },
+
     addItemToCart(item) {
-      const loggedInUser = this.getLoggedInUser;
+      const loggedInUser = this.getLoggedInUser
       if (loggedInUser) {
-        loggedInUser.merchandising.push(item);
-        this.uploadData(); // Ensure persistence
+        loggedInUser.cart.push(item)
+        this.uploadData() // Ensure persistence
       } else {
-        console.error('No user is logged in to add items to the cart.');
+        console.error('No user is logged in to add items to the cart.')
       }
     },
     removeItemFromCart(index) {
-      const loggedInUser = this.getLoggedInUser;
+      const loggedInUser = this.getLoggedInUser
       if (loggedInUser) {
-        loggedInUser.merchandising.splice(index, 1);
-        this.uploadData(); // Ensure persistence
+        loggedInUser.merchandising.splice(index, 1)
+        this.uploadData() // Ensure persistence
       }
     },
     clearCart() {
-      const loggedInUser = this.getLoggedInUser;
+      const loggedInUser = this.getLoggedInUser
       if (loggedInUser) {
-        loggedInUser.merchandising = [];
-        this.uploadData(); // Ensure persistence
+        loggedInUser.merchandising = []
+        this.uploadData() // Ensure persistence
       }
     },
     getCartItems() {
-      const loggedInUser = this.getLoggedInUser;
-      return loggedInUser ? loggedInUser.merchandising : [];
+      const loggedInUser = this.getLoggedInUser
+      return loggedInUser ? loggedInUser.cart : []
     },
   },
   persist: [

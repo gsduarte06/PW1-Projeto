@@ -2,7 +2,7 @@
   "PortoTechHub": [
     {
       "id": "1",
-      "BeginDate": "20/11/2025",
+      "BeginDate": "21/11/2025",
       "Title": "Porto Tech Hub",
       "location": "EDIFÍCIO DA ALFÂNDEGA, R. Nova da Alfândega, 4050-430 Porto",
       "timeleft": "2025-11-25T09:00:00",
@@ -558,6 +558,23 @@
           "name": "Keychain",
           "price": 3.99,
           "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734297204/gpd1tvmkabmsxgvethku.png"
+        }
+      ],
+      "comments": [
+        {
+          "id_comment": 1,
+          "user": "gsd",
+          "content": "loving the event"
+        },
+        {
+          "id_comment": 2,
+          "user": "diogo",
+          "content": "loving the event 2"
+        },
+        {
+          "id_comment": 3,
+          "user": "gsduarte",
+          "content": "Got some new speakers"
         }
       ]
     }

@@ -19,7 +19,7 @@
         <v-row>
           <v-col cols="12" sm="6" md="4" v-for="(user, index) in users" :key="index" class="mb-5">
             <v-card style="background-color: #59398e; color: white;">
-              <v-card-title>{{ user.name }}</v-card-title>
+              <v-card-title>{{ user.username }}</v-card-title>
               <v-card-subtitle>Role: {{ user.role }}</v-card-subtitle>
               <v-card-text>
                 <v-select v-model="user.role" :items="roles" label="Change Role" dense outlined
@@ -31,46 +31,29 @@
             </v-card>
           </v-col>
         </v-row>
-
-        <!-- Add New User Section -->
-        <p class="text-h6 mt-5">Add New User</p>
-        <v-form>
-          <v-text-field v-model="newUser.name" label="Name" outlined dense></v-text-field>
-          <v-select v-model="newUser.role" :items="roles" label="Role" outlined dense></v-select>
-          <v-btn color="primary" class="mt-3" @click="addUser">Add User</v-btn>
-        </v-form>
       </div>
     </v-col>
   </v-row>
 </template>
 
 <script>
+
+import { useUserStore } from '@/stores/users';
 export default {
   data() {
     return {
-      roles: ["Admin", "Editor", "Viewer"], // Available roles
-      users: [
-        { name: "Alice Johnson", role: "Admin" },
-        { name: "Bob Smith", role: "Editor" },
-        { name: "Catherine Doe", role: "Viewer" },
-      ],
-      newUser: {
-        name: "",
-        role: "",
-      },
+      userStore: useUserStore(),
+      roles: ["Admin", "Viewer"],
     };
+  },
+  computed: {
+    users() {
+      return this.userStore.getUsers
+    }
   },
   methods: {
     redirectToEvents() {
       this.$router.push('/admin/event');
-    },
-    addUser() {
-      if (this.newUser.name && this.newUser.role) {
-        this.users.push({ ...this.newUser });
-        this.newUser = { name: "", role: "" };
-      } else {
-        alert("Please fill in all fields.");
-      }
     },
     removeUser(index) {
       this.users.splice(index, 1);

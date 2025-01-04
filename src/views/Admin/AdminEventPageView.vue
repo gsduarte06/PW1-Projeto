@@ -98,9 +98,6 @@
             </v-card>
           </v-col>
         </v-row>
-        <v-btn color="primary" class="mt-5 mx-auto" style="display: block; max-width: 200px;" @click="savePricing">
-          Save Pricing
-        </v-btn>
         <v-dialog v-model="featureModal" max-width="600px">
           <v-card>
             <v-card-title>
@@ -109,13 +106,14 @@
             <v-divider></v-divider>
             <v-card-text>
               <v-form>
-                <v-text-field v-model="newFeature" label="New Feature" outlined dense
-                  placeholder="Enter feature description"></v-text-field>
+                <v-text-field v-if="currentTicketType == 'premiumFeatures'" v-model="newFeature" label="New Feature"
+                  outlined dense placeholder="Enter feature description"></v-text-field>
+                <v-select v-else :items="eventStore.getTicketOptions" v-model="newFeature"></v-select>
               </v-form>
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn color="primary" @click="addFeature(currentTicketType)">Add</v-btn>
+              <v-btn color="primary" @click="addFeature()">Add</v-btn>
               <v-btn text @click="featureModal = false">Cancel</v-btn>
             </v-card-actions>
           </v-card>
@@ -133,22 +131,6 @@ export default {
     return {
       eventStore: useEventStore(),
       updateEvent: null,
-      /* event: {
-        BeginDate: "21/05/2025",
-        EndDate: "25/05/2025",
-        Title: "Porto Tech Hub",
-        location: "21 King Street, 1205 Dhaka BD",
-        details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sollicitudin...",
-        pricing: {
-          advanced: ["Access to all days of the event", "Access to all lectures", "Get a free T-shirt"],
-          premium: ["Access to all days", "Meet event speakers", "Get a personalized T-shirt"],
-          beginner: ["Access to 1 day", "Get a free T-shirt"],
-        },
-        speakers: [
-          { name: "Jane Doe", role: "Executive Producer", image: "https://example.com/speaker1.jpg" },
-          { name: "John Smith", role: "Senior Developer", image: "https://example.com/speaker2.jpg" },
-        ],
-      }, */
       newSpeaker: { name: "", role: "", image: "", description: "", linkedIn: "" },
       featureModal: false,
       currentTicketType: "",
@@ -173,8 +155,10 @@ export default {
 
     },
     addSpeaker() {
-      if (this.newSpeaker.name && this.newSpeaker.role && this.newSpeaker.image) {
+      if (this.newSpeaker.name && this.newSpeaker.role && this.newSpeaker.image && this.newSpeaker.description) {
         this.event.speakers.push({ ...this.newSpeaker });
+        this.eventStore.updateevents(this.event)
+        this.eventStore.$persist()
         this.newSpeaker = { name: "", role: "", image: "", description: "", linkedIn: "" };
       } else {
         alert("Please fill in all speaker fields.");
@@ -182,6 +166,8 @@ export default {
     },
     removeSpeaker(index) {
       this.event.speakers.splice(index, 1);
+      this.eventStore.updateevents(this.event)
+      this.eventStore.$persist()
     },
     savePricing() {
       alert("Ticket pricing saved!");
@@ -190,17 +176,32 @@ export default {
       this.currentTicketType = type;
       this.featureModal = true;
     },
-    addFeature(type) {
+    addFeature() {
       if (this.newFeature) {
-        this.event.pricing[type].push(this.newFeature);
+        if (this.currentTicketType == 'premiumFeatures') {
+          const result = this.eventStore.addTicketOption(this.newFeature)
+          if (result) {
+            alert("New feature added successfully")
+          } else {
+            alert("Feature already exists")
+            this.newFeature = "";
+            this.featureModal = false;
+            return
+          }
+        }
+        this.event.pricing[this.currentTicketType].push(this.newFeature);
+        this.eventStore.updateevents(this.event)
         this.newFeature = "";
         this.featureModal = false;
+        this.eventStore.$persist()
       } else {
         alert("Feature description cannot be empty.");
       }
     },
     removeFeature(type, index) {
       this.event.pricing[type].splice(index, 1);
+      this.eventStore.updateevents(this.event)
+      this.eventStore.$persist()
     },
   },
 };

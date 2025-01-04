@@ -4,7 +4,8 @@
       <v-container fluid>
         <v-row justify="center">
           <v-col cols="12" md="8">
-            <v-card class="mx-auto elevation-0" style="border-radius: 12px; background-color: #00041f; margin-top: 15px">
+            <v-card class="mx-auto elevation-0"
+              style="border-radius: 12px; background-color: #00041f; margin-top: 15px">
               <v-card-text>
                 <p class="text-h2 mb-5" style="color: #ff00ee">Morning Talks</p>
                 <div v-if="morningTalks.length > 0">
@@ -19,12 +20,9 @@
                     </div>
 
                     <!-- See More button below the description -->
-                    <v-btn
-                      class="rounded-xl text-white text-body1 mt-2"
-                      elevation="6"
+                    <v-btn class="rounded-xl text-white text-body1 mt-2" elevation="6"
                       style="background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee); text-transform: none;"
-                      @click="toggleFullText(talk)"
-                    >
+                      @click="toggleFullText(talk)">
                       {{ talk.showFullText ? 'See Less' : 'See More' }}
                     </v-btn>
                   </div>
@@ -46,12 +44,9 @@
                     </div>
 
                     <!-- See More button below the description -->
-                    <v-btn
-                      class="rounded-xl text-white text-body1 mt-2"
-                      elevation="6"
+                    <v-btn class="rounded-xl text-white text-body1 mt-2" elevation="6"
                       style="background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee); text-transform: none;"
-                      @click="toggleFullText(talk)"
-                    >
+                      @click="toggleFullText(talk)">
                       {{ talk.showFullText ? 'See Less' : 'See More' }}
                     </v-btn>
                   </div>
@@ -99,21 +94,21 @@ export default {
         // Split talks into morning and afternoon based on the 'begin' time
         this.morningTalks = allTalks
           .filter(talk => talk.begin && talk.begin < "12:00")
-          .map(talk => ({ 
-            ...talk, 
-            showFullText: false 
+          .map(talk => ({
+            ...talk,
+            showFullText: false
           }));
         this.afternoonTalks = allTalks
           .filter(talk => talk.begin && talk.begin >= "12:00")
-          .map(talk => ({ 
-            ...talk, 
-            showFullText: false 
+          .map(talk => ({
+            ...talk,
+            showFullText: false
           }));
-        
+
         // Remove duplicates if any
         this.morningTalks = this.removeDuplicates(this.morningTalks);
         this.afternoonTalks = this.removeDuplicates(this.afternoonTalks);
-        
+
       } else {
         console.error('No talks found in the schedule.');
       }
