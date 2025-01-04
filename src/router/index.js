@@ -6,7 +6,8 @@ import LeaderboardPage from '../views/LeaderboardPageView.vue'
 import ProfilePage from '../views/ProfilePageView.vue'
 import EventPage from '../views/EventPageView.vue'
 import MerchandisingPage from '../views/MerchandisingPageView.vue'
-import TalksPage from '../views/TalksPageView.vue'
+import TalkDetailPage from '../views/TalkDetailPageView.vue'
+import SpearkerDetailsPage from '../views/SpeakerDetailsPageView.vue'
 import AdminPage from '../views/Admin/AdminPageView.vue'
 import AdminEventPage from '../views/Admin/AdminEventPageView.vue'
 import { useUserStore } from '@/stores/users'
@@ -52,10 +53,15 @@ const router = createRouter({
       component: MerchandisingPage,
     },
     {
-      path: '/talks',
-      name: 'talks',
-      component: TalksPage,
+      path: '/talk-details',
+      name: 'TalkDetails',
+      component: TalkDetailPage,
     },
+    {
+      path: '/speakers/:name',
+      name: 'SpeakerDetails',
+      component: SpearkerDetailsPage,
+    },    
     {
       path: '/admin',
       name: 'admin',
