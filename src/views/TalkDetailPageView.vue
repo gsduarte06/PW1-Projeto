@@ -10,8 +10,8 @@
       <p class="mt-5">{{ talk.description }}</p>
     </div>
     <div v-if="userStore.getLoggedInUser.merchandising.find((item) => item.type == 'ticket')">
-      <v-btn v-if="!user.talks.find((element) => element == talk.title)" @click="participateTalk(talk.title)"
-        class="mt-5" style="
+      <v-btn v-if="!user.talks.find((element) => element.title == talk.title)" @click="participateTalk()" class="mt-5"
+        style="
                     background: linear-gradient( #ff007f, #6e44ff);
                     color: white;
                     border-radius: 25px;
@@ -20,7 +20,7 @@
       </v-btn>
       <div v-else>
         <p class=" mt-5 text-body1 weight-bold text-white">You'r registred to this talk!!</p>
-        <v-btn @click="Deregister(talk.title)" class="mt-1" style="
+        <v-btn @click="Deregister()" class="mt-1" style="
                     background: linear-gradient( #ff007f, #6e44ff);
                     color: white;
                     border-radius: 25px;
@@ -128,15 +128,22 @@ export default {
         this.eventStore.$persist()
       }
     },
-    Deregister(title) {
-      const talkIndex = this.user.talks.indexOf(title)
-      console.log(talkIndex);
-      this.user.talks.splice(talkIndex, 1)
-      this.user.points -= 100
+    Deregister() {
+      const scheduleItem = this.event.schedule.find((item) => item.TimeOfDay === this.timeOfday);
+      if (scheduleItem) {
+        const talkfind = scheduleItem.content[this.indexContent][this.indexTalk];
+        const talkIndex = this.user.talks.indexOf(talkfind)
+        this.user.talks.splice(talkIndex, 1)
+        this.user.points -= 100
+      }
     },
-    participateTalk(title) {
-      this.user.points += 100
-      this.user.talks.push(title)
+    participateTalk() {
+      const scheduleItem = this.event.schedule.find((item) => item.TimeOfDay === this.timeOfday);
+      if (scheduleItem) {
+        const talkfind = scheduleItem.content[this.indexContent][this.indexTalk];
+        this.user.points += 100
+        this.user.talks.push(talkfind)
+      }
     }
   },
 };
