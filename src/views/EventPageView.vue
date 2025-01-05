@@ -123,7 +123,7 @@
           <!-- Dynamically show content for the selected tab -->
           <div v-for="day in event.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay" class="w-100">
             <!-- Render content for the specific day -->
-            <div v-if="day.content && day.content.length">
+            <div>
               <div v-for="(content, index) in day.content" :key="content.id" class="d-flex flex-column text-white ">
                 <v-container elevation="0" fluid>
                   <v-row>
@@ -209,13 +209,18 @@
                 </v-list-item>
               </v-list>
               <v-card-actions class="justify-center mt-5">
-                <v-btn class="" style="
+                <v-btn v-if="!userStore.getLoggedInUser.merchandising.find((item) => item.type == 'ticket')"
+                  @click="purchaseTicket('advanced')" class="" style="
                     background: linear-gradient( #ff007f, #6e44ff);
                     color: white;
                     border-radius: 25px;
                   ">
                   Buy
                 </v-btn>
+                <v-chip v-else class="text-body3 align-center text-white mb-2" small elevated
+                  style="background-color: #ff00ee;">
+                  Already owned
+                </v-chip>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -237,13 +242,18 @@
                 </v-list-item>
               </v-list>
               <v-card-actions class="justify-center mt-5">
-                <v-btn class="" style="
+                <v-btn v-if="!userStore.getLoggedInUser.merchandising.find((item) => item.type == 'ticket')"
+                  @click="purchaseTicket('premium')" class="" style="
                     background: linear-gradient( #ff007f, #6e44ff);
                     color: white;
                     border-radius: 25px;
                   ">
                   Buy
                 </v-btn>
+                <v-chip v-else class="text-body3 align-center text-white mb-2" small elevated
+                  style="background-color: #ff00ee;">
+                  Already owned
+                </v-chip>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -267,13 +277,18 @@
                 </v-list-item>
               </v-list>
               <v-card-actions class="justify-center mt-5">
-                <v-btn class="" style="
+                <v-btn v-if="!userStore.getLoggedInUser.merchandising.find((item) => item.type == 'ticket')"
+                  @click="purchaseTicket('beginner')" class="" style="
                     background: linear-gradient( #ff007f, #6e44ff);
                     color: white;
                     border-radius: 25px;
                   ">
                   Buy
                 </v-btn>
+                <v-chip v-else class="text-body3 align-center text-white mb-2" small elevated
+                  style="background-color: #ff00ee;">
+                  Already owned
+                </v-chip>
               </v-card-actions>
             </v-card>
           </v-col>
@@ -315,15 +330,6 @@
       </div>
     </div>
   </div>
-
-  <div v-else>
-    <div class="d-flex flex-column justify-center align-center h-80" style="background-color: #00041f">
-
-      <!-- Skeleton Loader -->
-      <v-skeleton-loader type="heading, image@2, paragraph@4" class="mt-5"
-        style="background-color: #00041f"></v-skeleton-loader>
-    </div>
-  </div>
   <!-- Speaker Modal -->
   <v-dialog v-model="speakerModalVisible" max-width="600px">
     <v-card style="background-color: #00041f; color: white;">
@@ -344,6 +350,19 @@
     </v-card>
   </v-dialog>
 
+  <div v-if="alert.visible" class="simple-alert">
+    <span>{{ alert.message }}</span>
+  </div>
+  <div v-else></div>
+  <div v-if="this.event == null">
+    <div class="d-flex flex-column justify-center align-center h-80" style="background-color: #00041f">
+
+      <!-- Skeleton Loader -->
+      <v-skeleton-loader type="heading, image@2, paragraph@4" class="mt-5"
+        style="background-color: #00041f"></v-skeleton-loader>
+    </div>
+  </div>
+
 
 </template>
 
@@ -361,7 +380,12 @@ export default {
       tab: null,
       cardsPerPage: 6,
       timeleft: {},
-      createCommentContent: null
+      createCommentContent: null,
+      alert: {
+        visible: false,
+        message: "",
+      },
+      gotTicket: false
     };
   },
   async beforeMount() {
@@ -396,6 +420,41 @@ export default {
     }
   },
   methods: {
+    showWarning(message) {
+      this.alert.message = message;
+      this.alert.visible = true;
+      setTimeout(() => {
+        this.alert.visible = false;
+      }, 3000);
+    },
+    purchaseTicket(type) {
+      let item = {}
+      item.type = "ticket"
+      if (this.userStore.getCartItems.length == 0) {
+        console.log(type);
+
+        switch (type) {
+          case "beginner":
+            item.name = "Beginner"
+            item.price = 50
+            break;
+          case "advanced":
+            item.name = "Advanced"
+            item.price = 150
+            break;
+          case "premium":
+            item.name = "Premium"
+            item.price = 200
+            break;
+          default:
+            break;
+        }
+        this.userStore.addItemToCart(item)
+        this.showWarning("Ticket added to cart!")
+      } else {
+        this.showWarning("Can't add ticket to cart. Because it is not empty")
+      }
+    },
     removeComment(index) {
       this.event.comments.splice(index, 1);
       console.log(this.event);
@@ -442,5 +501,18 @@ export default {
 
 .custom-pagination .v-btn {
   transition: transform 0.2s;
+}
+
+.simple-alert {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #ff00ee;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
 }
 </style>

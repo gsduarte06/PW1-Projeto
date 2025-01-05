@@ -73,6 +73,7 @@ export default {
   methods: {
     addToCart(item) {
       if (this.userStore) {
+        item.type = "merch"
         this.userStore.addItemToCart(item);
         this.alert.message = `${item.name} added to cart!`;
         this.alert.visible = true;

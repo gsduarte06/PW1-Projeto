@@ -49,7 +49,11 @@
                   style="border: none;">
                   <!-- Image Column -->
                   <v-col cols="auto">
-                    <v-img :src="item.image" max-width="50" min-width="50" max-height="50" class="rounded-circle" />
+                    <v-img v-if="item.image" :src="item.image" max-width="50" min-width="50" max-height="50"
+                      class="rounded-circle" />
+                    <v-avatar v-else>
+                      <v-icon color="#fff" size="35">mdi-ticket</v-icon>
+                    </v-avatar>
                   </v-col>
 
                   <!-- Text Column -->
@@ -98,7 +102,7 @@ export default {
   },
   computed: {
     cartItems() {
-      return this.userStore.getCartItems();
+      return this.userStore.getCartItems;
     },
     cartCount() {
       return this.cartItems.length;
@@ -141,7 +145,7 @@ export default {
       this.userStore.$persist()
     },
     checkout() {
-      alert('Checkout successful!');
+      this.userStore.AddMerchandising();
       this.userStore.clearCart();
       this.toggleCartModal();
     },

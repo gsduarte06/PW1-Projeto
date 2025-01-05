@@ -9,9 +9,31 @@
       <p><strong>Speakers:</strong> {{ talk.speakers }}</p>
       <p class="mt-5">{{ talk.description }}</p>
     </div>
+    <div v-if="userStore.getLoggedInUser.merchandising.find((item) => item.type == 'ticket')">
+      <v-btn v-if="!user.talks.find((element) => element == talk.title)" @click="participateTalk(talk.title)"
+        class="mt-5" style="
+                    background: linear-gradient( #ff007f, #6e44ff);
+                    color: white;
+                    border-radius: 25px;
+                  ">
+        Participate
+      </v-btn>
+      <div v-else>
+        <p class=" mt-5 text-body1 weight-bold text-white">You'r registred to this talk!!</p>
+        <v-btn @click="Deregister(talk.title)" class="mt-1" style="
+                    background: linear-gradient( #ff007f, #6e44ff);
+                    color: white;
+                    border-radius: 25px;
+                  ">
+          Deregister
+        </v-btn>
+      </div>
+    </div>
+    <p v-else class=" mt-5 text-body1 weight-bold text-red-accent-4"> Buy a ticket to guarantee your place in this talk
+    </p>
 
-    <div class="mt-16 w-100 align-self-center">
-      <p class="text-h3  my-16" style="color: #ff00ee">Comment Section</p>
+    <div class="w-100 align-self-center">
+      <p class="text-h3  my-10" style="color: #ff00ee">Comment Section</p>
       <div v-if="this.talk.comments.length != 0" v-for="(comment, index) in this.talk.comments"
         :key="comment.id_comment" class="d-flex flex-column ">
         <v-divider v-if="comment.id_comment != 1" color="#fff" class="my-4"></v-divider>
@@ -68,8 +90,13 @@ export default {
   },
   mounted() {
     this.event = this.eventStore.getEvent
-    console.log(this.talk.comments);
+    console.log(this.user.talks.find((element) => element == this.talk.title));
 
+  },
+  computed: {
+    user() {
+      return this.userStore.getLoggedInUser
+    }
   },
   methods: {
     removeComment(index) {
@@ -100,6 +127,16 @@ export default {
         this.eventStore.updateevents(this.event);
         this.eventStore.$persist()
       }
+    },
+    Deregister(title) {
+      const talkIndex = this.user.talks.indexOf(title)
+      console.log(talkIndex);
+      this.user.talks.splice(talkIndex, 1)
+      this.user.points -= 100
+    },
+    participateTalk(title) {
+      this.user.points += 100
+      this.user.talks.push(title)
     }
   },
 };
@@ -109,7 +146,6 @@ export default {
 /* Styling without a card, more direct */
 .talk-details {
   background-color: #00041f;
-
 }
 
 .like-icon {

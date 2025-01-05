@@ -16,6 +16,10 @@ export const useUserStore = defineStore('users', {
     getLoggedInUser() {
       return this.users.find((user) => user.username == this.userLoggedInUsername) || null
     },
+    getCartItems() {
+      const loggedInUser = this.getLoggedInUser
+      return loggedInUser ? loggedInUser.cart : []
+    },
   },
   actions: {
     CheckLogUserIn(username, password) {
@@ -153,8 +157,8 @@ export const useUserStore = defineStore('users', {
           ],
           merchandising: [],
           cart: [],
+          talks: [],
         })
-        this.uploadData()
         return true
       } else {
         return false
@@ -175,15 +179,18 @@ export const useUserStore = defineStore('users', {
         loggedInUser.cart.splice(index, 1)
       }
     },
+    AddMerchandising() {
+      const loggedInUser = this.getLoggedInUser
+      for (let index = 0; index < loggedInUser.cart.length; index++) {
+        const element = loggedInUser.cart[index]
+        loggedInUser.merchandising.push({ type: element.type, name: element.name })
+      }
+    },
     clearCart() {
       const loggedInUser = this.getLoggedInUser
       if (loggedInUser) {
         loggedInUser.cart = []
       }
-    },
-    getCartItems() {
-      const loggedInUser = this.getLoggedInUser
-      return loggedInUser ? loggedInUser.cart : []
     },
   },
   persist: [
