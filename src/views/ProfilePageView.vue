@@ -179,16 +179,16 @@
               <p class="text-h3" style="color: #ff00ee">Your Events</p>
               <div class="d-flex flex-column">
                 <!-- Cards -->
-                <div v-for="event in events" :key="event.id" class="d-flex flex-row mt-16">
+                <div v-for="talk in user.talks" :key="talk.id" class="d-flex flex-row mt-16">
                   <div class="d-flex flex-column align-center justify-center text-white text-body1 font-weight-medium"
                     style="background-color: #000b52; min-height: 180px; width: 10%">
-                    <p>{{ event.BeginDateSmall.split(" ")[0] }}</p>
-                    <p>{{ event.BeginDateSmall.split(" ")[1] }}</p>
+                    <p>{{ talk.begin }}</p>
+                    <p>{{ talk.end }}</p>
                   </div>
                   <div class="d-flex flex-column justify-space-between ma-2 ml-5" style="width: 90%">
-                    <p class="text-white text-h4">{{ event.Title }}</p>
-                    <p class="text-white text-body1">{{ event.location }}</p>
-                    <p class="text-white text-body1">{{ event.description }}</p>
+                    <p class="text-white text-h4">{{ talk.title }}</p>
+                    <p class="text-body1" style="color:#ff00ee">{{ talk.location }}</p>
+                    <p class="text-white text-body1">{{ truncate(talk.description, 200, '...') }}</p>
                   </div>
                 </div>
               </div>
@@ -211,35 +211,21 @@ export default {
       editedUser: {},
       editDialog: false,
       password: "",
-      events: [
-        {
-          id: 1,
-          BeginDateSmall: "24 Mar",
-          Title: "Vue.js Meetup",
-          location: "San Francisco, CA",
-          description:
-            "Join us for a meetup to discuss the latest trends and best practices in Vue.js development.",
-        },
-        {
-          id: 2,
-          BeginDateSmall: "4 April",
-          Title: "JavaScript Conference",
-          location: "New York, NY",
-          description:
-            "A major conference for JavaScript developers. Workshops, keynotes, and networking opportunities.",
-        },
-        {
-          id: 3,
-          BeginDateSmall: "15 April",
-          Title: "Web Development Bootcamp",
-          location: "Los Angeles, CA",
-          description:
-            "A week-long bootcamp for aspiring web developers. Intensive training in HTML, CSS, and JavaScript.",
-        },
-      ],
     };
   },
+
+  beforeMount() {
+
+  },
+
   methods: {
+    truncate(text, length, suffix) {
+      if (text.length > length) {
+        return text.substring(0, length) + suffix;
+      } else {
+        return text;
+      }
+    },
     showBadgeDetails(badge) {
       this.selectedBadge = badge;
       this.badgeModal = true;
@@ -356,16 +342,16 @@ export default {
   align-items: center;
 }
 
-.event-details {
+.talk-details {
   padding-left: 24px;
 }
 
-.event-title {
+.talk-title {
   font-size: 20px;
   font-weight: 600;
 }
 
-.event-details p {
+.talk-details p {
   margin-top: 8px;
   font-size: 16px;
 }
@@ -405,7 +391,7 @@ export default {
     /* Adjust button width for smaller screens */
   }
 
-  .event-row {
+  .talk-row {
     flex-direction: column;
   }
 }

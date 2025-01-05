@@ -184,6 +184,11 @@ export const useUserStore = defineStore('users', {
       for (let index = 0; index < loggedInUser.cart.length; index++) {
         const element = loggedInUser.cart[index]
         loggedInUser.merchandising.push({ type: element.type, name: element.name })
+        if (element.type == 'merch') {
+          loggedInUser.points += 100
+        } else {
+          loggedInUser.points += 1000
+        }
       }
     },
     clearCart() {

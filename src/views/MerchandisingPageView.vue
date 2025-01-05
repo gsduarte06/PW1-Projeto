@@ -3,7 +3,7 @@
     <v-container fluid class="main-container">
       <v-row justify="center">
         <v-col cols="12" md="10" class="pa-4">
-          <v-card class="mx-auto card-container">
+          <v-card class="mx-auto card-container  elevation-0">
             <v-card-title class="text-h4 card-title">
               MERCHANDISE OF THE EVENT
             </v-card-title>
