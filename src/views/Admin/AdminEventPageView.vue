@@ -17,7 +17,6 @@
             <v-col cols="12">
               <v-textarea v-model="updateEvent.details" label="Event Details" outlined dense auto-grow></v-textarea>
             </v-col>
-
           </v-row>
           <v-btn color="primary" class="mt-3" @click="saveEventDetails">Save Event Details</v-btn>
         </v-form>
@@ -68,56 +67,42 @@
 
       <v-divider color="white" class="mb-10"></v-divider>
 
-      <!-- Ticket Pricing Section -->
+      <!-- Speaker Lecture Management Section -->
       <div>
-        <p class="text-h5 mb-3">Edit Ticket Pricing</p>
-        <v-row dense>
-          <v-col cols="12" sm="6" md="4" v-for="(features, type) in updateEvent.pricing" :key="type">
-            <v-card style="background-color: #2c2f3f; color: white; border-radius: 10px;" class="py-3 px-4">
-              <v-card-title class="d-flex justify-space-between">
-                <span class="text-subtitle-1">{{ type }} Ticket</span>
-              </v-card-title>
-              <v-divider color="white"></v-divider>
+        <p class="text-h5 mb-3">Manage Speaker Lectures</p>
+        <v-row v-for="(lecture, index) in updateEvent.lectures" :key="index" dense class="mb-5">
+          <v-col cols="12" sm="6" md="4">
+            <v-card style="background-color: #2c2f3f; color: white; border-radius: 10px;">
+              <v-card-title>{{ lecture.title }}</v-card-title>
               <v-card-text>
-                <v-row v-for="(feature, index) in features" :key="index" dense class="align-center mb-2">
-                  <v-col>
-                    <div class="d-flex align-center justify-space-between">
-                      <span>{{ feature }}</span>
-                      <v-btn icon small color="red" @click="removeFeature(type, index)">
-                        <v-icon x-small>mdi-close</v-icon>
-                      </v-btn>
-                    </div>
-                  </v-col>
-                </v-row>
+                <p><strong>Location:</strong> {{ lecture.location }}</p>
+                <p><strong>Speakers:</strong> {{ lecture.speakers.join(', ') }}</p>
+                <p><strong>Time:</strong> {{ lecture.time }}</p>
               </v-card-text>
               <v-card-actions>
-                <v-btn outlined color="white" @click="openFeatureModal(type)">
-                  <v-icon left>mdi-plus</v-icon>Add Feature
-                </v-btn>
+                <v-btn outlined color="red" @click="removeLecture(index)">Remove Lecture</v-btn>
               </v-card-actions>
             </v-card>
           </v-col>
         </v-row>
-        <v-dialog v-model="featureModal" max-width="600px">
-          <v-card>
-            <v-card-title>
-              <span class="text-h6">Edit Features for {{ currentTicketType }}</span>
-            </v-card-title>
-            <v-divider></v-divider>
-            <v-card-text>
-              <v-form>
-                <v-text-field v-if="currentTicketType == 'premiumFeatures'" v-model="newFeature" label="New Feature"
-                  outlined dense placeholder="Enter feature description"></v-text-field>
-                <v-select v-else :items="eventStore.getTicketOptions" v-model="newFeature"></v-select>
-              </v-form>
-            </v-card-text>
-            <v-card-actions>
-              <v-spacer></v-spacer>
-              <v-btn color="primary" @click="addFeature()">Add</v-btn>
-              <v-btn text @click="featureModal = false">Cancel</v-btn>
-            </v-card-actions>
-          </v-card>
-        </v-dialog>
+        <v-form>
+          <p class="text-h6 mt-5">Add New Lecture</p>
+          <v-row dense>
+            <v-col cols="12" md="6">
+              <v-text-field v-model="newLecture.title" label="Lecture Title" outlined dense></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field v-model="newLecture.location" label="Location" outlined dense></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-text-field v-model="newLecture.time" label="Time" outlined dense></v-text-field>
+            </v-col>
+            <v-col cols="12" md="6">
+              <v-textarea v-model="newLecture.speakers" label="Speakers (comma-separated)" outlined dense auto-grow></v-textarea>
+            </v-col>
+          </v-row>
+          <v-btn color="primary" class="mt-3" @click="addLecture">Add Lecture</v-btn>
+        </v-form>
       </div>
     </v-col>
   </v-row>
@@ -125,40 +110,38 @@
 
 
 <script>
-import { useEventStore } from '@/stores/event';
+import { useEventStore } from "@/stores/event";
 export default {
   data() {
     return {
       eventStore: useEventStore(),
       updateEvent: null,
       newSpeaker: { name: "", role: "", image: "", description: "", linkedIn: "" },
-      featureModal: false,
-      currentTicketType: "",
-      newFeature: "",
+      newLecture: { title: "", time: "", description: "" },
+      selectedSpeaker: null,
     };
   },
   mounted() {
-    this.updateEvent = this.event
+    this.updateEvent = this.event;
   },
   computed: {
     event() {
-      return this.eventStore.getEvent
-    }
+      return this.eventStore.getEvent;
+    },
   },
   methods: {
     saveEventDetails() {
-      if (window.confirm('Are you sure you want to update the event?')) {
-        this.eventStore.updateevents(this.updateEvent)
-        this.eventStore.$persist()
+      if (window.confirm("Are you sure you want to update the event?")) {
+        this.eventStore.updateevents(this.updateEvent);
+        this.eventStore.$persist();
         alert("Event details saved!");
       }
-
     },
     addSpeaker() {
       if (this.newSpeaker.name && this.newSpeaker.role && this.newSpeaker.image && this.newSpeaker.description) {
-        this.event.speakers.push({ ...this.newSpeaker });
-        this.eventStore.updateevents(this.event)
-        this.eventStore.$persist()
+        this.event.speakers.push({ ...this.newSpeaker, lectures: [] });
+        this.eventStore.updateevents(this.event);
+        this.eventStore.$persist();
         this.newSpeaker = { name: "", role: "", image: "", description: "", linkedIn: "" };
       } else {
         alert("Please fill in all speaker fields.");
@@ -166,66 +149,23 @@ export default {
     },
     removeSpeaker(index) {
       this.event.speakers.splice(index, 1);
-      this.eventStore.updateevents(this.event)
-      this.eventStore.$persist()
+      this.eventStore.updateevents(this.event);
+      this.eventStore.$persist();
     },
-    savePricing() {
-      alert("Ticket pricing saved!");
-    },
-    openFeatureModal(type) {
-      this.currentTicketType = type;
-      this.featureModal = true;
-    },
-    addFeature() {
-      if (this.newFeature) {
-        if (this.currentTicketType == 'premiumFeatures') {
-          const result = this.eventStore.addTicketOption(this.newFeature)
-          if (result) {
-            alert("New feature added successfully")
-          } else {
-            alert("Feature already exists")
-            this.newFeature = "";
-            this.featureModal = false;
-            return
-          }
-        }
-        this.event.pricing[this.currentTicketType].push(this.newFeature);
-        this.eventStore.updateevents(this.event)
-        this.newFeature = "";
-        this.featureModal = false;
-        this.eventStore.$persist()
+    addLectureToSpeaker() {
+      if (this.newLecture.title && this.newLecture.time && this.newLecture.description) {
+        this.selectedSpeaker.lectures.push({ ...this.newLecture });
+        this.eventStore.updateevents(this.event);
+        this.newLecture = { title: "", time: "", description: "" };
       } else {
-        alert("Feature description cannot be empty.");
+        alert("Please fill in all lecture fields.");
       }
     },
-    removeFeature(type, index) {
-      this.event.pricing[type].splice(index, 1);
-      this.eventStore.updateevents(this.event)
-      this.eventStore.$persist()
+    removeLectureFromSpeaker(index) {
+      this.selectedSpeaker.lectures.splice(index, 1);
+      this.eventStore.updateevents(this.event);
+      this.eventStore.$persist();
     },
   },
 };
 </script>
-
-
-<style scoped>
-.v-row {
-  margin: 0;
-}
-
-.v-card {
-  transition: transform 0.2s ease-in-out;
-}
-
-.v-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-}
-
-.v-chip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 20px;
-}
-</style>
