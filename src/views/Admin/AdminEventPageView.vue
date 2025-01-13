@@ -184,8 +184,8 @@ export default {
   },
   mounted() {
     this.updateEvent = this.event
-    this.speakersNames = this.event.speakers.map((speaker) => speaker.name);
     this.speakersNames.push("")
+    this.speakersNames = this.event.speakers.map((speaker) => speaker.name);
     console.log(this.speakersNames);
 
   },

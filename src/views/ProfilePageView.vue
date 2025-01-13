@@ -175,8 +175,8 @@
               </v-card>
             </v-dialog>
 
-            <div class="d-flex flex-column align-self-center mt-16">
-              <p class="text-h3" style="color: #ff00ee">Your Events</p>
+            <div v-if="user.talks.length != 0"class="d-flex flex-column align-self-center mt-16">
+              <p class="text-h3" style="color: #ff00ee">Your Talks</p>
               <div class="d-flex flex-column">
                 <!-- Cards -->
                 <div v-for="talk in user.talks" :key="talk.id" class="d-flex flex-row mt-16">
