@@ -127,7 +127,7 @@
               <v-card class="edit-dialog-card" style="padding-top: 16px; padding-bottom: 16px">
                 <v-card-title class="edit-dialog-title"> Edit User Details </v-card-title>
                 <v-card-text style="padding-top: 8px; padding-bottom: 8px">
-                  <v-form ref="editForm">
+                  <v-form >
                     <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
                         <label class="text-white text-body1 font-weight-medium">Name:</label>

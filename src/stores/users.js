@@ -75,14 +75,7 @@ export const useUserStore = defineStore('users', {
               id: 4,
               icon: 'mdi-code-tags',
               title: 'Tech Enthusiast',
-              description: 'For contributing code to open-source projects.',
-              achieved: false,
-            },
-            {
-              id: 5,
-              icon: 'mdi-earth',
-              title: 'Global Networker',
-              description: 'Granted for connecting with members from five countries.',
+              description: 'For participating in a workshop',
               achieved: false,
             },
             {
@@ -93,41 +86,11 @@ export const useUserStore = defineStore('users', {
               achieved: false,
             },
             {
-              id: 7,
-              icon: 'mdi-trophy',
-              title: 'Innovator of the Year',
-              description:
-                "Awarded to the participant who proposed the most groundbreaking idea during the event's innovation challenge.",
-              achieved: false,
-            },
-            {
               id: 8,
               icon: 'mdi-hand-heart',
               title: 'Event Ally',
               description:
-                'For assisting the most attendees during the event by sharing knowledge or providing guidance.',
-              achieved: false,
-            },
-            {
-              id: 9,
-              icon: 'mdi-code-braces',
-              title: 'Hackathon Master',
-              description: 'Recognized for leading a winning team in the event’s hackathon.',
-              achieved: false,
-            },
-            {
-              id: 10,
-              icon: 'mdi-microphone',
-              title: 'Inspirational Speaker',
-              description:
-                'Given to keynote speakers who delivered compelling and impactful sessions.',
-              achieved: false,
-            },
-            {
-              id: 11,
-              icon: 'mdi-leaf',
-              title: 'Eco-Tech Advocate',
-              description: 'Awarded for presenting sustainable tech solutions during the event.',
+                'For attending 10 talks.',
               achieved: false,
             },
             {
@@ -139,19 +102,11 @@ export const useUserStore = defineStore('users', {
               achieved: true,
             },
             {
-              id: 13,
-              icon: 'mdi-rocket',
-              title: 'Tech Trailblazer',
-              description:
-                'For showcasing a product or prototype that adopts emerging technologies.',
-              achieved: false,
-            },
-            {
               id: 14,
               icon: 'mdi-shield-check',
               title: 'Cybersecurity Advocate',
               description:
-                'Given to participants who presented significant contributions to securing digital ecosystems.',
+                'Get top 1 in the leaderboard by the end of the evemt.',
               achieved: true,
             },
           ],
