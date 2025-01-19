@@ -23,7 +23,10 @@
           "Meet event speakers",
           "Get a certificate"
         ],
-        "beginnerFeatures": ["Access to all days of the event", "Access to all the lectures"]
+        "beginnerFeatures": [
+          "Access to all days of the event",
+          "Access to all the lectures"
+        ]
       },
       "speakers": [
         {
@@ -32,7 +35,9 @@
           "image": "https://cache.sessionize.com/image/35f7-200o200o2-HyMbsZshERnp2TPyqcoX44.jpg",
           "description": "Alex Shershebnev is a seasoned Computer Vision and MLOps Engineer with over nine years of experience shaping the future of AI-driven software development. Currently, Alex leads the ML/DevOps team at Zencoder, where he leverages his extensive background in Software Engineering, ML and DevOps to deliver high-quality machine learning solutions. His work spans complex data pipelines, cloud infrastructure management (GCP, Kubernetes), and advanced ML/DevOps pipelines, ensuring scalability and efficiency. Before Zencoder, Alex played pivotal roles in numerous projects, including leading teams at Sanas, ivi and MTS AI. His technical expertise in machine learning, data science, and bioinformatics has led to impactful solutions across industries, ranging from bioinformatics at the University of Massachusetts to video analysis at ivi.ru and MTS AI. Alex has a proven track record of managing complex infrastructure that scales to hundreds of GPUs, enabling effective and easy use of cloud infrastructure for data scientists while driving down costs through cloud consolidation efforts and boosting productivity through the deployment of sophisticated AI models. In addition to his technical contributions, Alex has been instrumental in mentoring teams and fostering a culture of innovation and collaboration. His deep understanding of AI systems, from developing recommendation engines to cutting-edge computer vision algorithms to voice and NLP, positions him as a thought leader in the AI and ML space. Whether it’s speaking on the latest advancements in MLOps, sharing insights on AI-driven automation, or discussing the future of AI in the enterprise, Alex brings a wealth of knowledge, practical experience, and a passion for pushing the boundaries of what's possible with AI.",
           "linkedIn": "https://www.linkedin.com/in/shershebnev",
-          "talks": ["Going beyond copilot with AI Agents"]
+          "talks": [
+            "Going beyond copilot with AI Agents"
+          ]
         },
         {
           "name": "Aldan Creo",
@@ -40,7 +45,9 @@
           "image": "https://cache.sessionize.com/image/fdb1-200o200o2-KZ2Qk2kdE34vjwtHtCDzEk.jpg",
           "description": "Aldan studied CS in Spain, France and Switzerland, graduating as valedictorian. He completed 4 internships and was selected by Django as a Google Summer of Code contributor. He received a grant from the Spanish government to undertake research on Natural Language Processing. He garnered recognition for leadership and academic excellence through several awards. He's also the founder of 3 associations and contributes to open-source. Currently, he works as Technology Research Specialist in AI at The Dock, Accenture's flagship R&D and global innovation center.",
           "linkedIn": "https://linkedin.com/in/acmcmc",
-          "talks": ["Knowledge Graphs + LLMs: What's the latest in research?"]
+          "talks": [
+            "Knowledge Graphs + LLMs: What's the latest in research?"
+          ]
         },
         {
           "name": "Alena Schmickl",
@@ -48,7 +55,9 @@
           "image": "https://cache.sessionize.com/image/f722-200o200o2-G5jGCBuot2WcuYuSQactDi.jpg",
           "description": "I have 10 years of experience in the technology field and am passionate about using technology as a business enabler. My focus is on Cloud Computing and Analytics.",
           "linkedIn": "https://www.linkedin.com/in/alena-schmickl-910025b9/",
-          "talks": ["Building an Enterprise Data Lake Architecture on AWS"]
+          "talks": [
+            "Building an Enterprise Data Lake Architecture on AWS"
+          ]
         },
         {
           "name": "Alex Soto",
@@ -56,7 +65,9 @@
           "image": "https://sessionize.com/image/9d0a-200o200o2-Vj8VMmiq2VU3Yx7YUohwhj.jpg",
           "description": "Alex Soto is a Director of Developer Experience at Red Hat. He is passionate about the Java world, software automation and he believes in the open-source software model. Alex is the co-author of Testing Java Microservice, Quarkus cookbook, Kubernetes Secrets Management, GitOps cookbook, and RHCE Ansible Automation Study Guide books and contributor to several open-source projects. A Java Champion since 2017, he is also an international speaker and teacher at Salle URL University. You can follow him on Twitter (@alexsotob) to stay tuned to what's going on in Kubernetes and Java world.",
           "linkedIn": "https://www.linkedin.com/in/asotobu/",
-          "talks": ["Progressive Delivery in the Kubernetes era"]
+          "talks": [
+            "Progressive Delivery in the Kubernetes era"
+          ]
         },
         {
           "name": "Alina Yurenko",
@@ -64,7 +75,9 @@
           "image": "https://sessionize.com/image/ee7d-200o200o2-M1GouG5D7tuFwyuFeECYyM.jpg",
           "description": "Alina is a developer advocate for GraalVM at Oracle Labs, a research & development organization at Oracle. Loves both programming & natural languages, compilers, and open source.",
           "linkedIn": "https://www.linkedin.com/in/alinayurenko/",
-          "talks": ["Bring the action: using GraalVM in production"]
+          "talks": [
+            "Bring the action: using GraalVM in production"
+          ]
         },
         {
           "name": "Álvaro Mariscal",
@@ -72,7 +85,9 @@
           "image": "https://sessionize.com/image/ecb7-200o200o2-sGioVV5Ho4iXfUwBN56jJb.jpg",
           "description": "Álvaro is a passionate developer and agile enthusiast with over 23 years of experience. He is now a Principal Member of Technical Staff at Oracle Labs, where he is a Micronaut committer, helping to maintain and evolve the open-source framework. Before that, he was a Staff Engineer at VMWare, where he led the creation of new products to build, package, verify and publish software solutions with confidence in the VMware Marketplace. Previously, he spent some years working in different industries like gambling games (Odobo) and fintech (4Finance). Prior to that, he created his own company, Salenda, in 2005, a software factory and Atlassian Solution Partner headquartered in Madrid, Spain. Adaptavist acquired Salenda in 2019. Previously, he worked at companies like IBM BCS, Sun Microsystems or BEA Systems, where he was recognised as BEA Technical Director, an MVP awards program. He was also one of the initial founders and member of the Board of Directors of javaHispano in 2002, the world's largest Spanish-speaking Java User Group. Álvaro has spoken in 20 different countries at conferences like Devoxx BE/FR/MA, several Voxxed Days, GeeCON, JavaLand, JavaZone, jPrime, Codemotion and Commit Conf, among others. In his spare time, as well as coding and experimenting with new technologies, he likes to spend time with his wife and children, support CD Leganés football team, and play paddle tennis.",
           "linkedIn": "https://www.linkedin.com/in/mariscal/",
-          "talks": ["Developer experience in a modern Java framework"]
+          "talks": [
+            "Developer experience in a modern Java framework"
+          ]
         },
         {
           "name": "Andres Almiray",
@@ -80,7 +95,9 @@
           "image": "https://sessionize.com/image/9118-200o200o2-XbQVKgAqxS9z5yb1yZ9f69.jpg",
           "description": "Andres is a Java/Groovy developer and a Java Champion Alumni, Developer Advocate for the Database Group At Oracle, with more than 2 decades of experience in software design and development. He has been involved in web and desktop application development since the early days of Java. Andres is a true believer in open source and has participated on popular projects like Groovy, Griffon, and DbUnit, as well as starting his own projects. Founding member of the Griffon framework and Hackergarten community event. Author of JReleaser. You can find him on twitter too as @aalmiray. He likes to spend time with his beloved wife, Ixchel, when not hacking around.",
           "linkedIn": "https://www.linkedin.com/in/aalmiray/",
-          "talks": ["Going beyond ORMs"]
+          "talks": [
+            "Going beyond ORMs"
+          ]
         },
         {
           "name": "Andrzej Lassak",
@@ -88,7 +105,9 @@
           "image": "https://sessionize.com/image/9200-200o200o2-9KsHLBJ47iggRJeJHJpUvk.jpg",
           "description": "Andrzej Lassak is a seasoned professional with extensive experience in software development, services operations, Cloud infrastructure, and Generative AI. Currently, he specializes in architecting, deploying, and operating large-scale Generative AI services in the Cloud. Beyond his professional endeavors, Andrzej is a father of three, passionate about European integration and geoeconomics, holds an MBA, and has earned over 30 IT professional certificates.",
           "linkedIn": "https://linkedin.com/in/lassak",
-          "talks": ["From theory to practice: The rise of Generative AI"]
+          "talks": [
+            "From theory to practice: The rise of Generative AI"
+          ]
         },
         {
           "name": "Bartłomiej Pisulak",
@@ -96,7 +115,9 @@
           "image": "https://sessionize.com/image/528b-200o200o2-HLgLW2HFWwcUBcknj73j24.jpg",
           "description": "Director of Cloud Quality Engineering with 12+ years of professional experience. Passionate about building successful organisations. Seasoned IT Trainer and university lecturer, with more than seven years of experience and 400+ people trained. Executive MBA graduate.",
           "linkedIn": "https://www.linkedin.com/in/bart%C5%82omiej-pisulak-82b94036/",
-          "talks": ["From Bugs to Brilliance: Leveraging AI in Modern Software Testing"]
+          "talks": [
+            "From Bugs to Brilliance: Leveraging AI in Modern Software Testing"
+          ]
         },
         {
           "name": "Christian Woerz",
@@ -104,7 +125,9 @@
           "image": "https://sessionize.com/image/44e6-200o200o2-7GEdqMJuCcDvowZjWPiGVX.png",
           "description": "Christian is a freelance fullstack developer writing code in languages like Java, Kotlin, Typescript and Javascript. He's been working as a software engineer since over a decade. He loves learning from others and sharing his knowledge.",
           "linkedIn": "https://www.linkedin.com/in/christian-w%C3%B6rz-a1228380/",
-          "talks": ["The Eventloop in JavaScript - How does it work?"]
+          "talks": [
+            "The Eventloop in JavaScript - How does it work?"
+          ]
         },
         {
           "name": "Daniel Afonso",
@@ -112,7 +135,9 @@
           "image": "https://sessionize.com/image/5b02-200o200o2-HUcG2okVHLGNxM5uAaAWDJ.jpg",
           "description": "Daniel Afonso is a Senior Developer Advocate at PagerDuty, SolidJS DX team member, Instructor at Egghead.io, and Author of State Management with React Query. Daniel has a full-stack background, having worked with different languages and frameworks on various projects from IoT to Fraud Detection. He is passionate about learning and teaching and has spoken at multiple conferences around the world about topics he loves. In his free time, when he's not learning new technologies or writing about them, he's probably reading comics or watching superhero movies and shows.",
           "linkedIn": "https://www.linkedin.com/in/danieljcafonso/",
-          "talks": ["SolidStart: The Shape of Frameworks to Come"]
+          "talks": [
+            "SolidStart: The Shape of Frameworks to Come"
+          ]
         },
         {
           "name": "Gavin King",
@@ -120,7 +145,9 @@
           "image": "https://sessionize.com/image/89c4-200o200o2-SBF5ptmFg9gTrZ1eeyJUbh.jpg",
           "description": "Gavin King is a Java Champion and Distinguished Engineer at Red Hat. He's the creator of Hibernate, the most popular persistence solution for Java, and of the Ceylon programming language. He contributed to the Java Community Process as JBoss and then Red Hat representative for the EJB3 and JPA specifications and as spec lead and author of the CDI specification. He's currently a major contributor to the design of Jakarta Data and Jakarta Persistence, and an EGC representative for the Commonhaus Foundation.",
           "linkedIn": "https://www.linkedin.com/in/gavinking/",
-          "talks": ["A quick introduction to quantum information and quantum circuits"]
+          "talks": [
+            "A quick introduction to quantum information and quantum circuits"
+          ]
         },
         {
           "name": "Glenn Versweyveld",
@@ -128,7 +155,9 @@
           "image": "https://sessionize.com/image/5dc8-200o200o2-QSS29orFM3oiKMy7Xu7Gpj.png",
           "description": "I'm interested in everything surrounding Microsoft and .NET in particular, for the moment working as a System Expert at Baliose Insurances. Still loves Windows Phone, but don't judge him for it :) Currently Microsoft MVP in Developer Technologies and Pluralsight author.",
           "linkedIn": "https://www.linkedin.com/in/depechie/",
-          "talks": [".NET Aspire: Let's build a cloud application with baked in observability"]
+          "talks": [
+            ".NET Aspire: Let's build a cloud application with baked in observability"
+          ]
         },
         {
           "name": "Ivar Grimstad",
@@ -136,7 +165,9 @@
           "image": "https://sessionize.com/image/8264-200o200o2-GJGs9tWWTrPMJzn4HuvTH4.png",
           "description": "Ivar Grimstad is the Jakarta EE Developer Advocate at Eclipse Foundation. He is a Java Champion and JUG Leader based in Sweden. Besides advocating the Jakarta EE technologies, Ivar is contributing to the Jakarta EE specifications as well as being the PMC Lead for Eclipse Enterprise for Java (EE4J). He is also one of the specification leads for Jakarta MVC and represents Eclipse Foundation on the JCP Executive Committee. Ivar is also involved in a wide range of other open-source projects and communities. He is a frequent speaker at International developer conferences.",
           "linkedIn": "https://www.linkedin.com/in/ivargrimstad/",
-          "talks": ["Jakarta EE Meets AI"]
+          "talks": [
+            "Jakarta EE Meets AI"
+          ]
         },
         {
           "name": "Kim van Wilgen",
@@ -144,7 +175,9 @@
           "image": "https://sessionize.com/image/6e0c-200o200o2-a2-eb4e-4f5b-9dfe-1ec40c87828c.c19f682d-5867-4f58-86a8-ce6014fe6f52.jpeg",
           "description": "Kim van Wilgen is an experienced leader in software product development. She works at Schuberg Philis, an IT outsourcing company for mission critical IT solutions, delivering a 100% customer satisfaction. She’s passionate about topics such as DevOps, continuous delivery, agile and continuous security. Dealing with today’s complexity and innovation asks for empowering people to levels that are uncomfortable for most of us. And it asks us to upskill our ability to automate and innovate our work in the field of IT. Kim is interested in the cultural, organizational and technological changes associated with these developments. Although a nerd at heart, she also has over a decade of experience on the other side: the business. A huge benefit to bridge the gap between business and IT. She is a speaker at national and international conferences on topics such as agile and continuous delivery.",
           "linkedIn": "https://www.linkedin.com/in/kimvanwilgen/",
-          "talks": ["Leading self-organizing teams"]
+          "talks": [
+            "Leading self-organizing teams"
+          ]
         },
         {
           "name": "Luciano Mammino",
@@ -152,7 +185,9 @@
           "image": "https://sessionize.com/image/58bc-200o200o2-HtjRDVyBYJ7d2oLD8tqt1c.jpg",
           "description": "Luciano is an AWS Serverless Hero who was born in 1987, the same year Super Mario Bros was released in Europe, which, by chance is his favorite game! He started coding at the age of 12, hacking away with his father's old i386 armed only with MS-DOS and the QBasic interpreter and since then he has been professionally a software developer for more than 14 years. He is currently a senior Architect at fourTheorem where he is helping companies to get the best of the cloud, AWS, and serverless. He loves the full-stack web, Node.js & Serverless and co-authored Node.js design patterns (https://www.nodejsdesignpatterns.com), maintains https://fstack.link and co-hosts https://awsbites.com",
           "linkedIn": "https://www.linkedin.com/notifications/",
-          "talks": ["Faster/Greener/Cheaper Serverless compute with AWS Lambda & Rust"]
+          "talks": [
+            "Faster/Greener/Cheaper Serverless compute with AWS Lambda & Rust"
+          ]
         },
         {
           "name": "Małgorzata Janeczek",
@@ -160,7 +195,9 @@
           "image": "https://sessionize.com/image/9ce3-200o200o2-MTHAJUXVq6BJQ1PxQcCiZ1.jpg",
           "description": "Hi! I am Gosia, but some people know me as a mom, a daughter, some as friend, others coworker, but for some, I am just “ey, you!”. A few years back I graduated from Automatic Control and Robotics, and soon after starting my job in that field, I knew... it's not for me. So I started looking for something new. Then.. it hit me how cool was programming during my studies, so HERE I AM! For quite a few years now I have been working as a full-stack developer with .NET and React (and knockout, Angular JavaScript..). However, recently I have been feeling a growing passion and interest in DevOps too. I am only beginning my DevOps journey, but I am facing some exciting challenges. At the times when I am not coding, you will probably find me either playing with our little one, in my cave painting or trying to play piano.",
           "linkedIn": "https://www.linkedin.com/in/mjaneczek/",
-          "talks": ["JavaScript is weird. MythBusters special."]
+          "talks": [
+            "JavaScript is weird. MythBusters special."
+          ]
         },
         {
           "name": "Marc Backes",
@@ -168,7 +205,9 @@
           "image": "https://sessionize.com/image/8c0a-200o200o2-BiWfh29T7WGWqiQmnZu6Wt.jpg",
           "description": "Tech Lead and Full-Stack Developer. Enthusiast of Vue + Nuxt 💚",
           "linkedIn": "https://linkedin.com/in/themarcba",
-          "talks": ["Building a Time Machine with ES6 Proxies"]
+          "talks": [
+            "Building a Time Machine with ES6 Proxies"
+          ]
         },
         {
           "name": "Mete Atamel",
@@ -176,7 +215,9 @@
           "image": "https://sessionize.com/image/2ce0-200o200o2-73-a28c-4ad1-8885-7c52ba397fe3.2e3567c5-b2c6-4a8c-a297-74a96a80b2df.jpg",
           "description": "I'm a Software Engineer and a Developer Advocate at Google in London. I build tools, demos, tutorials, and give talks to educate and help developers to be successful on Google Cloud.",
           "linkedIn": "https://www.linkedin.com/in/meteatamel",
-          "talks": ["Avoid common LLM pitfalls"]
+          "talks": [
+            "Avoid common LLM pitfalls"
+          ]
         },
         {
           "name": "Michel Schildmeijer",
@@ -184,7 +225,9 @@
           "image": "https://sessionize.com/image/df90-200o200o2-VmXSz1D6ZeoSNSEKnB2rkE.jpg",
           "description": "Michel started his career as a medical officer in the Royal Dutch Airforce, with a focus on pharma. After the air force, he continued in pharma, followed by time working in clinical pharmacology. While there, he transitioned to IT by learning UNIX and MUMPS, and developed a system for managing patients’ medical records. As his career developed, his responsibility shifted from a deep technical perspective to a more visionary role. At the end of 2011, Michel authored a book on WebLogic Administration for beginners. He joined Qualogy in April 2012 where he expanded his repertoire significantly, serving a wide range of customers with his knowledge about Java Application Servers, Middleware and Application Integration. He also increased his multiple-industry knowledge in his role as Solutions or IT architect by working for customers in a range of sectors, including financials, telecom, public transportation and government organizations. In 2012, he received the IT Industry-recognized title of Oracle ACE for being an ambassador and community leader in his area of expertise. In 2019, this was enhanced to Oracle ACE Director. Michel is asked regularly to speak about technology and the impact of innovation at national and international conferences such as KubeCon, Oracle OpenWorld, Oracle Community Tours and others. He contributes actively to the OpenSource community and solutions regarding containerization, CI/CD and DevOps. Read more via blog: https://bit.ly/3fAxrqf | Medium: https://mschildmeijer.medium.com/ | Books: Oracle Weblogic Server 11gR1 PS2: Administration Essentials: https://bit.ly/3IhALmf | Oracle WebLogic Server 12c: First Look1: https://bit.ly/31olbpj",
           "linkedIn": "http://nl.linkedin.com/in/mschldmr",
-          "talks": ["Which Vault? Don't tell me your secret(s)!"]
+          "talks": [
+            "Which Vault? Don't tell me your secret(s)!"
+          ]
         },
         {
           "name": "Mihaela Ghidersa",
@@ -202,7 +245,9 @@
           "image": "https://sessionize.com/image/1f69-200o200o2-MVSybLoJJYvYT7ku79HWNt.jpg",
           "description": "Developer Advocate with 15+ years experience consulting for many different customers, in a wide range of contexts (such as telecoms, banking, insurances, large retail and public sector). Usually working on Java/Java EE and Spring technologies, but with focused interests like Rich Internet Applications, Testing, CI/CD and DevOps. Also double as a trainer and triples as a book author.",
           "linkedIn": "https://www.linkedin.com/in/nicolasfrankel/",
-          "talks": ["Make your security policy auditable"]
+          "talks": [
+            "Make your security policy auditable"
+          ]
         },
         {
           "name": "Olimpiu Pop",
@@ -220,7 +265,9 @@
           "image": "https://sessionize.com/image/e066-200o200o2-MGTL3UyyyLSyQEf6inXuSu.jpg",
           "description": "I have spent the last 30 years spent working in the technology industry, and have over 20 years experience working with open source. I help customers solve business problems with open source technologies and cloud. I am a Developer Advocate for open source at AWS. I help increase awareness of AWS contributions in open source, and why AWS is a great place to run your open source workloads.",
           "linkedIn": "https://www.linkedin.com/in/ricardosueiras/",
-          "talks": ["Build without limits - lessons learned from using generative AI dev tools"]
+          "talks": [
+            "Build without limits - lessons learned from using generative AI dev tools"
+          ]
         },
         {
           "name": "Samuel Pampolini",
@@ -228,7 +275,9 @@
           "image": "https://sessionize.com/image/4320-200o200o2-4viWfJS4RnSkWSvchgCqep.jpg",
           "description": "I have spent the last 30 years spent working in the technology industry, and have over 20 years experience working with open source. I help customers solve business problems with open source technologies and cloud. I am a Developer Advocate for open source at AWS. I help increase awareness of AWS contributions in open source, and why AWS is a great place to run your open source workloads.",
           "linkedIn": "https://www.linkedin.com/in/ricardosueiras/",
-          "talks": ["Build without limits - lessons learned from using generative AI dev tools"]
+          "talks": [
+            "Build without limits - lessons learned from using generative AI dev tools"
+          ]
         },
         {
           "name": "Sander Hoogendoorn",
@@ -246,7 +295,9 @@
           "image": "https://sessionize.com/image/592e-200o200o2-sphUgahxXU894qtW8VC3Ad.jpg",
           "description": "Sander is part of the tech leadership team at Picnic —the Dutch online grocery scale-up— building Java-based systems at scale. He also is a Java Champion and author of the O'Reilly book 'Java 9 Modularity' (see javamodularity.com). As an avid conference speaker, Sander loves sharing knowledge, also through his blog at http://branchandbound.net and as Pluralsight instructor.",
           "linkedIn": "https://www.linkedin.com/in/sandermak/",
-          "talks": ["The Art of Software Development"]
+          "talks": [
+            "The Art of Software Development"
+          ]
         },
         {
           "name": "Sheen Brisals",
@@ -264,7 +315,9 @@
           "image": "https://sessionize.com/image/0bdb-200o200o2-R4hb5YcPrPypZr7moEMjD3.jpg",
           "description": "Simon is an independent consultant specialising in software architecture, and the author of “Software Architecture for Developers” (a developer-friendly guide to software architecture, technical leadership and the balance with agility). He is also the creator of the C4 model for visualising software architecture, and the founder of Structurizr. Simon is a regular speaker at international software development conferences, and travels the world to help organisations visualise and document their software architecture.",
           "linkedIn": "https://www.linkedin.com/in/simonbrownjersey/",
-          "talks": ["Visualising software architecture with the C4 model"]
+          "talks": [
+            "Visualising software architecture with the C4 model"
+          ]
         },
         {
           "name": "Stephen Chin",
@@ -272,7 +325,9 @@
           "image": "https://sessionize.com/image/9f6e-200o200o2-EHvMKwbfP43RYxL9qJMwGv.jpg",
           "description": "Stephen Chin is VP of Developer Relations at JFrog, member of the CNCF governing board, and author of The Definitive Guide to Modern Client Development, Raspberry Pi with Java, Pro JavaFX Platform, and the DevOps Tools for Java Developers title from O'Reilly. He has keynoted numerous conferences around the world including swampUP, Devoxx, JNation, JavaOne, Joker, and Open Source India. Stephen is an avid motorcyclist who has done evangelism tours in Europe, Japan, and Brazil, interviewing hackers in their natural habitat. When he is not traveling, he enjoys teaching kids how to do embedded and robot programming together with his daughters.",
           "linkedIn": "https://www.linkedin.com/in/steveonjava/",
-          "talks": ["Give Your LLMs a Left Brain"]
+          "talks": [
+            "Give Your LLMs a Left Brain"
+          ]
         }
       ],
       "schedule": [
@@ -285,7 +340,9 @@
                 "begin": "09:30",
                 "end": "09:50",
                 "location": "PTH Main Track",
-                "speakers": ["Samuel Santos"],
+                "speakers": [
+                  "Samuel Santos"
+                ],
                 "type": "Talk",
                 "title": "Welcome",
                 "description": "Welcoming to Porto Tech Hub Conference 2024",
@@ -298,7 +355,9 @@
                 "begin": "10:00",
                 "end": "10:50",
                 "location": "PTH Main Track",
-                "speakers": ["Stephen Chin"],
+                "speakers": [
+                  "Stephen Chin"
+                ],
                 "type": "Talk",
                 "title": "Give Your LLMs a Left Brain",
                 "description": "The human brain is divided into two hemispheres, each of which specializes in different types of tasks. Your right brain excels at imagination, intuition, art, rhythm, feelings, and dreams. Meanwhile, the left brain is more analytical and focused on logic, sequencing, linear thinking, and mathematics. Like a human brain, generative AI excels at certain tasks, especially those related to right-brain creative activities. However, the absence of relevant and up-to-date information produces confusing hallucinations that are not grounded in reality. This presentation will explore how knowledge graphs built with factual and updated information can complement LLMs via retrieval augment generation (RAG) to produce more reliable results.",
@@ -309,7 +368,10 @@
                 "begin": "10:00",
                 "end": "13:00",
                 "location": "Workshop Track 1",
-                "speakers": ["Alena Schmickl", "Stephan Schiller"],
+                "speakers": [
+                  "Alena Schmickl",
+                  "Stephan Schiller"
+                ],
                 "type": "Workshop",
                 "title": "Building an Enterprise Data Lake Architecture on AWS",
                 "description": "Data volumes are increasing at an unprecedented rate, exploding from terabytes to petabytes and sometimes exabytes of data. Traditional on-premises data analytics approaches can’t handle these data volumes because they don’t scale well enough and are too expensive. At the same time, data can be analysed to gain competitive insights, to support decision making and to train AI applications. In this workshop led by an AWS Solution Architect, participants will learn about data architecture fundamentals and get deep hands-on experience with building an enterprise-grade data lake with a business intelligence frontend on AWS, using AWS analytics services such as Glue, Athena, Lake Formation, Kinesis and QuickSight. Participants should have hands-on experience with AWS and bring an own laptop with AWS CLI installed. Sandbox AWS accounts for running workshop labs will be provided.",
@@ -326,7 +388,9 @@
                 "begin": "10:00",
                 "end": "13:00",
                 "location": "Workshop Track 2",
-                "speakers": ["Glenn Versweyveld"],
+                "speakers": [
+                  "Glenn Versweyveld"
+                ],
                 "type": "Workshop",
                 "title": ".NET Aspire: Let's build a cloud application with baked in observability",
                 "description": ".NET Aspire is a new opinionated developer stack to build observable, production ready, distributed applications. So let us take a look at what it can do and how it can help us deliver new .NET cloud applications. There is a big focus on observability, all build on top of OpenTelemetry. This for logs, metrics and traces. And as a treat we will deploy the local environment to Azure Container Apps in no time!",
@@ -339,7 +403,9 @@
                 "begin": "11:10",
                 "end": "12:00",
                 "location": "PTH Main Track",
-                "speakers": ["Marc Backes"],
+                "speakers": [
+                  "Marc Backes"
+                ],
                 "type": "Talk",
                 "title": "Building a Time Machine with ES6 Proxies",
                 "description": "In this session, we learn how we can use JavaScript ES6 proxies to do all sorts of cool things, among them creating reactivity, or build a time machine right inside the browser. I will go through some basic workings of Proxies on slides to understand the theory, and will then jump into live coding, where I will develop a 'time machine' from scratch, where a state automatically (!) saves changes, and the developer can use this to jump to certain points in time, or even create a new timeline. All of the live demo is coded by hand, and split up in very digestible pieces so it is easy to follow.",
@@ -350,7 +416,9 @@
                 "begin": "11:10",
                 "end": "12:00",
                 "location": "Emergn Track",
-                "speakers": ["Nicolas Fränkel"],
+                "speakers": [
+                  "Nicolas Fränkel"
+                ],
                 "type": "Talk",
                 "title": "Make your security policy auditable",
                 "description": "Nowadays, everybody realizes the importance of preventing undue access to one's applications. Many conceptual models are available: RBAC, ABAC, you name it. Likewise, all popular stacks have frameworks and libraries to help developers implement your chosen policy access. If your organization only has a handful of apps, that's all fine and dandy, but problems appear at scale. One such problem is keeping under control access configuration across dozens or even hundreds of apps. It requires regular, if not continuous, auditing: it's impossible to achieve when the configuration is code, even worse if it's a compiled language. Open Policy Agent aims to externalize such configuration in a text format with specified semantics. In this presentation, I'll explain OPA in more detail and demo how to migrate from a regular Spring Boot application to an OPA-based approach in different steps.",
@@ -361,7 +429,9 @@
                 "begin": "11:10",
                 "end": "12:00",
                 "location": "Five9 Track",
-                "speakers": ["Alex Soto"],
+                "speakers": [
+                  "Alex Soto"
+                ],
                 "type": "Talk",
                 "title": "Progressive Delivery in the Kubernetes era",
                 "description": "Production is the place where all applications should live. Even though you are using continuous integration and delivery, you might wonder every time you release a new version to production if it will work or there will be some breakage on the latest version, eventually making production unavailable to the customers. Progressive delivery is the next step after Continuous Delivery to test your application in production before it becomes fully available to all your user bases. Embrace progressive delivery with techniques like the blue-green, canary release, shadowing traffic, or dark launches to validate the application in production using Kubernetes and tools like Istio, Prometheus, ArgoCD, or Argo Rollouts. Come to this session to learn progressive delivery in action using Kubernetes.",
@@ -372,7 +442,9 @@
                 "begin": "11:10",
                 "end": "12:00",
                 "location": "Zencoder Track",
-                "speakers": ["Ivar Grimstad"],
+                "speakers": [
+                  "Ivar Grimstad"
+                ],
                 "type": "Talk",
                 "title": "Jakarta EE Meets AI",
                 "description": "Most of us are not writing our own Large Language Models (LLMs). We are consuming them, and integrating them into our enterprise applications. Ang guess what? Java is the perfect language for this! You don't have to learn Python or any other language for your AI integrations. This session will explore different options there are for Java developers and how to integrate them into your enterprise Java applications. There will be live demos using libraries and tools such as LangChain4J, Spring AI, and Jakarta EE.",
@@ -383,7 +455,9 @@
                 "begin": "11:10",
                 "end": "12:00",
                 "location": "PTH Track",
-                "speakers": ["Aldan Creo"],
+                "speakers": [
+                  "Aldan Creo"
+                ],
                 "type": "Talk",
                 "title": "Knowledge Graphs + LLMs: What's the latest in research?",
                 "description": "Knowledge Graphs are super-flexible data structures that can capture complex relationships. Nice! But we can also put AI on top of them to get embeddings and start predicting things. Nicer! 🚀 Let's see what this is all about 👀 We'll learn about KGs, how traditional ML algorithms work on them, why they're limited, and how recent research advancements try to overcome that – using LLMs! 😉",
@@ -396,7 +470,9 @@
                 "begin": "12:10",
                 "end": "13:00",
                 "location": "PTH Main Track",
-                "speakers": ["Alina Yurenko"],
+                "speakers": [
+                  "Alina Yurenko"
+                ],
                 "type": "Talk",
                 "title": "Bring the action: using GraalVM in production",
                 "description": "GraalVM has been around for a while, and more and more developers and teams use it to run Java applications faster, more efficiently, and more securely. According to the latest State of Spring survey, 37% of Spring users either already run applications natively compiled GraalVM in production, or are currently evaluating it, and 31% more have such plans. For those who haven't moved to GraalVM yet though, the questions and concerns are usually similar: how hard is to migrate? Can I use libraries and tools? Can I monitor such native applications? What about using latest Java features? In this hands-on session we'll talk about all the practical aspects of building and running applications with GraalVM, tooling, monitoring, using popular libraries, and cover common questions that we get from users.",
@@ -407,7 +483,9 @@
                 "begin": "12:10",
                 "end": "13:00",
                 "location": "Emergn Track",
-                "speakers": ["Mete Atamel"],
+                "speakers": [
+                  "Mete Atamel"
+                ],
                 "type": "Talk",
                 "title": "Avoid common LLM pitfalls",
                 "description": "It's easy to generate content with a Large Language Model (LLM), but the output often suffers from hallucinations (fake content), outdated information (not based on the latest data), reliance on public data only (no private data), and a lack of citations back to original sources. Not ideal for real-world applications. In this talk, we’ll provide a quick overview of the latest advancements in multi-modal LLMs, highlighting their capabilities and limitations. We’ll then explore various techniques to overcome common LLM pitfalls, including Retrieval-Augmented Generation (RAG) to enhance prompts with relevant data, ReACT prompting to guide LLMs in verbalizing their reasoning, Function Calling to grant LLMs access to external APIs, and Grounding to link LLM outputs to verifiable information sources, and more.",
@@ -418,7 +496,9 @@
                 "begin": "12:10",
                 "end": "13:00",
                 "location": "Five9 Track",
-                "speakers": ["Bartlomiej Pisulak"],
+                "speakers": [
+                  "Bartlomiej Pisulak"
+                ],
                 "type": "Talk",
                 "title": "From Bugs to Brilliance: Leveraging AI in Modern Software Testing",
                 "description": "AI is ushering in a transformative revolution that will reshape every aspect of the software industry. As we stand on the brink of this new era, it's time to explore how this cutting-edge technology can enhance our productivity and streamline our workflows. But can AI handle the essential task of bug processing? Can we trust it now? In this lecture, uncover how AI can be utilized to triage, analyze, and pinpoint the root causes of bugs, and learn how it is set to revolutionize our approach to software quality assurance.",
@@ -429,7 +509,9 @@
                 "begin": "12:10",
                 "end": "13:00",
                 "location": "Zencoder Track",
-                "speakers": ["Christian Woerz"],
+                "speakers": [
+                  "Christian Woerz"
+                ],
                 "type": "Talk",
                 "title": "The Eventloop in JavaScript - How does it work?",
                 "description": "One of the most important building blocks in any JavaScript runtime is the eventloop which enables developers to write performant code, even single-threaded. But many developers do not look into how it works because it looks really complicated and hard to understand. In this talk we will discover how the eventloop works, how one can use it to ones advantage and how it works with Promises, Timer-Events and Web-Apis. All easily understandable and done in Live-Coding.",
@@ -440,7 +522,9 @@
                 "begin": "12:10",
                 "end": "13:00",
                 "location": "PTH Track",
-                "speakers": ["Kim van Wilgen"],
+                "speakers": [
+                  "Kim van Wilgen"
+                ],
                 "type": "Talk",
                 "title": "Leading self-organizing teams",
                 "description": "Self-organizing, self-steering, self-managing, self-directing. We are even still looking for the naming of this concept of teams that have autonomy in what to work on, how to do it, and who will do it. This principle in the agile manifesto, 'the best architectures, requirements and designs emerge from self-organizing teams', may be the hardest one to master. In a world shaped by hierchy we lack experience in self-something. Often leading to half-assed attempts that are bound to fail. prepare for a crash course into leading a self-organizing team. And yes, self-organizing teams still have leadership.",
@@ -458,7 +542,9 @@
                 "begin": "15:00",
                 "end": "18:00",
                 "location": "Workshop Track 1",
-                "speakers": ["Gavin King"],
+                "speakers": [
+                  "Gavin King"
+                ],
                 "type": "Workshop",
                 "title": "A quick introduction to quantum information and quantum circuits",
                 "description": "This session introduces basic concepts in quantum information to an audience familiar with linear algebra (vectors and matrices) but no prior knowledge of quantum mechanics or quantum computing. Time permitting, we might see some examples of quantum circuits in Qiskit. There will be math!",
@@ -469,7 +555,9 @@
                 "begin": "15:00",
                 "end": "18:00",
                 "location": "Workshop Track 2",
-                "speakers": ["Ricardo Sueiras"],
+                "speakers": [
+                  "Ricardo Sueiras"
+                ],
                 "type": "Workshop",
                 "title": "Build without limits - lessons learned from using generative AI dev tools",
                 "description": "Within the last 12 months, AI capabilities have advanced exponentially. Generative AI is the next frontier of artificial intelligence, and we have seen the emergence of generative AI tools that are focused on helping developers to supercharge their productivity. These AI developer tools are growing in popularity, as development teams experiment how they can use these tools to produce code faster and with fewer defects. Like all new tools, you need to understand how they work in order to optimise what you can get out of them. In this hands on workshop, we are going to use these tools to build an application from scratch. I will be using Python, so ideally you will have a good working knowledge of Python to get the best out of this session. You will need to bring your laptop and be running VSCode or Intellij."
@@ -479,7 +567,9 @@
                 "begin": "15:00",
                 "end": "15:50",
                 "location": "PTH Main Track",
-                "speakers": ["Sander Mak"],
+                "speakers": [
+                  "Sander Mak"
+                ],
                 "type": "Talk",
                 "title": "The Art of Software Development",
                 "description": "Are you a software engineer? You may want to think twice before answering... Looking closely, our collective software development practices may not be so rigidly engineered as we'd like to think. And you know what? That's ok! Let's embrace the art of software development and see where this takes us. In this keynote, we'll look at software development as a craft combining art and engineering. What does this mean for coding, testing, architecture and design, and other important aspects of our work? And more importantly: what does this tell us about learning and growing as software developers? Our obsession with tools may cloud what software development is really about. Join this keynote to unlock your inner artist!",
@@ -490,7 +580,9 @@
                 "begin": "15:00",
                 "end": "15:50",
                 "location": "Emergn Track",
-                "speakers": ["Álvaro Mariscal"],
+                "speakers": [
+                  "Álvaro Mariscal"
+                ],
                 "type": "Talk",
                 "title": "Developer experience in a modern Java framework",
                 "description": "Micronaut is a modern, JVM-based, full stack Java framework designed for building modular, easily testable JVM applications. Developed since 2018 by the creators of the Grails framework, Micronaut takes inspiration from lessons learnt over more than 10 years building frameworks and developer tools. In this talk, Micronaut committer Álvaro Sánchez-Mariscal, will demonstrate with a live coding session the developer experience of a Micronaut",
@@ -501,7 +593,9 @@
                 "begin": "15:00",
                 "end": "15:50",
                 "location": "Five9 Track",
-                "speakers": ["Daniel Afonso"],
+                "speakers": [
+                  "Daniel Afonso"
+                ],
                 "type": "Talk",
                 "title": "SolidStart: The Shape of Frameworks to Come",
                 "description": "The long-awaited moment has arrived: SolidStart is out of Beta! But what does this mean for us? What should we all know about this unopinionated meta-framework? Join me to learn everything you need to start shipping full-stack SolidJS applications.",
@@ -512,7 +606,9 @@
                 "begin": "15:00",
                 "end": "15:50",
                 "location": "Zencoder Track",
-                "speakers": ["Luciano Mammino"],
+                "speakers": [
+                  "Luciano Mammino"
+                ],
                 "type": "Talk",
                 "title": "Faster/Greener/Cheaper Serverless compute with AWS Lambda & Rust",
                 "description": "Rust is rapidly gaining popularity in software engineering as one of the most loved and fastest-growing programming languages. But what happens when we bring it into the serverless world? Although AWS Lambda doesn’t offer a managed runtime for Rust, it is possible to write Lambda functions in Rust using a custom runtime. In this talk, I'll share why you should consider doing so and explore the advantages in terms of cost savings, performance, greener computing, developer experience, and bug resilience.",
@@ -523,7 +619,9 @@
                 "begin": "15:00",
                 "end": "15:50",
                 "location": "PTH Track",
-                "speakers": ["Olimpiu Pop"],
+                "speakers": [
+                  "Olimpiu Pop"
+                ],
                 "type": "Talk",
                 "title": "Five Adjustments You Need To Do To Your CI/CD Pipeline Before Integrating LLMs In your Application",
                 "description": "Think that adding AI to your CI is business as usual? It’s easy to construct applications but there are hidden (and not so hidden) aspects to producing applications that incorporate AI. This session will take you through the top five challenges that will impact your CI/CD system as you build a production system. We’ll cover practical aspects - such as model inaccuracies, test repeatability, and model security, prosaic changes - how do you validate production releases and measure bias? and wider, grander aspects like AI legislation and general licensing considerations.",
@@ -536,7 +634,9 @@
                 "begin": "16:00",
                 "end": "16:50",
                 "location": "PTH Main Track",
-                "speakers": ["Sheen Brisals"],
+                "speakers": [
+                  "Sheen Brisals"
+                ],
                 "type": "Talk",
                 "title": "Patterns and practices for developing enterprise-scale applications with serverless!",
                 "description": "As an evolution of the cloud, serverless—a technical concept and an ecosystem—extends cloud capabilities to enable us to rapidly build and deliver modern business capabilities. Unlike a successful start-up growing fast using serverless technology, enterprise adoption is often challenging. With several business areas, multiple teams, and different technologies, enterprises require careful thinking and planning before going headfirst into serverless. This talk will begin by giving everyone an overview of the serverless technology ecosystem. It will then show efficient ways to tackle complexity using proven patterns and practices to adopt serverless successfully.",
@@ -547,7 +647,9 @@
                 "begin": "16:00",
                 "end": "16:50",
                 "location": "Emergn Track",
-                "speakers": ["Simon Brown"],
+                "speakers": [
+                  "Simon Brown"
+                ],
                 "type": "Talk",
                 "title": "Visualising software architecture with the C4 model",
                 "description": "It's very likely that the majority of the software architecture diagrams you've seen are a confused mess of boxes and lines. Following the publication of the Manifesto for Agile Software Development in 2001, teams have abandoned UML, discarded the concept of modelling and instead place a heavy reliance on conversations centered around incoherent whiteboard diagrams or shallow “Marketecture” diagrams created with Visio. Moving fast and being Agile requires good communication, yet software development teams struggle with this fundamental skill. A good set of software architecture diagrams are priceless for aligning a team around a shared vision and for getting new-joiners productive fast. This session explores the visual communication of software architecture and is based upon a decade of Simon's experiences working with software development teams large and small across the globe. He'll look at what is commonplace today, the importance of creating a shared vocabulary, diagram notation, and the value of creating a lightweight model to describe your software system using the “C4 model”, which he created as a way to help software development teams describe and communicate software architecture, both during up-front design sessions and when retrospectively documenting an existing codebase.",
@@ -558,7 +660,9 @@
                 "begin": "16:00",
                 "end": "16:50",
                 "location": "Five9 Track",
-                "speakers": ["Mihaela Ghidersa"],
+                "speakers": [
+                  "Mihaela Ghidersa"
+                ],
                 "type": "Talk",
                 "title": "Supercharge your coding: Integrating ChatGPT and Copilot in long-term projects",
                 "description": "Are you a developer looking to unlock the full potential of AI in your long-term software development endeavors? If so, this presentation is crafted specifically for you. In this session, we will integrate cutting-edge AI technologies, such as ChatGPT and GitHub Copilot, into your development processes. We emphasize sustainability and long-term rewards, delving into the fast-evolving landscape of AI-powered development tools. You will gain valuable insights on seamlessly incorporating these innovations into your workflow, enhancing productivity, improving code quality, and fostering groundbreaking innovation in your projects. Don't miss this opportunity to be at the forefront of AI-driven development!",
@@ -569,7 +673,9 @@
                 "begin": "16:00",
                 "end": "16:50",
                 "location": "Zencoder Track",
-                "speakers": ["Andrzej Lassak"],
+                "speakers": [
+                  "Andrzej Lassak"
+                ],
                 "type": "Talk",
                 "title": "From theory to practice: The rise of Generative AI",
                 "description": "Generative AI has rapidly transitioned from a theoretical concept to a cornerstone of practical AI applications. In this session, we'll explore how this technology has evolved over the past year, highlighting key trends and breakthroughs that are shaping industries. We'll also look ahead, discussing what the next year holds for Generative AI, its potential challenges, and opportunities. By examining how Generative AI complements existing AI technologies, this presentation offers deep insights for technical professionals eager to stay ahead in this dynamic field.",
@@ -580,7 +686,9 @@
                 "begin": "16:00",
                 "end": "16:50",
                 "location": "PTH Track",
-                "speakers": ["Michel Schildmeijer"],
+                "speakers": [
+                  "Michel Schildmeijer"
+                ],
                 "type": "Talk",
                 "title": "Which Vault? Don't tell me your secret(s)!",
                 "description": "Secret management is a crucial aspect of DevOps, as it involves the protection of sensitive data that is used by applications and services. Secrets can include API keys, credentials, tokens, certificates, and passwords that grant access to various resources and systems. If these secrets are compromised, attackers can exploit them to cause damage, steal information, or disrupt operations. The challenges of secret management is how to securely store, distribute, and rotate secrets in a dynamic and distributed environment. Traditional methods of hard-coding secrets in configuration files or environment variables are not secure, scalable, or reliable. Moreover, secrets need to be updated frequently to comply with security policies and regulations to prevent unauthorized access. To address these challenges, several tools and frameworks have been developed to provide secret management solutions for DevOps. These tools can help DevOps teams to implement best practices for secret management.",
@@ -593,7 +701,9 @@
                 "begin": "17:10",
                 "end": "18:00",
                 "location": "PTH Main Track",
-                "speakers": ["Sander Hoogendoorn"],
+                "speakers": [
+                  "Sander Hoogendoorn"
+                ],
                 "type": "Talk",
                 "title": "Getting Unstuck. Strategies for Surviving in a Rapidly Changing Post-Agile World",
                 "description": "This is the era of rapid and increasing change, adapting rapidly or perishing. Many organizations, big and small, struggle to survive. Their products and software have aged and become hard to maintain until they reach Technical Death, where all available effort goes into mere survival. At the same time, in our global economy, competition comes from anywhere, with better products built at lower costs. Organizations must jump the Innovators’ Dilemma and reinvent themselves to stay ahead of the competition. Speed, agility, and adaptability are more crucial than ever. However, agile frameworks became both a solution and a source of uncertainty and rigidity. Organizations seek fresh perspectives and adaptable strategies and techniques. They are stuck. This talk presents a battle-tested repertoire of practical strategies and techniques that serve as a compass for comprehending and continuously navigating between maintenance, renovation, and innovation, maintaining a solid focus on customer-centricity, reaching your dot on the horizon while instilling transparency, autonomy, and collaboration. These strategies involve leveraging proposed tools such as idea funnels, tech boards, collectives, and microteams. This talk empowers you to evolve from conventional agile and cultivate a culture of continuous growth. Of course, it offers a treasure trove of real-life stories from the trenches, providing an authentic glimpse into agile but redefined for the modern era. This talk will help your organization to get unstuck.",
@@ -604,7 +714,9 @@
                 "begin": "17:10",
                 "end": "18:00",
                 "location": "Emergn Track",
-                "speakers": ["Samuel Pampolini"],
+                "speakers": [
+                  "Samuel Pampolini"
+                ],
                 "type": "Talk",
                 "title": "The untapped power of parallel programming: build efficient and robust code that scales",
                 "description": "Dive into the world of parallel programming and unlock its potential to enhance application performance and responsiveness. This session covers the essentials of parallel programming, from understanding its core benefits and practical use cases to exploring the evolution of asynchronous programming with async and await. Gain insights into managing thread-safe collections and discover best practices to avoid common pitfalls. You’ll be empowered to write efficient, reliable parallel code that scales. Whether you’re new to parallelism or looking to refine your skills, this talk provides the tools to take your programming to the next level.",
@@ -615,7 +727,9 @@
                 "begin": "17:10",
                 "end": "18:00",
                 "location": "Five9 Track",
-                "speakers": ["Andres Almiray"],
+                "speakers": [
+                  "Andres Almiray"
+                ],
                 "type": "Talk",
                 "title": "Going beyond ORMs",
                 "description": "For some time now JSON has been the preferred format for exchanging data between client (browsers) and servers. Often times developers had to configure data marshalling options to transform data into business objects, into persistent data, and back again. Perhaps it would make more sense to use JSON across the business pipeline without sacrificing performance nor missing benefits from the relational data world. this is what JSON Duality Views propose. In this session we'll explore options to enhance data driven applications written with Spring Boot, Quarkus, and Micronaut, enhancing your developer experience and increasing customer satisfaction.",
@@ -626,7 +740,9 @@
                 "begin": "17:10",
                 "end": "18:00",
                 "location": "Zencoder Track",
-                "speakers": ["Alex Shershebnev"],
+                "speakers": [
+                  "Alex Shershebnev"
+                ],
                 "type": "Talk",
                 "title": "Going beyond copilot with AI Agents",
                 "description": "In this talk, we'll talk about past, present and future of coding assistants. I will go over the problems of the current generation of assistants and what is causing them. Then we'll dive into way to solve those issues, namely, AI Agents. I'll talk about them in general, why and how they can help actually deliver the promise of 'coding faster and smarter' and what is needed to realize those agents. We will then dive deeper into how they can be applied specifically to coding to make your everyday life easier. And we'll finish off with some examples of the ways you can incorporate such agents into your workflow already right after this talk.",
@@ -637,7 +753,9 @@
                 "begin": "17:10",
                 "end": "18:00",
                 "location": "PTH Track",
-                "speakers": ["Małgorzata Janeczek"],
+                "speakers": [
+                  "Małgorzata Janeczek"
+                ],
                 "type": "Talk",
                 "title": "JavaScript is weird. MythBusters special.",
                 "description": "In the era of Instagram, TikTok and YouTube it's easy to get lost in reels and shorts telling you tons of different things from the earth being flat, through tarot readings changing your life to JavaScript being weird. But is this really so? Let’s break some popular cases down together and see if JavaScript really is weird or maybe it’s just a myth getting more and more popular?",
@@ -650,7 +768,9 @@
                 "begin": "18:10",
                 "end": "18:30",
                 "location": "PTH Main Track",
-                "speakers": ["Samuel Santos"],
+                "speakers": [
+                  "Samuel Santos"
+                ],
                 "type": "Talk",
                 "title": "Goodbye",
                 "description": "Closing Porto Tech Hub Conference 2024",
@@ -690,7 +810,8 @@
           "id": 3,
           "name": "Keychain",
           "price": 3.99,
-          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734297204/gpd1tvmkabmsxgvethku.png"
+          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734297204/gpd1tvmkabmsxgvethku.png",
+          "type": "merch"
         }
       ],
       "comments": [

@@ -139,7 +139,6 @@ export default {
       this.isCartModalOpen = !this.isCartModalOpen;
     },
     removeFromCart(index) {
-      console.log(index);
 
       this.userStore.removeItemFromCart(index);
       this.userStore.$persist()
