@@ -1,10 +1,8 @@
 <template>
-  <v-row v-if="updateEvent != null" no-gutters class="fill-height" style="background-color: #00041f; color: white;">
-    <v-col cols="12" class="d-flex flex-column mx-auto" style="padding: 20px; max-width: 1000px;">
+    <div v-if="updateEvent != null" class="d-flex flex-column " style="background-color: #00041f; color: white;">
       <p class="text-h4 mb-5 text-center" style="color: #ff00ee;">Admin Dashboard</p>
-
       <!-- Event Details Section -->
-      <div class="mb-10">
+      <div class="mb-10 w-75 align-self-center">
         <p class="text-h5 mb-3">Edit Event Details</p>
         <v-form>
           <v-row dense>
@@ -23,10 +21,10 @@
         </v-form>
       </div>
 
-      <v-divider color="white" class="mb-10"></v-divider>
+      <v-divider color="white" class="mb-10 w-66 align-self-center  "></v-divider>
 
       <!-- Speakers Section -->
-      <div class="mb-10">
+      <div class="mb-10  w-75 align-self-center">
         <p class="text-h5 mb-3">Manage Speakers</p>
         <v-row>
           <v-col cols="12" sm="6" md="4" v-for="(speaker, index) in updateEvent.speakers" :key="index" class="mb-5">
@@ -66,53 +64,77 @@
         </v-form>
       </div>
 
-      <v-divider color="white" class="mb-10"></v-divider>
+      <v-divider color="white" class="mb-10 w-66 align-self-center"></v-divider>
 
-      <!-- Speaker Lecture Management Section -->
-      <div class="mb-10">
-        <p class="text-h5 mb-3">Manage Speaker Lectures</p>
-        <v-row>
-          <v-col cols="12" md="6">
-            <v-select v-model="selectedSpeaker" :items="speakersNames" item-text="name" label="Select Speaker" outlined
-              dense></v-select>
-          </v-col>
-        </v-row>
-        <v-row v-if="selectedSpeaker">
-          <v-col cols="12" md="6">
-            <v-text-field v-model="newLecture.title" label="Lecture Title" outlined dense></v-text-field>
-          </v-col>
-          <v-col cols="12" md="6">
-            <v-text-field v-model="newLecture.time" label="Lecture Time" outlined dense></v-text-field>
-          </v-col>
-          <v-col cols="12">
-            <v-textarea v-model="newLecture.description" label="Lecture Description" outlined dense
-              auto-grow></v-textarea>
-          </v-col>
-          <v-btn color="primary" class="mt-3" @click="addLectureToSpeaker">
-            Add Lecture
-          </v-btn>
-        </v-row>
-        <v-row v-if="selectedSpeaker?.lectures?.length">
-          <p class="text-h6 mt-5">Assigned Lectures</p>
-          <v-col cols="12" v-for="(lecture, index) in selectedSpeaker.lectures" :key="index">
-            <v-card style="background-color: #2c2f3f; color: white; border-radius: 10px;">
-              <v-card-title>
-                <span>{{ lecture.title }}</span>
-              </v-card-title>
-              <v-card-subtitle>{{ lecture.time }}</v-card-subtitle>
-              <v-card-text>{{ lecture.description }}</v-card-text>
-              <v-card-actions>
-                <v-btn color="red" @click="removeLectureFromSpeaker(index)">Remove</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-col>
-        </v-row>
+      <div  class="w-75 align-self-center align-center mt-16 ">
+      <div class="d-flex flex-column align-center mb-10">
+        <p class="text-h3 mb-5" style="color: #ff00ee">Schedule</p>
       </div>
+      <v-card class="elevation-5 rounded-lg" style="background-color: #00041f;">
+        <v-tabs v-model="tab" class="text-white" style="background-color: #000B52;">
+          <v-tab v-for="(day, index) in updateEvent.schedule" :key="index" :value="day.TimeOfDay">
+            {{ day.TimeOfDay }}
+          </v-tab>
+        </v-tabs>
 
-      <v-divider color="white" class="mb-10"></v-divider>
+        <v-card-text style="background-color: #00041f;" elevation="0">
+          <div v-for="day in updateEvent.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay" class="w-100">
+
+            <div>
+              <div v-for="(content, index) in day.content" :key="content.id" class="d-flex flex-column text-white ">
+                <v-container elevation="0" fluid>
+                  <v-row>
+                    <v-col v-for="contentHour in content" :key="contentHour.id" cols="12" md="6">
+                      <v-card class="elevation-0 rounded-lg" style="background-color: #00041f;">
+                        <v-row>
+                          <v-col cols="12" md="8"
+                            @click="goToDetails(contentHour, day.TimeOfDay, index, content.indexOf(contentHour))">
+                            <v-chip class="text-body3 align-center text-white mb-2" small elevated
+                              style="background-color: #ff00ee;">
+                              {{ contentHour.location }}
+                            </v-chip>
+                            <p class="text-body1 font-weight-bold text-white">{{ contentHour.title }}</p>
+                            <p v-if="contentHour.type != null" class="text-body2 text-white"> Type: {{
+                              contentHour.type }}
+                            </p>
+                            <div>
+                              <p class="text-body2 d-flex flex-row text-white">
+                                From:
+                                <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.begin }}</span>
+                              </p>
+                              <p class="text-body2 d-flex flex-row text-white">
+                                Until:
+                                <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.end }}</span>
+                              </p>
+                            </div>
+                            <p v-if="contentHour.speakers != null" class="text-body2 text-white"> Speakers: {{
+                              contentHour.speakers.join(", ") }}</p>
+                          </v-col>
+                          <v-col cols="12" md="4">
+                            <v-btn variant="outlined" class="text-body mt-14 mb-15 text-white"
+                              style="border-color: #ff00ee"
+                              @click="goToDetails(contentHour, day.TimeOfDay, index, content.indexOf(contentHour))">See
+                              More</v-btn>
+                          </v-col>
+                        </v-row>
+                      </v-card>
+
+                    </v-col>
+                  </v-row>
+                  <v-divider color="#fffff" class="my-4"></v-divider>
+                </v-container>
+              </div>
+            </div>
+          </div>
+        </v-card-text>
+      </v-card>
+    </div>
+
+    
+      <v-divider color="white" class="mb-10 w-66 align-self-center"></v-divider>
       <!-- Ticket Pricing Section -->
-      <div>
-        <p class="text-h5 mb-3">Edit Ticket Pricing</p>
+      <div class = " w-75 align-self-center">
+        <p class="text-h5 mb-3 text-center">Edit Ticket Pricing</p>
         <v-row dense>
           <v-col cols="12" sm="6" md="4" v-for="(features, type) in updateEvent.pricing" :key="type">
             <v-card style="background-color: #2c2f3f; color: white; border-radius: 10px;" class="py-3 px-4">
@@ -161,8 +183,8 @@
           </v-card>
         </v-dialog>
       </div>
-    </v-col>
-  </v-row>
+    </div>
+
 </template>
 
 
@@ -186,8 +208,8 @@ export default {
     this.updateEvent = this.event
     this.speakersNames.push("")
     this.speakersNames = this.event.speakers.map((speaker) => speaker.name);
-    console.log(this.speakersNames);
-
+    console.log(this.updateEvent.schedule );
+    
   },
   computed: {
     event() {
@@ -224,6 +246,7 @@ export default {
       this.currentTicketType = type;
       this.featureModal = true;
     },
+
     addFeature() {
       if (this.newFeature) {
         if (this.currentTicketType == 'premiumFeatures') {
@@ -257,9 +280,7 @@ export default {
 
 
 <style scoped>
-.v-row {
-  margin: 0;
-}
+
 
 .v-card {
   transition: transform 0.2s ease-in-out;
@@ -270,10 +291,5 @@ export default {
   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
 }
 
-.v-chip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-radius: 20px;
-}
+
 </style>

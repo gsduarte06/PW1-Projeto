@@ -54,7 +54,7 @@ export const useUserStore = defineStore('users', {
               id: 1,
               icon: 'mdi-cart',
               title: 'Biggest Buyer',
-              description: 'Awarded for purchasing the most items in a single month.',
+              description: 'Awarded for purchasing the most items.',
               achieved: false,
             },
             {

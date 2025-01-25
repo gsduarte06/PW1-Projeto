@@ -120,9 +120,7 @@
         </v-tabs>
 
         <v-card-text style="background-color: #00041f;" elevation="0">
-          <!-- Dynamically show content for the selected tab -->
           <div v-for="day in event.schedule" :key="day.TimeOfDay" v-show="tab === day.TimeOfDay" class="w-100">
-            <!-- Render content for the specific day -->
             <div>
               <div v-for="(content, index) in day.content" :key="content.id" class="d-flex flex-column text-white ">
                 <v-container elevation="0" fluid>
@@ -151,7 +149,7 @@
                               </p>
                             </div>
                             <p v-if="contentHour.speakers != null" class="text-body2 text-white"> Speakers: {{
-                              contentHour.speakers }}</p>
+                              contentHour.speakers.join(", ") }}</p>
                           </v-col>
                           <v-col cols="12" md="4">
                             <v-btn variant="outlined" class="text-body mt-14 mb-15 text-white"
