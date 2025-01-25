@@ -455,7 +455,6 @@ export default {
     },
     removeComment(index) {
       this.event.comments.splice(index, 1);
-      console.log(this.event);
       this.eventStore.updateevents(this.event);
       this.eventStore.$persist()
     },

@@ -26,11 +26,21 @@
                     <!-- User Info (Name, Email, etc.) -->
                     <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
-                        <label class="text-white custom-label">Name:</label>
+                        <label class="text-white custom-label">Username:</label>
                       </v-col>
                       <v-col cols="8">
                         <span class="text-white font-weight-regular" style="text-align: left; display: block">
                           {{ user.username }}
+                        </span>
+                      </v-col>
+                    </v-row>
+                    <v-row align="center" style="margin-bottom: 8px">
+                      <v-col cols="4">
+                        <label class="text-white custom-label">Name:</label>
+                      </v-col>
+                      <v-col cols="8">
+                        <span class="text-white font-weight-regular" style="text-align: left; display: block">
+                          {{ user.name }}
                         </span>
                       </v-col>
                     </v-row>
@@ -122,6 +132,7 @@
             <v-row justify="center" class="mt-4 d-flex flex-row justify-space-evenly">
               <v-btn class="edit-btn" @click="logout"> Logout </v-btn>
               <v-btn class="edit-btn" @click="editDialog = true"> Edit Data </v-btn>
+              <v-btn class="edit-btn" @click="() => {this.$router.push('/admin')}" outlined> Admin </v-btn>
             </v-row>
             <v-dialog v-model="editDialog" max-width="600px">
               <v-card class="edit-dialog-card" style="padding-top: 16px; padding-bottom: 16px">
@@ -130,10 +141,19 @@
                   <v-form >
                     <v-row align="center" style="margin-bottom: 8px">
                       <v-col cols="4">
-                        <label class="text-white text-body1 font-weight-medium">Name:</label>
+                        <label class="text-white text-body1 font-weight-medium">Username:</label>
                       </v-col>
                       <v-col cols="8">
                         <v-text-field class="text-white" v-model="editedUser.username" variant="underlined"
+                          density="comfortable"></v-text-field>
+                      </v-col>
+                    </v-row>
+                    <v-row align="center" style="margin-bottom: 8px">
+                      <v-col cols="4">
+                        <label class="text-white text-body1 font-weight-medium">Name:</label>
+                      </v-col>
+                      <v-col cols="8">
+                        <v-text-field class="text-white" v-model="editedUser.name" variant="underlined"
                           density="comfortable"></v-text-field>
                       </v-col>
                     </v-row>
@@ -309,7 +329,6 @@ export default {
   width: 200px;
   height: 50px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
 .edit-btn:hover {

@@ -1,9 +1,84 @@
 import { defineStore } from 'pinia'
 const saltRounds = 10
 import bcrypt from 'bcryptjs'
+const defaultuser= {
+      foto: null,
+      username: "admin",
+      email: "admin@gmail.com",
+      password: bcrypt.hashSync("1234", 10),
+      role: 'Admin',
+      bio: '',
+      name: '',
+      points: 0,
+      participating: false,
+      badges: [
+        {
+          id: 1,
+          icon: 'mdi-cart',
+          title: 'Biggest Buyer',
+          description: 'Awarded for purchasing the most items.',
+          achieved: false,
+        },
+        {
+          id: 2,
+          icon: 'mdi-account-group',
+          title: 'The criticizer',
+          description: 'Comment on atleast one talk.',
+          achieved: false,
+        },
+        {
+          id: 3,
+          icon: 'mdi-calendar-star',
+          title: 'Event Star',
+          description: 'Go to altleast a talk per time of day.',
+          achieved: false,
+        },
+        {
+          id: 4,
+          icon: 'mdi-code-tags',
+          title: 'Tech Enthusiast',
+          description: 'For participating in a workshop',
+          achieved: false,
+        },
+        {
+          id: 6,
+          icon: 'mdi-star',
+          title: 'Rising Star',
+          description: 'Given to a participant who showed up in all workshops.',
+          achieved: false,
+        },
+        {
+          id: 8,
+          icon: 'mdi-hand-heart',
+          title: 'Event Ally',
+          description:
+            'For attending 10 talks.',
+          achieved: false,
+        },
+        {
+          id: 12,
+          icon: 'mdi-account-multiple',
+          title: 'Most Connected',
+          description:
+            'Granted to attendees who completed the challenge presented in the begining of the conference',
+          achieved: true,
+        },
+        {
+          id: 14,
+          icon: 'mdi-trophy',
+          title: 'Challenger winner',
+          description:
+            'Get top 1 in the leaderboard by the end of the event.',
+          achieved: true,
+        },
+      ],
+      merchandising: [],
+      cart: [],
+      talks: [],
+    }
 export const useUserStore = defineStore('users', {
   state: () => ({
-    users: [],
+    users: [defaultuser ],
     userLoggedInUsername: null,
   }),
   getters: {
@@ -44,7 +119,7 @@ export const useUserStore = defineStore('users', {
           username: username,
           email: email,
           password: bcrypt.hashSync(password, 10),
-          role: 'admin',
+          role: 'Viewer',
           bio: '',
           name: '',
           points: 0,
@@ -103,10 +178,10 @@ export const useUserStore = defineStore('users', {
             },
             {
               id: 14,
-              icon: 'mdi-shield-check',
-              title: 'Cybersecurity Advocate',
+              icon: 'mdi-trophy',
+              title: 'Challenger winner',
               description:
-                'Get top 1 in the leaderboard by the end of the evemt.',
+                'Get top 1 in the leaderboard by the end of the event.',
               achieved: true,
             },
           ],

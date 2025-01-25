@@ -69,8 +69,7 @@
             height: 600px;
             border-radius: 20%;
           " class="d-flex justify-center align-center">
-          <img src="https://res.cloudinary.com/dvyic4oaf/image/upload/v1732406311/ookunajkj0ml7jowqasm.jpg" alt=""
-            style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); border-radius: 12px" height="345" width="518" />
+          <iframe width="530" height="360" src="https://www.youtube.com/embed/SDrqfrgssk0" title="Porto @ Porto Tech Hub" frameborder="0" allow="autoplay"></iframe>
         </div>
 
       </div>
