@@ -810,13 +810,15 @@
           "id": 1,
           "name": "Black T-Shirt",
           "price": 19.99,
-          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734296777/ptivv59zriavf3pldkyx.png"
+          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734296777/ptivv59zriavf3pldkyx.png",
+          "type": "merch"
         },
         {
           "id": 2,
           "name": "White Mug",
           "price": 8.99,
-          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734296823/pojahy6zd9nwhif6pgpd.png"
+          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734296823/pojahy6zd9nwhif6pgpd.png",
+          "type": "merch"
         },
         {
           "id": 3,
