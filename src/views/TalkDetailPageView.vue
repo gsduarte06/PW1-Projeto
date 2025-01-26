@@ -200,7 +200,7 @@ export default {
       return this.userStore.getLoggedInUser
     },
     speakers() {
-      return this.talk.speakers.join(", ")
+      return Array.isArray(this.talk.speakers) ? this.talk.speakers.join(", ") : "";
     }
   },
   methods: {
@@ -410,4 +410,34 @@ strong {
   background-color: red;
   border: none;
 }
+
+/* Style for comment input box */
+.text-white.mt-14.mb-3.color-white.w-100 {
+  width: 100%;
+  max-width: 600px; /* Add a max-width to prevent it from growing too wide */
+  margin: 0 auto; /* Center the comment box */
+}
+
+.v-textarea {
+  width: 100%;
+  background-color: #1a1a2e; /* Add a background color to match the theme */
+  border: 1px solid #ff00ee; /* Light border for visibility */
+  border-radius: 10px;
+  padding: 10px;
+  resize: none; /* Prevent resizing if you want a fixed height */
+  color: #fff;
+}
+
+.v-textarea::placeholder {
+  color: #ff00ee; /* Placeholder color to match your theme */
+}
+
+/* For smaller screens, make the input field more adaptable */
+@media (max-width: 600px) {
+  .text-white.mt-14.mb-3.color-white.w-100 {
+    max-width: 100%; /* Allow full width on smaller screens */
+    padding: 0 10px; /* Add padding on the sides */
+  }
+}
+
 </style>
