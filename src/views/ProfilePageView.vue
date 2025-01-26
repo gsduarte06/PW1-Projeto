@@ -132,7 +132,7 @@
             <v-row justify="center" class="mt-4 d-flex flex-row justify-space-evenly">
               <v-btn class="edit-btn" @click="logout"> Logout </v-btn>
               <v-btn class="edit-btn" @click="editDialog = true"> Edit Data </v-btn>
-              <v-btn class="edit-btn" @click="() => {this.$router.push('/admin')}" outlined> Admin </v-btn>
+              <v-btn v-if="user.role === 'Admin'"class="edit-btn" @click="() => {this.$router.push('/admin')}" outlined> Admin </v-btn>
             </v-row>
             <v-dialog v-model="editDialog" max-width="600px">
               <v-card class="edit-dialog-card" style="padding-top: 16px; padding-bottom: 16px">
