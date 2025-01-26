@@ -1,5 +1,5 @@
 <template>
-  <div v-if="this.event != null" class="d-flex flex-column" style="background-color: #00041f">
+  <div v-if="event != null" class="d-flex flex-column" style="background-color: #00041f">
     <!-- Top Event -->
     <div class="d-flex flex-row justify-space-evenly mt-16">
       <div>
@@ -16,7 +16,7 @@
         <v-btn class="rounded-xl text-white text-body1" elevation="6" style="
             background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee);
             text-transform: none;
-          " @click="goToEvent()">See More...</v-btn>
+          " @click="goToEvent">See More...</v-btn>
         <!-- timer -->
         <v-container style="color: white" class="pa-0">
           <v-row class="text-center mt-14">
@@ -48,21 +48,17 @@
         </v-container>
       </div>
       <div style="min-width: 600px; min-height: 600px" class="mt-n16">
-        <div style="
-            background: radial-gradient(circle, #006385, #00041f 70%);
-            width: 600px;
-            height: 600px;
-            border-radius: 20%;
-          " class="d-flex justify-center align-center">
+        <!-- Keep the outer div for layout, apply animation to the image -->
+        <div class="d-flex justify-center align-center glow-container">
           <img src="https://res.cloudinary.com/dvyic4oaf/image/upload/v1732313558/ctiwxyjj5kgmiabb0ump.jpg" alt=""
-            style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); border-radius: 12px" />
+            class="glowing-image" style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); border-radius: 12px" />
         </div>
       </div>
     </div>
 
     <!-- Details Event -->
     <div style="margin-top: 100px" class="d-flex flex-row justify-space-evenly  w-75 align-self-center">
-      <div style="margin-top: -140px" class="">
+      <div style="margin-top: -140px">
         <div style="
             background: radial-gradient(circle, #59398E, #00041f 70%);
             width: 600px;
@@ -112,7 +108,7 @@
       <v-btn class="rounded-xl text-white text-body1 align-self-center mt-16" elevation="6" style="
             background: linear-gradient(90deg, #59398e, #ac1dbe, #d50ed6, #ff00ee);
             text-transform: none;
-          " @click="goToEvent()">List of All Speakers</v-btn>
+          " @click="goToEvent">List of All Speakers</v-btn>
     </div>
 
   </div>
@@ -127,7 +123,6 @@
 </template>
 
 <script>
-
 import { useEventStore } from '../stores/event';
 export default {
   data() {
@@ -182,9 +177,30 @@ export default {
     },
 
   },
-
-
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px 10px rgba(255, 0, 238, 0.5), 0 0 30px 20px rgba(173, 29, 190, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px 15px rgba(255, 0, 238, 0.8), 0 0 40px 25px rgba(173, 29, 190, 0.8);
+  }
+}
+
+.glow-container {
+  background: radial-gradient(circle, #006385, #00041f 70%);
+  width: 600px;
+  height: 600px;
+  border-radius: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glowing-image {
+  animation: glow 3s infinite alternate;
+}
+</style>
