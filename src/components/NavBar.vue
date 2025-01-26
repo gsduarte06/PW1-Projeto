@@ -4,21 +4,25 @@
       <v-img :src="logo" max-height="60" max-width="133" cover @click="LandingPage"></v-img>
       <v-spacer></v-spacer>
 
-      <v-btn class="mr-md-4 font-weight-bold" @click="Eventpage">Event</v-btn>
-      <v-btn @click="LeaderboardPage" class="mr-md-4 font-weight-bold">LeaderBoard</v-btn>
-      <v-btn @click="MerchandisingPage" class="mr-md-4 font-weight-bold">Merchandising</v-btn>
+      <!-- Navbar Buttons (responsive) -->
+      <div class="d-none d-md-flex">
+        <v-btn class="mr-md-4 font-weight-bold" @click="Eventpage">Event</v-btn>
+        <v-btn @click="LeaderboardPage" class="mr-md-4 font-weight-bold">LeaderBoard</v-btn>
+        <v-btn @click="MerchandisingPage" class="mr-md-4 font-weight-bold">Merchandising</v-btn>
+      </div>
 
+      <!-- Login/Register or User Profile -->
       <v-btn v-if="userStore.getLoggedInUser == null" @click="LoginRegister" style="background: #ff00ee"
-        class="rounded-pill font-weight-bold px-6" rounded>
+        class="rounded-pill font-weight-bold px-6 d-md-none" rounded>
         Login/Register
       </v-btn>
 
+      <!-- User Profile and Cart (responsive) -->
       <div v-else class="d-flex align-center">
         <v-avatar size="auto" class="mr-3">
           <v-icon color="white" size="28">mdi-bell</v-icon>
         </v-avatar>
 
-        <!-- Shopping Cart Icon -->
         <v-btn icon @click="toggleCartModal" class="mr-3">
           <v-badge :content="cartCount" color="pink" overlap>
             <v-icon color="#e5e5e5" size="28">mdi-cart</v-icon>
@@ -73,10 +77,6 @@
             </div>
             <p v-else class="empty-cart-text text-center">Your cart is empty.</p>
           </div>
-
-
-
-
         </v-card-text>
         <v-card-actions class="d-flex justify-space-between ma-2">
           <p class="text-white text-body2 ml-5">Total: {{ this.total }}€</p>
@@ -86,8 +86,6 @@
     </v-dialog>
   </div>
 </template>
-
-
 
 <script>
 import { useUserStore } from '@/stores/users';
@@ -139,7 +137,6 @@ export default {
       this.isCartModalOpen = !this.isCartModalOpen;
     },
     removeFromCart(index) {
-
       this.userStore.removeItemFromCart(index);
       this.userStore.$persist()
     },
@@ -230,5 +227,48 @@ export default {
 
 .cart-close-btn:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .d-none.d-md-flex {
+    display: none;
+  }
+
+  .d-md-none {
+    display: block;
+  }
+
+  .v-toolbar {
+    padding: 0 16px;
+  }
+
+  .v-btn {
+    font-size: 0.8rem;
+  }
+
+  /* Ensure profile and cart icons stack nicely */
+  .d-flex.align-center {
+    flex-direction: row !important;
+    justify-content: space-between;
+  }
+
+  .cart-close-btn {
+    top: 8px;
+    right: 8px;
+  }
+
+  /* Cart modal content adjustments */
+  .cart-item-title {
+    font-size: 14px;
+  }
+
+  .cart-item-subtitle {
+    font-size: 12px;
+  }
+
+  .cart-remove-btn {
+    font-size: 18px;
+  }
 }
 </style>
