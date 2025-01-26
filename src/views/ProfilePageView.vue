@@ -8,15 +8,19 @@
               style="border-radius: 12px; background-color: #00041f; margin-top: 15px">
               <v-card-text>
                 <v-row align="start">
-                  <!-- Avatar -->
+                  <!-- Avatar and Divider -->
                   <v-col cols="12" md="4" class="d-flex justify-center align-center" style="margin-top: 90px">
                     <v-avatar size="200" class="profile-avatar">
                       <img v-if="user.foto" :src="user.foto" alt="User's Profile Picture" />
                       <v-icon v-else class="mr-md-4" color="white" size="200">
+                        <!-- Inserir metodo de modificar a imagem + cloudinary -->
                         mdi-account-circle
                       </v-icon>
                     </v-avatar>
                   </v-col>
+
+                  <!-- Adjusted Divider -->
+                  <v-col cols="1" class="divider d-flex justify-center align-stretch"></v-col>
 
                   <v-col cols="12" md="7" style="margin-top: 20px; padding-left: 10px; padding-right: 10px">
                     <!-- User Info (Name, Email, etc.) -->
@@ -283,6 +287,11 @@ export default {
   height: 100%;
 }
 
+.divider {
+  border-left: 3px solid #ff00ee;
+  height: 500px;
+}
+
 .v-btn {
   text-transform: none;
 }
@@ -396,38 +405,13 @@ export default {
     height: 150px;
   }
 
-  .v-btn {
-    font-size: 14px;
-    padding: 8px;
-    margin: 8px;
-  }
-
   .edit-btn {
-    font-size: 14px;
-    width: 160px;
-    padding: 10px;
+    width: 180px;
+    /* Adjust button width for smaller screens */
   }
 
-  .custom-label {
-    font-size: 16px;
-  }
-
-  .badge-chip {
-    margin: 2px;
-    padding: 8px;
-  }
-
-  .text-white {
-    font-size: 14px;
-  }
-
-  .badge-modal-title {
-    font-size: 18px;
-  }
-
-  .edit-dialog-title {
-    font-size: 20px;
+  .talk-row {
+    flex-direction: column;
   }
 }
 </style>
-

@@ -148,10 +148,8 @@
                                 <span class="text-body2 font-weight-bold ml-1"> {{ contentHour.end }}</span>
                               </p>
                             </div>
-                            <p v-if="contentHour.speakers && Array.isArray(contentHour.speakers)" class="text-body2 text-white">
-                              Speakers: {{ contentHour.speakers.join(", ") }}
-                            </p>
-
+                            <p v-if="contentHour.speakers != null" class="text-body2 text-white"> Speakers: {{
+                              contentHour.speakers.join(", ") }}</p>
                           </v-col>
                           <v-col cols="12" md="4">
                             <v-btn variant="outlined" class="text-body mt-14 mb-15 text-white"

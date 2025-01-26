@@ -3,7 +3,7 @@
     <v-container fluid class="main-container">
       <v-row justify="center">
         <v-col cols="12" md="10" class="pa-4">
-          <v-card class="mx-auto card-container elevation-0">
+          <v-card class="mx-auto card-container  elevation-0">
             <v-card-title class="text-h4 card-title">
               MERCHANDISE OF THE EVENT
             </v-card-title>
@@ -94,12 +94,12 @@ export default {
 };
 </script>
 
+
 <style scoped>
 /* Container adjustments */
 .main-container {
   padding: 20px;
   background-color: #00041f;
-  overflow: hidden; /* Prevents overflow issues */
 }
 
 /* Card adjustments */
@@ -109,7 +109,6 @@ export default {
   padding: 24px;
 }
 
-/* Card Title */
 .card-title {
   color: #ff00ee;
   text-align: center;
@@ -177,50 +176,11 @@ export default {
 /* Mobile adjustments */
 @media (max-width: 600px) {
   .merchandise-card {
-    width: 100%; /* Ensure full width for smaller screens */
-    padding: 10px;
+    width: 100%;
   }
 
   .merchandise-image {
-    height: 180px; /* Adjust image size */
-  }
-
-  /* Title and Price Adjustments */
-  .merchandise-title, .merchandise-price {
-    font-size: 14px;
-    text-align: center;
-  }
-
-  .card-container {
-    padding: 16px; /* Less padding on mobile for better fitting */
-  }
-
-  .add-to-cart-btn {
-    padding: 8px; /* Smaller button on mobile */
+    height: 150px;
   }
 }
-
-/* Tablet adjustments */
-@media (max-width: 1024px) {
-  .merchandise-card {
-    padding: 14px;
-  }
-
-  .merchandise-image {
-    height: 220px;
-  }
-
-  .card-container {
-    padding: 20px;
-  }
-
-  .merchandise-title {
-    font-size: 16px;
-  }
-
-  .merchandise-price {
-    font-size: 14px;
-  }
-}
-
 </style>
