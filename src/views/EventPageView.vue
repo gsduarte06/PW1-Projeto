@@ -53,8 +53,8 @@
             height: 600px;
             border-radius: 20%;
           " class="d-flex justify-center align-center">
-          <img src="https://res.cloudinary.com/dvyic4oaf/image/upload/v1732313558/ctiwxyjj5kgmiabb0ump.jpg" alt=""
-            style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); border-radius: 12px" />
+          <img src="https://portotechhub.com/wp-content/uploads/2018/04/img-noticia.jpg" alt=""
+            style="box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8); border-radius: 12px; object-fit:cover" width="316" height="468" />
         </div>
       </div>
     </div>
