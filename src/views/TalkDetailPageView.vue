@@ -204,17 +204,17 @@ export default {
     }
   },
   methods: {
-    closeModal(){
+    closeModal() {
       this.editDialog = false
       console.log(this.talk);
-      
+
       this.editedTalk = this.talk
     },
     ChangeEventData() {
 
       this.editDialog = true
     },
-    saveData(){
+    saveData() {
       const scheduleItem = this.event.schedule.find((item) => item.TimeOfDay === this.timeOfday);
       if (scheduleItem) {
         var talkfind = scheduleItem.content[this.indexContent][this.indexTalk];
@@ -222,7 +222,7 @@ export default {
         talkfind = this.editedTalk
         this.event.schedule.find((item) => item.TimeOfDay === this.timeOfday).content[this.indexContent][this.indexTalk] = talkfind
         this.eventStore.updateevents(this.event);
-        this.eventStore.$persist() 
+        this.eventStore.$persist()
         this.editDialog = false
       }
     },
@@ -252,7 +252,14 @@ export default {
         this.talk = talkfind
         this.eventStore.updateevents(this.event);
         this.eventStore.$persist()
+        this.updateBadgeCriticizer()
         this.editDialog = false
+      }
+    },
+    updateBadgeCriticizer() {
+      //register badge The criticizer
+      if (!this.user.badges.find((badge) => badge.id === 2).achieved) {
+        this.user.badges.find((badge) => badge.id === 2).achieved = true
       }
     },
     Deregister() {
@@ -271,10 +278,78 @@ export default {
         this.user.points += 100
         this.user.talks.push(talkfind)
       }
+      this.updateBadgeEvent()
+      this.updateBadgeWorkShop()
+      this.updateBadgeWorkShops()
+      this.updatteBadgeTalks()
+
     },
-    removeFromSpreakers(index){
-      if(confirm("Are you sure you want to remove the speaker?")){
-        this.editedTalk.speakers.splice(index,1)
+    updatteBadgeTalks(){
+      if (!this.user.badges.find((badge) => badge.id === 8).achieved) {
+        if (this.user.talks.filter((talk) => talk.type === "Talk").length >= 10) {          
+          this.user.badges.find((badge) => badge.id === 8).achieved = true
+        }
+      }
+    },
+    updateBadgeWorkShops() {
+      const AllworkshopIds = [];
+
+      this.event.schedule.forEach((timeSlot) => {
+        timeSlot.content.forEach((contentArray) => {
+          contentArray.forEach((item) => {
+            if (item.type === "Workshop") {
+              AllworkshopIds.push(item.id);
+            }
+          });
+        });
+      });
+      
+      const userWorkshopIds = []
+      this.user.talks.forEach((item) => {
+            if (item.type === "Workshop") {
+              userWorkshopIds.push(item.id);
+            }
+          });
+          
+       if (!this.user.badges.find((badge) => badge.id === 6).achieved) {
+        if (AllworkshopIds.sort().join(",") === userWorkshopIds.sort().join(",")) {
+          this.user.badges.find((badge) => badge.id === 6).achieved = true
+        }
+      } 
+    },
+    updateBadgeWorkShop() {
+      if (!this.user.badges.find((badge) => badge.id === 4).achieved) {
+        if (this.talk.type === "Workshop") {
+          this.user.badges.find((badge) => badge.id === 4).achieved = true
+        }
+      }
+
+    },
+    updateBadgeEvent() {
+      if (!this.user.badges.find((badge) => badge.id === 3).achieved) {
+        let before13 = false;
+        let after14 = false;
+
+        for (const talk of this.user.talks) {
+          const [hours, minutes] = talk.begin.split(":").map(Number);
+          const timeInHours = hours + minutes / 60;
+
+          if (timeInHours < 13) {
+            before13 = true;
+          }
+          if (timeInHours > 14) {
+            after14 = true;
+          }
+        }
+
+        if (before13 && after14) {
+          this.user.badges.find((badge) => badge.id === 3).achieved = true
+        }
+      }
+    },
+    removeFromSpreakers(index) {
+      if (confirm("Are you sure you want to remove the speaker?")) {
+        this.editedTalk.speakers.splice(index, 1)
       }
     }
   },

@@ -66,7 +66,7 @@ const defaultuser= {
         {
           id: 14,
           icon: 'mdi-trophy',
-          title: 'Challenger winner',
+          title: 'Challenge winner',
           description:
             'Get top 1 in the leaderboard by the end of the event.',
           achieved: true,
@@ -97,6 +97,11 @@ export const useUserStore = defineStore('users', {
     },
   },
   actions: {
+    checkpassword(password){
+      const user = this.users.find((user) => user.username == this.userLoggedInUsername)
+      const match = bcrypt.compareSync(password, user.password)
+      return match
+    },
     CheckLogUserIn(username, password) {
       const FoundUser = this.users.find((user) => user.username === username)
       console.log(FoundUser.password)
@@ -174,7 +179,7 @@ export const useUserStore = defineStore('users', {
               title: 'Most Connected',
               description:
                 'Granted to attendees who completed the challenge presented in the begining of the conference',
-              achieved: true,
+              achieved: false,
             },
             {
               id: 14,
@@ -182,7 +187,7 @@ export const useUserStore = defineStore('users', {
               title: 'Challenger winner',
               description:
                 'Get top 1 in the leaderboard by the end of the event.',
-              achieved: true,
+              achieved: false,
             },
           ],
           merchandising: [],
