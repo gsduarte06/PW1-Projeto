@@ -356,7 +356,8 @@
                 "end": "10:50",
                 "location": "PTH Main Track",
                 "speakers": [
-                  "Stephen Chin"
+                  "Stephen Chin",
+                  "Alina Yurenko"
                 ],
                 "type": "Talk",
                 "title": "Give Your LLMs a Left Brain",
@@ -380,6 +381,11 @@
                     "id_comment": 1,
                     "user": "gsduarte",
                     "content": "WOW this talk is amazing"
+                  },
+                  {
+                    "id_comment": 2,
+                    "user": "diogo",
+                    "content": "Great workshop"
                   }
                 ]
               },
@@ -810,8 +816,7 @@
           "id": 1,
           "name": "Black T-Shirt",
           "price": 19.99,
-          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734296777/ptivv59zriavf3pldkyx.png",
-          "type": "merch"
+          "image": "https://res.cloudinary.com/dvyic4oaf/image/upload/v1734296777/ptivv59zriavf3pldkyx.png"
         },
         {
           "id": 2,

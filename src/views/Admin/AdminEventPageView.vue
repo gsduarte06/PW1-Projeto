@@ -221,6 +221,9 @@ export default {
     }
   },
   methods: {
+    goToDetails(talk, TimeOfDay, hourIndex, indexTalk) {
+      this.$router.push({ path: '/talk-details', query: { talk: JSON.stringify(talk), TimeOfDay: TimeOfDay, indexContent: hourIndex, indexTalk: indexTalk } });
+    },
     forceRenderer() {
       console.log(this.RenderKey);
       this.RenderKey += 1
